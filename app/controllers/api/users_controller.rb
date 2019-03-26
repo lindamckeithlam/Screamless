@@ -2,10 +2,10 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(uparams)
     if @user.save
-        login(@user)
-      render 'api/users/show'
+      login(@user)
+      render "api/users/show"
     else
-      flash[:errors] = @user.errors.full_messages, status: 422
+      flash[:errors] = @user.errors.full_messages
     end
   end
 
