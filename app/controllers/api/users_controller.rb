@@ -5,11 +5,11 @@ class Api::UsersController < ApplicationController
       login(@user)
       render "api/users/show"
     else
-      flash[:errors] = @user.errors.full_messages
+      render json: @user.errors.full_messages, status: 400
     end
   end
 
   def uparams
-    params.require(:user).permit(:username, :last_name, :first_name, :password)
+    params.require(:user).permit(:email, :last_name, :first_name, :password)
   end
 end

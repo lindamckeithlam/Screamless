@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+.Splashy {
+  display: flex;
+}
+
+.splash-img-container img {
+  width: 700px;
+  position: absolute;
+}
+
+.seamlesslogo {
+  width: 170px;
+  height: 100%;
+  position: relative;
+  border-radius: 10px;
+  z-index: 1;
+  left: 100px;
+  top: 100px;
+}
+
+.splash-texts {
+  align-self: flex-end;
+  position: relative;
+  z-index: 99;
+  left: 550px;
+  font-family: grubhubsans-bold;
+  font-size: 1.5vw;
+}
