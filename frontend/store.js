@@ -1,9 +1,15 @@
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { applyMiddleware, createStore, compose } from "redux";
+import RootReducer from "./reducers/root_reducer.js";
 
-import { createStore } from 'react-redux'; 
-import thunk from 'redux-thunk'; 
-import {applyMiddleWare} from 'react-redux'; 
-import RootReducer from './reducers/root_reducer'
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const configureStore = (preloadedState = {}) =>(
-    createStore(RootReducer, preloadedState, applyMiddleWare(thunk))
-)
+const configureStore = (preloadedState = {}) =>
+  createStore(
+    RootReducer,
+    preloadedState,
+    compose(applyMiddleware(thunk, logger))
+  );
+
+export default configureStore;

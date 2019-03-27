@@ -1,6 +1,7 @@
-export default usersReducer = (state = {}, action) => {
-    switch (action.type){
-        
-    }
-    return state; 
-}; 
+const usersReducer = (state = {}, action) => {
+  switch (action.type) {
+  }
+  return state;
+};
+
+export default usersReducer;

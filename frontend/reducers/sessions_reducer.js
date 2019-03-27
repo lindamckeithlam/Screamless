@@ -1,6 +1,7 @@
-export default sessionsReducer = (state={id: null}, action) => {
-    switch (action.type){
+const sessionsReducer = (state = {}, action) => {
+  switch (action.type) {
+  }
+  return state;
+};
 
-    }
-    return state; 
-}; 
+export default sessionsReducer;

@@ -51,6 +51,7 @@ group :development do
   gem "annotate"
   gem "binding_of_caller"
   gem "better_errors"
+  gem "foreman"
 end
 
 group :test do
