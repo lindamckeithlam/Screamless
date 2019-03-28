@@ -5,12 +5,21 @@ import App from "./components/App";
 import Root from "./components/root";
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("loaded!!");
-  const store = configureStore();
-
-  // TESTING!!!!!!!!!!
+  let store;
+  if (window.currentUser) {
+    const preloadedState = {
+      entities: {
+        users: { [window.currentUser.id]: window.currentUser }
+      },
+      sessions: { id: window.currentUser.id }
+    };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+    debugger;
+  } else {
+    store = configureStore();
+  }
   window.store = store;
-  // TESTING!!!!!!!!!
 
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);

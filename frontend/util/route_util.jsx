@@ -12,19 +12,20 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => {
       path={path}
       exact={exact}
       render={props =>
-        !loggedIn ? <Component {...props} /> : <Redirect to="/" />
+        !loggedIn ? <Component {...props} /> : <Redirect to="/lets-eat" />
       }
     />
   );
 };
 
 const Protected = ({ component: Component, path, loggedIn, exact }) => {
+  debugger;
   return (
     <Route
       path={path}
       exact={exact}
       render={props =>
-        loggedIn ? <Component {...props} /> : <Redirect to="/users/new" />
+        loggedIn ? <Component {...props} /> : <Redirect to="/sessions/new" />
       }
     />
   );
