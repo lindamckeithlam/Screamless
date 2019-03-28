@@ -76,7 +76,7 @@ class Login extends React.Component {
             <span className="dont-have-account">
               Don't have an Account? {"  "}
             </span>
-            <Link to="/users/new" className="create-account">
+            <Link to="/create-account" className="create-account">
               Create Your Account
             </Link>
           </div>

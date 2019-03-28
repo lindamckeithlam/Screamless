@@ -3,7 +3,7 @@ import { Route, Redirect, Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const msp = state => {
-  return { loggedIn: Boolean(state.sessions.currentSession) };
+  return { loggedIn: Boolean(state.sessions.id) };
 };
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => {
@@ -25,7 +25,7 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
       path={path}
       exact={exact}
       render={props =>
-        loggedIn ? <Component {...props} /> : <Redirect to="/sessions/new" />
+        loggedIn ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   );

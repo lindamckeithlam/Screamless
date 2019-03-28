@@ -107,7 +107,7 @@ class Signup extends React.Component {
           </Form>
           <div className="link-to-signin">
             <span className="have-account">Have an account? {"      "}</span>
-            <Link to="/sessions/new" className="signin-account">
+            <Link to="/login" className="signin-account">
               Sign in
             </Link>
           </div>

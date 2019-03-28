@@ -4,7 +4,7 @@ import {
 } from "../actions/session_actions";
 
 const initialState = {
-  currentSession: null
+  id: null
 };
 
 const sessionsReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const sessionsReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER:
       // eslint-disable-next-line no-case-declarations
       const currentSession = action.user;
-      return Object.assign({}, { currentSession });
+      return Object.assign({}, { id });
     case LOGOUT_CURRENT_USER:
       return state;
   }

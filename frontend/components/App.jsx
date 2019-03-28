@@ -15,9 +15,9 @@ class App extends Component {
         <SignupFormContainer /> */}
         <Switch>
           <ProtectedRoute path="/lets-eat" component={Profile} />
-          <AuthRoute path="/splash" component={Splash} />
-          <AuthRoute path="/users/new" component={SignupFormContainer} />
-          <AuthRoute path="/sessions/new" component={LoginFormContainer} />
+          <AuthRoute exact path="/" component={Splash} />
+          <AuthRoute path="/create-account" component={SignupFormContainer} />
+          <AuthRoute path="/login" component={LoginFormContainer} />
         </Switch>
       </div>
     );
