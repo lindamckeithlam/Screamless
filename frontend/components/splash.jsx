@@ -1,4 +1,5 @@
 import React from "react";
+import SplashSearch from "./SplashSearch";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -35,21 +36,25 @@ class Splash extends React.Component {
         </div>
 
         <div className="splash-texts">
-          <h1>Order food you love, delivered</h1>
-          <br />
-          <Link to="/sessions/new">Sign in</Link>
-          <br />
-          <Link to="/users/new">Get the app</Link>
-          <br />
-          <form>
-            <label>Enter a Delivery Address:</label>
-            <input
-              type="text"
-              value={this.state.address}
-              onChange={this.handleChange("address")}
-            />
-            <button>></button>
-          </form>
+          <div className="splash-links-container">
+            <Link className="splash-links" to="/users/new">
+              Get the app
+            </Link>
+            <Link className="splash-links" to="/sessions/new">
+              Sign in
+            </Link>
+          </div>
+          <div className="splash-text-container">
+            <div className="splash-content">
+              <div className="splash-header-container">
+                <h1 className="splash-header">Order food you love,</h1>
+                <h1 className="splash-header">delivered</h1>
+              </div>
+              <form>
+                <SplashSearch />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     );
