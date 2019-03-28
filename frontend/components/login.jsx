@@ -27,12 +27,15 @@ class Login extends React.Component {
     return (
       <div className="login-form-background">
         <div className="login-form-container">
+          <div className="signin-header">
+            Sign in with your Screamless account
+          </div>
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
+              {/* <Form.Label>Email address</Form.Label> */}
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleChange("email")}
               />
@@ -42,7 +45,7 @@ class Login extends React.Component {
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+              {/* <Form.Label>Password</Form.Label> */}
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -51,12 +54,25 @@ class Login extends React.Component {
               />
             </Form.Group>
             <Form.Group controlId="formBasicChecbox">
-              <Form.Check type="checkbox" label="Check me out" />
+              <Form.Check type="checkbox" label="keep me signed in" />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
+            <Button
+              className="login-button"
+              variant="primary"
+              type="submit"
+              onClick={this.handleSubmit}
+            >
               Sign In
             </Button>
           </Form>
+          <div className="link-to-create">
+            <span className="dont-have-account">
+              Don't have an Account? {"  "}
+            </span>
+            <Link to="/users/new" className="create-account">
+              Create Your Account
+            </Link>
+          </div>
         </div>
       </div>
     );

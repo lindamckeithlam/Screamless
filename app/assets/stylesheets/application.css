@@ -106,8 +106,100 @@
   background-color: white;
 }
 
+.login-button {
+  color: #fff;
+  background: #c90017;
+  border-color: #c90017;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 8px 16px 7px;
+}
+.login-button:hover {
+  background-color: maroon;
+}
+
 .login-form-background {
   height: 100vh;
   width: 100vw;
   background-color: #efefef;
+}
+
+.link-to-create {
+  padding: 15px;
+  font-size: 14px;
+  margin-left: 18%;
+}
+
+.link-to-create .create-account {
+  color: rgb(43, 130, 130);
+  text-decoration: none;
+}
+
+.link-to-create .create-account:hover {
+  color: rgb(43, 130, 130);
+
+  text-decoration: none;
+}
+
+.signin-header {
+  font-size: 21px;
+  font-weight: bold;
+  font-family: graphik;
+  padding: 0px;
+  padding-bottom: 20px;
+  margin-right: 0;
+}
+
+/* Signup Form */
+
+.signup-form-container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: white;
+}
+
+.signup-header {
+  font-size: 21px;
+  font-weight: bold;
+  font-family: graphik;
+  padding: 0px;
+  padding-bottom: 20px;
+  margin-right: 0;
+}
+.signup-button {
+  color: #fff;
+  background: rgb(43, 130, 130);
+  border-color: rgb(43, 130, 130) 7;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 8px 16px 7px;
+}
+.signup-button:hover {
+  background-color: rgb(43, 130, 130);
+}
+
+.signup-form-background {
+  height: 100vh;
+  width: 100vw;
+  background-color: #efefef;
+}
+
+.link-to-signup {
+  padding: 15px;
+  font-size: 14px;
+  margin-left: 18%;
+}
+
+.link-to-signup .have-account {
+  color: rgb(43, 130, 130);
+  text-decoration: none;
+}
+
+.link-to-signup .have-account:hover {
+  color: rgb(43, 130, 130);
+
+  text-decoration: none;
 }

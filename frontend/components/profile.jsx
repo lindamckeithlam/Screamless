@@ -26,7 +26,12 @@ class Profile extends React.Component {
     return (
       <>
         <h1> Hello </h1>
-        <Link to="/restaurants">Restaurant Index</Link>
+        <div className="main-nav">
+          <Link to="/lets-eat">Seamless-logo-pic Here</Link>
+        </div>
+        <div className="seamlesslogo-nav-container">
+          <img src={window.seamlesslogo} className="seamless-nav-logo" />
+        </div>
         <br />
         <button onClick={this.handleSubmit}>Log out</button>
       </>
