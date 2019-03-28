@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -20,32 +21,54 @@ class Signup extends React.Component {
     this.props.action(this.state);
   }
   render() {
+    let emailError = null;
+    let passwordError = null;
+    let firstnameError = null;
+    let lastnameError = null;
+    if (this.props.errors.length !== 0) {
+      this.props.errors.forEach(er => {
+        if (er.includes("Email")) {
+          emailError = er;
+        } else if (er.includes("Password")) {
+          passwordError = er;
+        } else if (er.includes("First")) {
+          firstnameError = er;
+        } else if (er.includes("Last")) {
+          lastnameError = er;
+        }
+      });
+    }
     return (
       <div className="signup-form-background">
         <div className="signup-form-container">
           <div className="signup-header">Create your account</div>
 
           <Form>
-            <Form.Group controlId="formBasicFirstname">
-              {/* <Form.Label>Email address</Form.Label> */}
-              <Form.Control
-                type="first_name"
-                placeholder="First name"
-                value={this.state.first_name}
-                onChange={this.handleChange("first_name")}
-              />
-            </Form.Group>
+            <div className="firstname_lastname">
+              <Form.Group className="first_name" controlId="formBasicFirstname">
+                {/* <Form.Label>Email address</Form.Label> */}
+                <Form.Control
+                  type="first_name"
+                  placeholder="First name"
+                  value={this.state.first_name}
+                  onChange={this.handleChange("first_name")}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="formBasicLastname">
-              {/* <Form.Label>Email address</Form.Label> */}
-              <Form.Control
-                type="last_name"
-                placeholder="Last name"
-                value={this.state.last_name}
-                onChange={this.handleChange("last_name")}
-              />
-            </Form.Group>
-
+              <Form.Group className="last_name" controlId="formBasicLastname">
+                {/* <Form.Label>Email address</Form.Label> */}
+                <Form.Control
+                  type="last_name"
+                  placeholder="Last name"
+                  value={this.state.last_name}
+                  onChange={this.handleChange("last_name")}
+                />
+              </Form.Group>
+            </div>
+            <div className="firstlast">
+              <span className="signup-errors">{firstnameError} </span>
+              <span className="signup-errors">{lastnameError} </span>
+            </div>
             <Form.Group controlId="formBasicEmail">
               {/* <Form.Label>Email address</Form.Label> */}
               <Form.Control
@@ -55,21 +78,23 @@ class Signup extends React.Component {
                 onChange={this.handleChange("email")}
               />
               <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                {/* We'll never share your email with anyone else. */}
               </Form.Text>
             </Form.Group>
+            <p className="signup-errors">{emailError}</p>
 
             <Form.Group controlId="formBasicPassword">
               {/* <Form.Label>Password</Form.Label> */}
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Password (6 character minimum)"
                 value={this.state.password}
                 onChange={this.handleChange("password")}
               />
             </Form.Group>
+            <p className="signup-errors">{passwordError}</p>
             <Form.Group controlId="formBasicChecbox">
-              <Form.Check type="checkbox" label="keep me signed in" />
+              <Form.Check type="checkbox" label="Keep me signed in" />
             </Form.Group>
             <Button
               className="signup-button"
@@ -81,7 +106,7 @@ class Signup extends React.Component {
             </Button>
           </Form>
           <div className="link-to-signin">
-            <span className="have-account">Have an Account? {"  "}</span>
+            <span className="have-account">Have an account? {"      "}</span>
             <Link to="/sessions/new" className="signin-account">
               Sign in
             </Link>

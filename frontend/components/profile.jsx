@@ -24,17 +24,22 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <>
-        <h1> Hello </h1>
-        <div className="main-nav">
-          <Link to="/lets-eat">Seamless-logo-pic Here</Link>
-        </div>
+      <div className="main-nav">
+        <Link to="/lets-eat" />
         <div className="seamlesslogo-nav-container">
-          <img src={window.seamlesslogo} className="seamless-nav-logo" />
+          <img src={window.seamless20logo} className="seamless-nav-logo" />
         </div>
-        <br />
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Pizza, sushi, chinese"
+        />
+        {/* <ul>...</ul> */}
+
+        <i className="fa fa-bell" />
+        <i className="fas fa-shopping-bag" />
         <button onClick={this.handleSubmit}>Log out</button>
-      </>
+      </div>
     );
   }
 }

@@ -19,19 +19,19 @@
 }
 
 .splash-img-container img {
-  width: 700px;
+  width: 50%;
   position: absolute;
   height: 100%;
 }
 
 .seamlesslogo {
-  width: 170px;
+  width: 10vw;
   height: 100%;
   position: relative;
-  border-radius: 10px;
+  border-radius: 5%;
   z-index: 1;
-  left: 100px;
-  top: 100px;
+  left: 5vw;
+  top: 5vw;
 }
 
 .splash-links {
@@ -55,7 +55,7 @@
 .splash-texts {
   align-self: flex-end;
   position: relative;
-  left: 30%;
+  left: 35%;
   width: 50%;
   font-family: "Graphik";
   font-size: 1.5vw;
@@ -102,18 +102,29 @@
 .login-form-container {
   max-width: 540px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 23px;
   background-color: white;
+  font-family: "Graphik";
+  font-size: 14px;
+}
+
+.login-form-container input[type="email"],
+input[type="password"] {
+  padding: 23px;
+  font-size: 14px;
 }
 
 .login-button {
   color: #fff;
   background: #c90017;
   border-color: #c90017;
+  font-weight: bold;
+  font-size: 14px;
   width: 100%;
   border: 2px solid transparent;
-  border-radius: 4px;
   padding: 8px 16px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
 }
 .login-button:hover {
   background-color: maroon;
@@ -145,7 +156,7 @@
 .signin-header {
   font-size: 21px;
   font-weight: bold;
-  font-family: graphik;
+  font-family: "Graphik";
   padding: 0px;
   padding-bottom: 20px;
   margin-right: 0;
@@ -158,24 +169,39 @@
   margin: 0 auto;
   padding: 24px;
   background-color: white;
+  font-size: 14px;
+}
+
+.signup-form-container input[type="email"],
+input[type="password"],
+input[type="first_name"],
+input[type="last_name"] {
+  padding: 23px;
+  font-size: 14px;
 }
 
 .signup-header {
-  font-size: 21px;
   font-weight: bold;
-  font-family: graphik;
+  font-family: "Graphik";
   padding: 0px;
   padding-bottom: 20px;
   margin-right: 0;
+  font-size: 21.1px;
+  line-height: 1.37337;
 }
 .signup-button {
   color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.595;
+  font-family: "Graphik";
   background: rgb(43, 130, 130);
   border-color: rgb(43, 130, 130) 7;
   width: 100%;
   border: 2px solid transparent;
   border-radius: 4px;
   padding: 8px 16px 7px;
+  letter-spacing: 0.5px;
 }
 .signup-button:hover {
   background-color: rgb(43, 130, 130);
@@ -187,19 +213,97 @@
   background-color: #efefef;
 }
 
-.link-to-signup {
+.link-to-signin {
   padding: 15px;
   font-size: 14px;
-  margin-left: 18%;
+  margin-left: 32%;
+  border: 2px solid transparent;
+  letter-spacing: 0.5px;
 }
 
-.link-to-signup .have-account {
+.link-to-signin .have-account {
   color: rgb(43, 130, 130);
   text-decoration: none;
 }
 
-.link-to-signup .have-account:hover {
+.link-to-signin .have-account:hover {
   color: rgb(43, 130, 130);
-
   text-decoration: none;
+}
+
+.first_name {
+  width: 50%;
+  padding-right: 3px;
+}
+.last_name {
+  width: 50%;
+  padding-left: 3px;
+}
+
+.firstname_lastname {
+  display: flex;
+}
+
+/* Profile Nav */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  color: #2b8282;
+  transform: translateZ(0);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.seamless-nav-logo {
+  width: 10vw;
+  height: 100%;
+  position: relative;
+  border-radius: 5%;
+  z-index: 1;
+  left: 0vw;
+  top: 0vw;
+}
+
+.fa-bell {
+  font-size: 30px;
+  padding-top: 15px;
+  color: rgb(43, 130, 130);
+  padding: 5px;
+}
+.fa-shopping-bag {
+  font-size: 30px;
+  padding-top: 15px;
+  color: rgb(43, 130, 130);
+  padding: 5px;
+}
+
+.search-bar {
+  border-radius: 5%;
+  font-size: 14px;
+  color: rgb(43, 130, 130);
+  padding-top: 20px;
+  position: relative;
+  z-index: 2;
+  height: 44px;
+  flex: 3 1 auto;
+  width: 10px;
+  margin-bottom: 0;
+}
+
+.errors {
+  color: #fb6100;
+  text-align: left;
+}
+
+.signup-errors {
+  color: #fb6100;
+}
+.firstlast {
+  display: flex;
+  justify-content: space-around;
 }

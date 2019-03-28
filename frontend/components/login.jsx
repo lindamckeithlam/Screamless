@@ -20,13 +20,20 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state);
+    this.props
+      .action(this.state)
+      .then(() => this.props.history.push("/lets-eat"));
   }
 
   render() {
+    let errors = null;
+    if (this.props.errors[0]) {
+      errors = this.props.errors[0];
+    }
     return (
       <div className="login-form-background">
         <div className="login-form-container">
+          <p className="errors">{errors}</p>
           <div className="signin-header">
             Sign in with your Screamless account
           </div>
@@ -40,7 +47,7 @@ class Login extends React.Component {
                 onChange={this.handleChange("email")}
               />
               <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                {/* We'll never share your email with anyone else. */}
               </Form.Text>
             </Form.Group>
 
@@ -54,7 +61,7 @@ class Login extends React.Component {
               />
             </Form.Group>
             <Form.Group controlId="formBasicChecbox">
-              <Form.Check type="checkbox" label="keep me signed in" />
+              <Form.Check type="checkbox" label="Keep me signed in" />
             </Form.Group>
             <Button
               className="login-button"
