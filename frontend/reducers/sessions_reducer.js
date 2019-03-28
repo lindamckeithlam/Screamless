@@ -11,8 +11,8 @@ const sessionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       // eslint-disable-next-line no-case-declarations
-      const currentSession = action.user;
-      return Object.assign({}, { id });
+
+      return Object.assign({}, { id: action.user.id });
     case LOGOUT_CURRENT_USER:
       return state;
   }
