@@ -5,9 +5,10 @@ import App from "./components/App";
 import Root from "./components/root";
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("loaded!!");
   const store = configureStore();
 
-  // TESTING!!!!!!!!!
+  // TESTING!!!!!!!!!!
   window.store = store;
   // TESTING!!!!!!!!!
 
