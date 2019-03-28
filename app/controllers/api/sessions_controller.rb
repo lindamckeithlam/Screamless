@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     if !current_user
-      flash[:errors] = "404"
+      render json: ["404"]
     else
       olduser = current_user
       logout
