@@ -27,6 +27,7 @@ class Login extends React.Component {
 
   render() {
     let errors = null;
+
     if (this.props.errors[0]) {
       errors = this.props.errors[0];
     }

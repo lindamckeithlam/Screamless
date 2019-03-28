@@ -4,7 +4,7 @@ import Signup from "./signup";
 
 const msp = state => {
   return {
-    errors: Object.values(state.errors),
+    errors: state.errors,
     user: {
       email: "",
       password: "",

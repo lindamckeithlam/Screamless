@@ -1,20 +1,6 @@
-// export default errorsReducer = (state = [], action) => {
-//     switch (action.type) {
-//         case ERROR:
+import { combineReducers } from "redux";
+import sessionErrorsReducer from "./session_error_reducer";
 
-//     }
-//     return state;
-// };
-
-// import { ERROR, RECEIVE_CURRENT_USER } from "../actions/session_actions";
-
-export default function errorsReducer(state = [], action) {
-  switch (action.type) {
-    // case RECEIVE_CURRENT_USER:
-    //   return [];
-    // case ERROR:
-    //   return action.errors;
-    default:
-      return state;
-  }
-}
+export default combineReducers({
+  session: sessionErrorsReducer
+});
