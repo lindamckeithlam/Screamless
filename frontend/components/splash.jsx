@@ -39,7 +39,7 @@ class Splash extends React.Component {
           <div className="splash-texts">
             <div className="splash-links-container">
               <Link className="splash-links" to="/create-account">
-                Get the app
+                Create an account
               </Link>
               <Link className="splash-links" to="/login">
                 Sign in

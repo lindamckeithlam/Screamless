@@ -21,7 +21,11 @@
 .splash-img-container img {
   width: 50%;
   position: absolute;
-  height: 100%;
+  height: 120%;
+}
+
+.Splash-Container {
+  height: 120vh;
 }
 
 .seamlesslogo {
@@ -52,7 +56,7 @@
 .splash-links-container {
   position: absolute;
   right: 20%;
-  padding-top: 64px;
+  top: -3%;
 }
 
 .splash-texts {

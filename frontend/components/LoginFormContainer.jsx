@@ -1,4 +1,4 @@
-import { login } from "../actions/session_actions";
+import { login, clearErrors } from "../actions/session_actions";
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
 
@@ -9,7 +9,8 @@ const msp = state => {
 };
 
 const mdp = dispatch => ({
-  onLogin: user => dispatch(login(user))
+  onLogin: user => dispatch(login(user)),
+  onClear: () => dispatch(clearErrors())
 });
 
 export default connect(

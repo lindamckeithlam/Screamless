@@ -21,6 +21,9 @@ class SignupForm extends React.Component {
       this.setState({ [user_input]: e.target.value });
     };
   }
+  componentDidMount() {
+    this.props.onClear();
+  }
 
   handleSubmit = e => {
     e.preventDefault();
