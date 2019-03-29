@@ -12,9 +12,11 @@ const sessionsReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER:
       // eslint-disable-next-line no-case-declarations
 
-      return Object.assign({}, { id: action.user.id });
+      // return Object.assign({}, state, { id: action.user.id });
+      return { ...state, id: action.user.id };
     case LOGOUT_CURRENT_USER:
-      return state;
+      // return Object.assign({}, state, { id: null });
+      return { ...state, id: null };
   }
   return state;
 };

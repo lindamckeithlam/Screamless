@@ -30,7 +30,7 @@ const styles = {
 };
 
 function SplashSearch(props) {
-  const { classes } = props;
+  const { classes, placeholder } = props;
   const [address, setAddress] = useState("");
 
   return (
@@ -42,7 +42,7 @@ function SplashSearch(props) {
         className={classes.input}
         value={address}
         onChange={e => setAddress(e.target.value)}
-        placeholder="Enter a delivery address"
+        placeholder={placeholder}
       />
 
       <Divider className={classes.divider} />

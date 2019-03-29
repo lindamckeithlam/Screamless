@@ -2,11 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-class Signup extends React.Component {
+
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      email: "",
+      password: "",
+      last_name: "",
+      first_name: ""
+      // phone: ""
+    };
   }
 
   handleChange(user_input) {
@@ -16,10 +22,11 @@ class Signup extends React.Component {
     };
   }
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.action(this.state);
-  }
+    this.props.onSignup(this.state);
+  };
+
   render() {
     let emailError = null;
     let passwordError = null;
@@ -153,4 +160,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default SignupForm;

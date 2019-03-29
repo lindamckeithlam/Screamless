@@ -102,6 +102,7 @@
 .login-form-container {
   max-width: 540px;
   margin: 0 auto;
+  margin-top: 100px;
   padding: 23px;
   background-color: white;
   font-family: "Graphik";
@@ -125,6 +126,7 @@ input[type="password"] {
   padding: 8px 16px 7px;
   border-radius: 4px;
   letter-spacing: 0.5px;
+  margin-bottom: 10px;
 }
 .login-button:hover {
   background-color: maroon;
@@ -137,6 +139,7 @@ input[type="password"] {
   height: 100vh;
   width: 100vw;
   background-color: #efefef;
+  position: absolute;
 }
 
 .link-to-create {
@@ -263,6 +266,7 @@ input[type="last_name"] {
   transform: translateZ(0);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
+  background-color: white;
 }
 
 .seamless-nav-logo {
@@ -312,4 +316,40 @@ input[type="last_name"] {
 .firstlast {
   display: flex;
   justify-content: space-around;
+}
+
+/* Profile */
+.profile-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #efefef;
+  position: absolute;
+}
+
+.seamlesslogo-nav-container {
+  margin-right: 30px;
+}
+
+/* Modal */
+
+.modal-container {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-main {
+  z-index: 2;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  min-height: 350px;
 }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import LoginFormContainer from "./login_form_container";
-import SignupFormContainer from "./signup_form_container";
+import LoginFormContainer from "./LoginFormContainer";
+import SignupFormContainer from "./SignupFormContainer";
 import Splash from "./splash";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import Profile from "./profile";
+import Profile from "./Profile";
 
 class App extends Component {
   render() {
