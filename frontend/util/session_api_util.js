@@ -17,9 +17,3 @@ export const logout = () =>
     method: "delete",
     url: "/api/session"
   });
-
-export const fetchRestaurants = () =>
-  $.ajax({
-    method: "get",
-    url: "/api/restaurants"
-  });
