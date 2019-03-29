@@ -6,7 +6,7 @@ import { logout } from "../actions/session_actions";
 import { connect } from "react-redux";
 import SplashSearch from "./SplashSearch";
 
-const msp = (state, ownProps) => {
+const msp = state => {
   return {
     user: state.currentUser
   };
@@ -34,26 +34,27 @@ class NavBarModal extends React.Component {
       <div className="modal-container" onClick={hideModal}>
         <div className="modal-main" onClick={e => e.stopPropagation()}>
           <div>Your Order Settings</div>
-          <ButtonToolbar>
-            <ToggleButtonGroup
-              type="radio"
-              name="options"
-              defaultValue={"Delivery"}
-            >
-              <ToggleButton
-                onClick={() => this.setState({ orderType: "Delivery" })}
-                value={"Delivery"}
+          <div className="btn-group-toggle" data-toggle="buttons">
+            <ButtonToolbar>
+              <ToggleButtonGroup
+                type="radio"
+                name="options"
+                defaultValue={"Delivery"}
               >
-                Delivery
-              </ToggleButton>
-              <ToggleButton
-                onClick={() => this.setState({ orderType: "Pickup" })}
-                value={"Pickup"}
-              >
-                Pickup
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </ButtonToolbar>
+                <ToggleButton
+                  onClick={() => this.setState({ orderType: "Delivery" })}
+                >
+                  Delivery
+                </ToggleButton>
+                <ToggleButton
+                  onClick={() => this.setState({ orderType: "Pickup" })}
+                  value={"Pickup"}
+                >
+                  Pickup
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </ButtonToolbar>
+          </div>
 
           <div>{`${orderType} Address`}</div>
           <SplashSearch placeholder="Enter your address" />

@@ -25,12 +25,12 @@
 }
 
 .seamlesslogo {
-  width: 10vw;
+  width: 15vw;
   height: 100%;
   position: relative;
   border-radius: 5%;
   z-index: 1;
-  left: 5vw;
+  left: 7vw;
   top: 5vw;
 }
 
@@ -68,6 +68,37 @@
 .splash-header {
   font-weight: 600;
   font-size: 3vw;
+}
+
+.splash-bottom {
+  padding: 10% 5%;
+  display: flex;
+  justify-content: center;
+}
+.splash-bottom1,
+.splash-bottom2,
+.splash-bottom3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash-bottom1 p,
+.splash-bottom2 p,
+.splash-bottom3 p {
+  text-align: center;
+  font-family: "Graphik";
+  font-size: 14px;
+}
+
+.splash-bottom1 h4,
+.splash-bottom2 h4,
+.splash-bottom3 h4 {
+  text-align: center;
+  font-family: "Graphik";
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 5%;
 }
 /* 
 @font-face {
@@ -255,7 +286,7 @@ input[type="last_name"] {
 
 /* Profile Nav */
 .main-nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1030;
@@ -267,6 +298,7 @@ input[type="last_name"] {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
   background-color: white;
+  justify-content: space-between;
 }
 
 .seamless-nav-logo {
@@ -290,19 +322,6 @@ input[type="last_name"] {
   padding-top: 15px;
   color: rgb(43, 130, 130);
   padding: 5px;
-}
-
-.search-bar {
-  border-radius: 5%;
-  font-size: 14px;
-  color: rgb(43, 130, 130);
-  padding-top: 20px;
-  position: relative;
-  z-index: 2;
-  height: 44px;
-  flex: 3 1 auto;
-  width: 2000px;
-  margin-bottom: 0;
 }
 
 .errors {
@@ -352,4 +371,26 @@ input[type="last_name"] {
   border: 1px solid #888;
   width: 30%;
   min-height: 350px;
+}
+
+.btn:active,
+.active {
+  color: white !important;
+  background-color: rgb(43, 130, 130) !important;
+  border-color: rgb(43, 130, 130) !important;
+}
+
+.btn-group-toggle > .btn,
+.btn-group-toggle > .btn-group > .btn {
+  margin-bottom: 0;
+  background-color: white;
+  color: rgb(43, 130, 130);
+  border-color: white;
+}
+
+.btn:hover {
+  background-color: rgb(16, 70, 70);
+  outline: 0;
+  border: none;
+  padding: 9.5px;
 }
