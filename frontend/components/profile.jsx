@@ -1,20 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { logout } from "../actions/session_actions";
 import { connect } from "react-redux";
-import SplashSearch from "./SplashSearch";
-import ProfileDropdown from "./ProfileDropdown";
 import NavBar from "./NavBar";
 
 const msp = (state, ownProps) => {
-  return {
-    user: state.currentUser
-  };
+  return {};
 };
 
-const mdp = dispatch => ({
-  logout: () => dispatch(logout())
-});
+const mdp = dispatch => ({});
 
 class Profile extends React.Component {
   render() {
