@@ -8,7 +8,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({});
 
-class Profile extends React.Component {
+class ProfileContainer extends React.Component {
   render() {
     return (
       <div className="profile-container">
@@ -21,4 +21,4 @@ class Profile extends React.Component {
 export default connect(
   msp,
   mdp
-)(Profile);
+)(ProfileContainer);

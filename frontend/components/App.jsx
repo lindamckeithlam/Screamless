@@ -4,7 +4,7 @@ import LoginFormContainer from "./LoginFormContainer";
 import SignupFormContainer from "./SignupFormContainer";
 import Splash from "./splash";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import Profile from "./Profile";
+import ProfileContainer from "./ProfileContainer";
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
         {/* <LoginFormContainer />
         <SignupFormContainer /> */}
         <Switch>
-          <ProtectedRoute path="/lets-eat" component={Profile} />
+          <ProtectedRoute path="/lets-eat" component={ProfileContainer} />
           <AuthRoute exact path="/" component={Splash} />
           <AuthRoute path="/create-account" component={SignupFormContainer} />
           <AuthRoute path="/login" component={LoginFormContainer} />

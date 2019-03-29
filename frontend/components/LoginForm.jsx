@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Profile from "./profile";
 
 class LoginForm extends React.Component {
   constructor(props) {
