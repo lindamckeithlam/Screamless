@@ -37,6 +37,7 @@ class NavBarModal extends React.Component {
           <div className="btn-group-toggle" data-toggle="buttons">
             <ButtonToolbar>
               <ToggleButtonGroup
+                className="toggle-button-group"
                 type="radio"
                 name="options"
                 defaultValue={"Delivery"}

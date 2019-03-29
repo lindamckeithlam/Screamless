@@ -88,6 +88,79 @@ class Splash extends React.Component {
             </p>
           </div>
         </div>
+        <div className="splash-delivery">
+          <div className="splash-delivery-left">
+            <h2>Food delivery or pickup from local restaurants</h2>
+            <p>
+              Order food delivery online from restaurants near you. Browse local
+              menus to find food you're craving for delivery or pickup. Read
+              reviews to see what's popular in your neighborhood. Anywhere,
+              anytime, order delivery to your door from places you love.
+            </p>
+          </div>
+          <div className="splash-delivery-right">
+            <img src={window.goodFoodGreatFriends} />
+          </div>
+        </div>
+
+        <div className="about">
+          <div className="about-left">
+            <h2>About Screamless</h2>
+          </div>
+          <div className="about-right">
+            <p>
+              Screamless is simply the easiest way to order food for delivery or
+              takeout. Whatever you're in the mood for, wherever you're in the
+              mood for it, you've got it. No menus, no phone calls, no repeating
+              yourself. Screamless is a part of the Grubhub Inc. portfolio of
+              brands. For more information on Screamless, please visit
+              <span> </span>
+              <a href="https://screamless.herokuapp.com/#/login">
+                about.screamless.com
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+
+        <div className="special-offers-container">
+          <div className="special-offers-left">
+            <h4>Sign Up For Special Offers</h4>
+            <form>
+              <label>Email address</label>
+              <br />
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="special-offer-input"
+              />
+              <br />
+              <label>ZIP Code</label>
+              <br />
+              <input
+                type="text"
+                placeholder="11111"
+                className="special-offer-input"
+              />
+              <br />
+              <input
+                className="count-me-in-button"
+                type="submit"
+                value="Count me in!"
+              />
+            </form>
+          </div>
+
+          <div className="special-offers-right">
+            <h4>Stay Connected</h4>
+            <i className="fab fa-facebook" />
+            <i className="fab fa-twitter" />
+            <i className="fab fa-instagram" />
+            <a href="https://www.linkedin.com/in/lindamckeithlam">
+              <i className="fab fa-linkedin-in" />
+            </a>
+          </div>
+        </div>
       </div>
     );
   }

@@ -43,12 +43,15 @@
   text-decoration: none;
   margin-left: 30px;
   font-weight: 600;
-  letter-spacing: -1px;
+}
+.splash-links:hover {
+  text-decoration: none;
+  color: rgb(43, 130, 130);
 }
 
 .splash-links-container {
   position: absolute;
-  right: 20px;
+  right: 20%;
   padding-top: 64px;
 }
 
@@ -71,9 +74,9 @@
 }
 
 .splash-bottom {
-  padding: 10% 5%;
+  padding: 6% 2% 1.5% 2%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .splash-bottom1,
 .splash-bottom2,
@@ -81,6 +84,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2%;
 }
 
 .splash-bottom1 p,
@@ -100,13 +104,116 @@
   font-weight: 600;
   padding-bottom: 5%;
 }
-/* 
-@font-face {
+
+.splash-delivery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Graphik";
-  src: url("../fonts/Graphik.ttf");
-  font-weight: normal;
-  font-style: normal;
-} */
+}
+.splash-delivery-left {
+  width: 50%;
+  padding: 0 5% 5% 5%;
+  text-align: left;
+}
+.splash-delivery-left h2 {
+  font-weight: 800;
+  min-height: 1px;
+  margin-bottom: 16px;
+  font-size: 23.6px;
+}
+
+.splash-delivery-left p {
+  min-height: 1px;
+  font-size: 16.1px;
+}
+
+.splash-delivery-right {
+  width: 60%;
+  padding: 5%;
+}
+
+.about {
+  background-color: #efefef;
+  display: flex;
+  padding: 4%;
+  align-items: center;
+  font-family: "Graphik";
+}
+
+.about-left {
+  width: 50%;
+}
+
+.about-left h2 {
+  font-weight: 800;
+}
+
+.about-right {
+  width: 50%;
+}
+
+.about-right a {
+  color: rgb(43, 130, 130);
+}
+
+.about-right a:hover {
+  color: rgb(43, 130, 130);
+  text-decoration: none;
+}
+
+.special-offers-container {
+  font-family: "Graphik";
+  background-color: #0e8a90;
+  display: flex;
+  padding: 4%;
+  color: white;
+}
+
+.special-offers-left {
+  width: 50%;
+}
+.special-offers-container h4 {
+  width: 50%;
+  font-weight: 650;
+  min-height: 1px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.special-offers-right {
+  width: 50%;
+}
+
+.special-offers-container .fab {
+  padding-right: 5%;
+  font-size: 20px;
+  padding: 2%;
+}
+
+.special-offers-container a {
+  color: white;
+}
+.special-offers-container label {
+  font-size: 14px;
+  margin-top: 3.2%;
+}
+
+.special-offer-input {
+  width: 98%;
+  border-radius: 2px;
+  padding: 5px;
+}
+.count-me-in-button {
+  width: 98%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 4%;
+  background-color: #0e8a90;
+  color: white;
+  border: 2px solid white;
+}
 
 @font-face {
   font-family: "Eesti";
