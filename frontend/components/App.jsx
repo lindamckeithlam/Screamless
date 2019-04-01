@@ -4,8 +4,9 @@ import LoginFormContainer from "./LoginFormContainer";
 import SignupFormContainer from "./SignupFormContainer";
 import Splash from "./splash";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import ProfileContainer from "./ProfileContainer";
-
+import ProfileContainer from "./Profile";
+import BrowseByCategory from "./restaurants/BrowseByCategory";
+import RestaurantShow from "./restaurants/RestaurantShow";
 class App extends Component {
   render() {
     return (
@@ -14,10 +15,15 @@ class App extends Component {
         {/* <LoginFormContainer />
         <SignupFormContainer /> */}
         <Switch>
+          <Route path="/browse" component={BrowseByCategory} />
           <ProtectedRoute path="/lets-eat" component={ProfileContainer} />
           <AuthRoute exact path="/" component={Splash} />
           <AuthRoute path="/create-account" component={SignupFormContainer} />
           <AuthRoute path="/login" component={LoginFormContainer} />
+          <ProtectedRoute
+            path="/menu/:restaurant_id"
+            component={RestaurantShow}
+          />
         </Switch>
       </div>
     );

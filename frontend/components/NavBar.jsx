@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import SplashSearch from "./SplashSearch";
 import ProfileDropdown from "./ProfileDropdown";
 import NavBarModal from "./NavBarModal";
+import ShoppingBagDropdown from "./ShoppingBagDropdown";
 
 const msp = (state, ownProps) => {
   return {
@@ -24,6 +25,7 @@ class NavBar extends React.Component {
       showModal: false
     };
   }
+
   render() {
     const { user, logout } = this.props;
     const { showModal } = this.state;
@@ -34,9 +36,16 @@ class NavBar extends React.Component {
             <img src={window.seamless20logo} className="seamless-nav-logo" />
           </div>
         </Link>
-        <div onClick={() => this.setState({ showModal: !showModal })}>
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => this.setState({ showModal: !showModal })}
+        >
           {/* Dymanically change the words Delivery/Pickup and Enter and Address/USER_ADDRESS with app props */}
-          Delivery ASAP to Enter an Address
+          <i className="fas fa-map-marker-alt" />
+          <span> </span>
+          <span className="modal-text">Delivery ASAP </span>
+          <span className="modal-between">to</span>{" "}
+          <span className="modal-text">Enter an Address</span>
         </div>
         <NavBarModal
           isShown={showModal}
@@ -47,7 +56,7 @@ class NavBar extends React.Component {
 
         <i className="fa fa-bell" />
         <ProfileDropdown user={user} logout={logout} />
-        <i className="fas fa-shopping-bag" />
+        <ShoppingBagDropdown />
       </div>
     );
   }

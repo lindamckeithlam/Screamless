@@ -7,7 +7,7 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import DirectionsIcon from "@material-ui/icons/Directions";
-
+import { useEffect } from "react";
 const styles = {
   root: {
     padding: "2px 4px",
@@ -32,7 +32,28 @@ const styles = {
 function SplashSearch(props) {
   const { classes, placeholder } = props;
   const [address, setAddress] = useState("");
+  const geocoder = new google.maps.Geocoder();
+  // const address = document.getElementById('location_search').value;
 
+  useEffect(() => {
+    function activateAutocomplete() {
+      const input = document.getElementById("location_search");
+      const options = {
+        types: ["(cities)"],
+        componentRestrictions: { country: "usa" }
+      };
+      const autocomplete = new google.maps.places.Autocomplete(input, options);
+      autocomplete.getPlace();
+    }
+  }, []);
+
+  // geocoder.geocode({ 'address': address }, (results, status) => {
+  //   if (status == 'OK') {
+  //     //logic here
+  //   } else {
+  //     //logic here
+  //   }
+  // })
   return (
     <Paper className={classes.root} elevation={1}>
       <IconButton className={classes.iconButton} aria-label="Search">
@@ -43,6 +64,7 @@ function SplashSearch(props) {
         value={address}
         onChange={e => setAddress(e.target.value)}
         placeholder={placeholder}
+        id="location_search"
       />
 
       <Divider className={classes.divider} />

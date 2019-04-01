@@ -1,36 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
+
+  
     <script type="text/javascript">
-      window.splashImg = "<%= image_url('tacos.jpg')%>"
+      window.splashImg = "<%= image_url('tacos.jpg')%>" 
     </script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBkh6qlC2kC2ZB860J7hsBJKaGR34VMD6U&libraries=places"%>
+    
+    
+  
+  
+  
 
 
     <script type="text/javascript">
       window.seamless20logo = "<%= image_url('seamless20logo.svg')%>"
+      window.goodFoodGreatFriends = "<%= image_url('good-food-great-friends.png')%>"
+      window.seamlessShoppingBag = "<%= image_url('seamlessbag.svg')%>"
+      window.seamlessStackCoins = "<%= image_url('stackedcoins.svg')%>"
+      window.seamless20logo2 = "<%= image_url('seamless20logo2.svg')%>"
+      window.seamlessNoodleBowl = "<%= image_url('noodlebowl.svg')%>"
+      window.cuisine = "<%= image_url('cuisine.png')%>"
+      window.centralPark = "<%= image_url('central-park-toprated.jpg')%>"
+
     </script>
 
     <script type="text/javascript">
-      window.goodFoodGreatFriends = "<%= image_url('good-food-great-friends.png')%>"
     </script>
 
      <script type="text/javascript">
-      window.seamlessShoppingBag = "<%= image_url('seamlessbag.svg')%>"
     </script>
      <script type="text/javascript">
-      window.seamlessStackCoins = "<%= image_url('stackedcoins.svg')%>"
     </script>
      <script type="text/javascript">
-      window.seamless20logo2 = "<%= image_url('seamless20logo2.svg')%>"
     </script>
      <script type="text/javascript">
-      window.seamlessNoodleBowl = "<%= image_url('noodlebowl.svg')%>"
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      $("#flip").click(function(){
+        $("#panel").slideToggle(0); 
+        $('#down').slideToggle(0); 
+      });
+      });
     </script>
     <script type='text/javascript'>window.seamlesslogo = "<%= image_url('seamless-750.jpg')%>"</script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous"/>
+
     <title>Screamless</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -41,5 +62,6 @@
 
   <body>
     <%= yield %>
+
   </body>
 </html>

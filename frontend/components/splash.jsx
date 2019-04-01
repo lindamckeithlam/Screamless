@@ -2,7 +2,7 @@ import React from "react";
 import SplashSearch from "./SplashSearch";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import Footer from "./footer";
 const msp = state => ({
   user: {
     address: ""
@@ -24,7 +24,7 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <div class="SplashHome">
+      <div className="SplashHome">
         <div className="Splashy">
           <div className="Splash-Container">
             <div className="splash-img-container">
@@ -155,12 +155,18 @@ class Splash extends React.Component {
             <h4>Stay Connected</h4>
             <i className="fab fa-facebook" />
             <i className="fab fa-twitter" />
-            <i className="fab fa-instagram" />
+            <a href="https://www.instagram.com/funnymemes/">
+              <i className="fab fa-instagram" />
+            </a>
             <a href="https://www.linkedin.com/in/lindamckeithlam">
               <i className="fab fa-linkedin-in" />
             </a>
+            <a href="https://github.com/lindamckeithlam">
+              <i className="fab fa-github" />
+            </a>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -29,11 +29,11 @@ class NavBarModal extends React.Component {
     const { orderType } = this.state;
 
     if (!isShown) return <div />;
-
+    const buttonClass = "toggle-button-modal";
     return (
       <div className="modal-container" onClick={hideModal}>
         <div className="modal-main" onClick={e => e.stopPropagation()}>
-          <div>Your Order Settings</div>
+          <div className="modal-header-order">Your Order Settings</div>
           <div className="btn-group-toggle" data-toggle="buttons">
             <ButtonToolbar>
               <ToggleButtonGroup
@@ -43,11 +43,21 @@ class NavBarModal extends React.Component {
                 defaultValue={"Delivery"}
               >
                 <ToggleButton
+                  className={
+                    orderType === "Delivery"
+                      ? buttonClass + "-selected"
+                      : buttonClass
+                  }
                   onClick={() => this.setState({ orderType: "Delivery" })}
                 >
                   Delivery
                 </ToggleButton>
                 <ToggleButton
+                  className={
+                    orderType === "Pickup"
+                      ? buttonClass + "-selected"
+                      : buttonClass
+                  }
                   onClick={() => this.setState({ orderType: "Pickup" })}
                   value={"Pickup"}
                 >
@@ -57,7 +67,7 @@ class NavBarModal extends React.Component {
             </ButtonToolbar>
           </div>
 
-          <div>{`${orderType} Address`}</div>
+          <div className="modal-address">{`${orderType} Address`}</div>
           <SplashSearch placeholder="Enter your address" />
         </div>
       </div>

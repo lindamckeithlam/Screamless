@@ -3,6 +3,7 @@ import { combineReducers } from "redux";
 // import entitiesReducer from "./entities_reducer";
 import currentUserReducer from "./current_user_reducer";
 import sessionsReducer from "./sessions_reducer";
+import restaurantReducer from "./restaurant_reducer";
 import sessionErrorsReducer from "./session_error_reducer";
 import uiReducer from "./ui_reducer";
 
@@ -11,5 +12,6 @@ export default combineReducers({
   sessions: sessionsReducer,
   errors: sessionErrorsReducer,
   ui: uiReducer,
-  currentUser: currentUserReducer
+  currentUser: currentUserReducer,
+  restaurants: restaurantReducer
 });
