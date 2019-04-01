@@ -32,20 +32,20 @@ const styles = {
 function SplashSearch(props) {
   const { classes, placeholder } = props;
   const [address, setAddress] = useState("");
-  const geocoder = new google.maps.Geocoder();
+  // const geocoder = new google.maps.Geocoder();
   // const address = document.getElementById('location_search').value;
 
-  useEffect(() => {
-    function activateAutocomplete() {
-      const input = document.getElementById("location_search");
-      const options = {
-        types: ["(cities)"],
-        componentRestrictions: { country: "usa" }
-      };
-      const autocomplete = new google.maps.places.Autocomplete(input, options);
-      autocomplete.getPlace();
-    }
-  }, []);
+  // useEffect(() => {
+  //   function activateAutocomplete() {
+  //     const input = document.getElementById("location_search");
+  //     const options = {
+  //       types: ["(cities)"],
+  //       componentRestrictions: { country: "usa" }
+  //     };
+  //     const autocomplete = new google.maps.places.Autocomplete(input, options);
+  //     autocomplete.getPlace();
+  //   }
+  // }, []);
 
   // geocoder.geocode({ 'address': address }, (results, status) => {
   //   if (status == 'OK') {
