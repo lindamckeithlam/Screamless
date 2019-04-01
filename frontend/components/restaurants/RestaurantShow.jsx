@@ -35,8 +35,15 @@ class RestaurantShow extends React.Component {
       );
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.match.params.restaurant_id !=
+      this.props.match.params.restaurant_id
+    ) {
+      this.props.onFetchRestaurant(this.props.match.params.restaurant_id);
+    }
+  }
   render() {
-    // debugger;
     return (
       <div className="restaurant-showpage-container">
         <NavBar />
