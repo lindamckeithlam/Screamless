@@ -29,6 +29,7 @@ nyc_addresses = ["25 St Marks Pl, New York, NY 10003", "108 E 4th St, New York, 
                  "301 Park Ave, New York, NY 10022", "45 E 45th St, New York, NY 10017", "230 Park Ave, New York, NY 10017", "70 Vanderbilt Ave, New York, NY 10017",
                  "E 47th St & Park Ave, New York, NY 10017", "101 E 47th St, New York, NY 10017"]
 
+Restaurant.destroy_all
 i = 0
 50.times do
   Restaurant.create(

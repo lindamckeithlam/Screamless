@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store";
 import Root from "./components/RootComponent";
-
+import Geocode from "react-geocode";
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
@@ -15,8 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.store = store;
 
+  // testing //
+  window.store = store;
+  window.geocode = Geocode;
+  // testing //
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });

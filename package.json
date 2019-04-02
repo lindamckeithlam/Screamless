@@ -16,6 +16,7 @@
     "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.5",
     "react-flexbox-grid": "^2.1.2",
+    "react-geocode": "^0.1.2",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",

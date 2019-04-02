@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import InitMap from "../GoogleMap";
 
 import Footer from "../footer";
+import Geocode from "react-geocode";
 
 const msp = state => {
   return {
@@ -44,6 +45,20 @@ class RestaurantShow extends React.Component {
     }
   }
   render() {
+    const lng = 0;
+    const lat = 0;
+    // debugger;
+    // Geocode.setApiKey("AIzaSyBkh6qlC2kC2ZB860J7hsBJKaGR34VMD6U");
+    // Geocode.fromAddress(this.props.currentRestaurant.address).then(
+    //   response => {
+    //     const { lat, lng } = response.results[0].geometry.location;
+    //     console.log(lat, lng);
+    //   },
+    //   error => {
+    //     console.error(error);
+    //   }
+    // );
+    debugger;
     return (
       <div className="restaurant-showpage-container">
         <NavBar />
@@ -66,7 +81,11 @@ class RestaurantShow extends React.Component {
         <div className="restaurant-bottom">
           <div className="restaurant-info2">
             <h1>About {this.props.currentRestaurant.name}</h1>
-            <InitMap />
+            <InitMap
+              lng={lng}
+              lat={lat}
+              address={this.props.currentRestaurant.address}
+            />
             <p>{this.props.currentRestaurant.address}</p>
             <div className="restaurant-line" />
             <p>{this.props.currentRestaurant.phone}</p>

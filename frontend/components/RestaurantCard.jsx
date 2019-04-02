@@ -23,7 +23,7 @@ function RestaurantCard(props) {
   // onClick = {() => this.props.onFetchRestaurant(restaurant.id).then(props.)
   return (
     <>
-      <Link to={`/menu/${restaurant.id}`}>
+      <Link to={`/menu/${restaurant.id}`} className="link-test">
         <Card
           onClick={() => console.log("restaurant clicked")}
           className={classes.card}

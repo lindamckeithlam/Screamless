@@ -262,6 +262,10 @@
 //   margin-top: -2.5%;
 // }
 
+.link-test:hover {
+  text-decoration: none;
+}
+
 .toprated-text {
   font-family: "Graphik";
   color: black;
@@ -274,6 +278,9 @@
   line-height: 1.45;
   letter-spacing: 0.5px;
   text-decoration: none;
+  margin-top: 5%;
+  margin-left: 3%;
+  width: 70%;
 }
 
 .toprated-text:hover {
@@ -875,3 +882,5 @@ input[type="last_name"] {
   color: rgba(0, 0, 0, 0.55);
   background: #efefef;
 }
+
+// cusine cards

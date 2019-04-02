@@ -63,7 +63,9 @@ class RestaurantCardsContainer extends React.Component {
           </div> */}
 
           <div className="test-container">
-            <h2 className="toprated-text">Most popular near you</h2>
+            <Link to="/browse" className="link-test">
+              <h2 className="toprated-text">Most popular near you</h2>
+            </Link>
           </div>
 
           <Grid className="cuisine-container">
