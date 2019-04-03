@@ -24,7 +24,7 @@ class ProfileContainer extends React.Component {
         <BrowseByCuisine />
         {/* Previous Orders */}
         <PreviousOrders />
-        {/* Restauarant Cards */}
+        {/* Restaurant Cards */}
 
         <RestaurantCardsContainer />
 

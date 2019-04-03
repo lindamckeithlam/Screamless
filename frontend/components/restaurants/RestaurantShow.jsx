@@ -10,8 +10,8 @@ import { connect } from "react-redux";
 import InitMap from "../GoogleMap";
 
 import Footer from "../footer";
-import Geocode from "react-geocode";
-
+import Reviews from "../restaurant_subcomponents/Reviews";
+import MenuItems from "../restaurant_subcomponents/MenuItems";
 const msp = state => {
   return {
     currentRestaurant: state.restaurants.currentRestaurant
@@ -45,20 +45,19 @@ class RestaurantShow extends React.Component {
     }
   }
   render() {
-    const lng = 0;
-    const lat = 0;
-    // debugger;
-    // Geocode.setApiKey("AIzaSyBkh6qlC2kC2ZB860J7hsBJKaGR34VMD6U");
-    // Geocode.fromAddress(this.props.currentRestaurant.address).then(
-    //   response => {
-    //     const { lat, lng } = response.results[0].geometry.location;
-    //     console.log(lat, lng);
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
-    debugger;
+    let reviews = <div />;
+    let count = <p>{count}</p>;
+    let menu = <div />;
+
+    if (this.props.currentRestaurant.reviews) {
+      reviews = <Reviews reviews={this.props.currentRestaurant.reviews} />;
+      count = Object.values(this.props.currentRestaurant.reviews).length;
+    }
+
+    if (this.props.currentRestaurant.menu_items) {
+      menu = <MenuItems menu_items={this.props.currentRestaurant.menu_items} />;
+    }
+
     return (
       <div className="restaurant-showpage-container">
         <NavBar />
@@ -70,29 +69,24 @@ class RestaurantShow extends React.Component {
             <p>{this.props.currentRestaurant.phone}</p>
           </div>
         </div>
-
         <div className="restaurant-links">
           <a href="">Menu</a>
           <a href="">About</a>
           <a href="">Review</a>
         </div>
         <div className="restaurant-line" />
-        <p>MENU GOES HERE!!!!!!</p>
+        {menu}
         <div className="restaurant-bottom">
           <div className="restaurant-info2">
-            <h1>About {this.props.currentRestaurant.name}</h1>
-            <InitMap
-              lng={lng}
-              lat={lat}
-              address={this.props.currentRestaurant.address}
-            />
+            <h3>About {this.props.currentRestaurant.name}</h3>
+            <InitMap address={this.props.currentRestaurant.address} />
             <p>{this.props.currentRestaurant.address}</p>
             <div className="restaurant-line" />
             <p>{this.props.currentRestaurant.phone}</p>
             <div className="restaurant-line" />
           </div>
           <div className="restaurant-hours">
-            <h6>Hours</h6>
+            <h3>Hours</h3>
             <br />
             <span>
               <p>Today</p>
@@ -102,6 +96,12 @@ class RestaurantShow extends React.Component {
             <div className="restaurant-line" />
           </div>
         </div>
+        <div className="restaurant-reviews-main">
+          <h3>Reviews for {this.props.currentRestaurant.name}</h3>
+
+          <span>{count} ratings</span>
+        </div>
+        {reviews}
         <Footer />
       </div>
     );

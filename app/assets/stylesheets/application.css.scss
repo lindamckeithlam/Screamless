@@ -878,9 +878,98 @@ input[type="last_name"] {
   display: flex;
 }
 
-.restaurant-hours h6 {
+.restaurant-hours h1 {
   color: rgba(0, 0, 0, 0.55);
   background: #efefef;
 }
 
+.restaurant-showpage-container h3 {
+  font-weight: 600;
+  font-family: "Graphik";
+  font-size: 22px;
+  line-height: 1.40395;
+}
+
+.restaurant-hours {
+  width: 50%;
+}
+.restaurant-reviews-main {
+  margin: 2% 8%;
+}
+
+.restaurant-reviews-main span {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 12px;
+}
+
 // cusine cards
+
+/* Reviews */
+
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+
+  &-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: block;
+  }
+  &-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+}
+
+.review-container {
+  font-size: 14px;
+  font-family: "Graphik";
+  margin: 0 7.9%;
+}
+
+.review-name h6 {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.avatar {
+  background-color: #40c2de;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 1% 1.5%;
+  color: white;
+  margin-bottom: 2%;
+  font-family: "Graphik";
+  font-weight: 600;
+}
+
+/* Menu */
+.menu-item-container {
+  display: flex;
+  margin: 0 7.9%;
+  flex-direction: column;
+  font-size: 14px;
+  font-family: "Graphik";
+}
+
+.list-group-item {
+  width: 70%;
+  padding-bottom: 2%;
+}
+
+.menu-item-name {
+  font-weight: 400px;
+}
