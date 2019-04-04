@@ -11,7 +11,7 @@ import {
 
 const msp = state => {
   return {
-    restaurants: state.restaurants.restaurants
+    restaurants: Object.values(state.restaurants.restaurants)
   };
 };
 
@@ -23,6 +23,7 @@ const mdp = dispatch => ({
 class BrowseByCuisine extends React.Component {
   getCarousel = () => {
     const cuisines = [];
+
     {
       this.props.restaurants.forEach(r => {
         if (cuisines.includes(r.cuisine_name) === false) {

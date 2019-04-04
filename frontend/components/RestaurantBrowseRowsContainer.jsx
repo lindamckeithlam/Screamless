@@ -5,6 +5,7 @@ import { fetchRestaurants } from "../actions/restaurant_actions";
 import RestaurantBrowseRow from "./RestaurantBrowseRow";
 
 const msp = state => {
+  debugger;
   return { restaurants: state.restaurants.restaurants };
 };
 
@@ -20,14 +21,10 @@ class RestaurantBrowseRowsContainer extends React.Component {
   }
 
   render() {
-    // if (this.props.restaurants.length === 0) {
-    //   return <div />;
-    // }
-
     return (
       <Grid fluid>
         {/* Each row is a restaurant */}
-        <RestaurantBrowseRow />
+        <RestaurantBrowseRow restaurants={this.props.restaurants} />
         <RestaurantBrowseRow />
         <RestaurantBrowseRow />
       </Grid>

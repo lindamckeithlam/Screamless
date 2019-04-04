@@ -63,7 +63,7 @@ class RestaurantShow extends React.Component {
         />
       );
     }
-
+    debugger;
     return (
       <div className="restaurant-showpage-container">
         <NavBar />
