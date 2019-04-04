@@ -18,6 +18,7 @@
     "react-flexbox-grid": "^2.1.2",
     "react-geocode": "^0.1.2",
     "react-modal": "^3.8.1",
+    "react-multi-carousel": "^1.2.10",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-thunk": "^1.0.0",
@@ -59,6 +60,8 @@
     "css-loader": "^2.1.1",
     "eslint": "^5.15.3",
     "eslint-plugin-react": "^7.12.4",
-    "style-loader": "^0.23.1"
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2"
   }
 }

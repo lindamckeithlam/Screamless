@@ -13,7 +13,7 @@
  *= require_tree .
 -*= require_self
  */
-
+@import "react-multi-carousel/lib/styles.css";
 #map {
   width: 100%;
   height: 250px;
@@ -874,8 +874,9 @@ input[type="last_name"] {
   width: 50%;
 }
 .restaurant-bottom {
-  margin-left: 8%;
-  display: flex;
+  max-width: 1056px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
 .restaurant-hours h1 {
@@ -894,7 +895,6 @@ input[type="last_name"] {
   width: 50%;
 }
 .restaurant-reviews-main {
-  margin: 2% 8%;
 }
 
 .restaurant-reviews-main span {
@@ -937,7 +937,7 @@ input[type="last_name"] {
 .review-container {
   font-size: 14px;
   font-family: "Graphik";
-  margin: 0 7.9%;
+  // margin: 0 7.9%;
 }
 
 .review-name h6 {
@@ -972,4 +972,25 @@ input[type="last_name"] {
 
 .menu-item-name {
   font-weight: 400px;
+}
+
+// Menu Item Style
+.menu-item-button-container {
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 10px;
+  max-width: 504px;
+  background-color: white;
+}
+
+.menu-item-container {
+  max-width: 1056px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.menu-item-background {
+  background-color: #efefef;
+  width: 100%;
+  height: 100%;
 }

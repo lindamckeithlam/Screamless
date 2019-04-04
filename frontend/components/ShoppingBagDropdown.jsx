@@ -1,9 +1,10 @@
 import React from "react";
+import { Grid, Row, Col } from "react-flexbox-grid";
 import { connect } from "react-redux";
 
 const msp = (state, ownProps) => {
   return {
-    currentOrder: state.currentUser.currentOrder || []
+    currentOrder: state.currentOrder
   };
 };
 
@@ -16,12 +17,14 @@ class ShoppingBagDropdown extends React.Component {
 
   renderExpandedBag = () => {
     if (!this.state.expanded) return;
-    const currentOrder = this.props.currentOrder;
-    const orderMap = currentOrder.map(item => (
-      <div>
-        <div>{item.name}</div>
-        <div>{item.price}</div>
-      </div>
+    const { items } = this.props.currentOrder;
+
+    const orderMap = items.map(item => (
+      <Row key={item.id}>
+        <Col xs>1</Col>
+        <Col xs>{item.name}</Col>
+        <Col xs>{`$ ${item.price}`}</Col>
+      </Row>
     ));
     return (
       <div
@@ -29,7 +32,7 @@ class ShoppingBagDropdown extends React.Component {
         onClick={() => this.setState({ expanded: false })}
       >
         <div className="bag-main" onClick={e => e.stopPropagation()}>
-          {currentOrder.length === 0 ? "Your bag is empty." : orderMap}
+          {orderMap.length === 0 ? "Your bag is empty." : orderMap}
         </div>
       </div>
     );

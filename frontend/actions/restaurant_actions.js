@@ -1,5 +1,6 @@
 export const RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
 export const RECEIVE_ONE_RESTAURANT = "RECEIVE_ONE_RESTAURANT";
+export const RECEIVE_ITEM = "RECEIVE_ITEM";
 import * as RestaurantApi from "../util/restaurant_util";
 
 export const fetchRestaurants = () => dispatch =>
@@ -15,3 +16,6 @@ export const fetchRestaurant = id => dispatch =>
       restaurantId: currentRestaurant.id
     })
   );
+
+export const addItemToBag = (item, restaurantId) => dispatch =>
+  dispatch({ type: RECEIVE_ITEM, item, restaurantId });

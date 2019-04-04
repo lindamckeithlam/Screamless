@@ -1,5 +1,5 @@
 
-json.extract! restaurant, :id, :name, :phone, :address, :cuisine_name
+json.extract! restaurant, :id, :name, :phone, :address, :cuisine_name, :open_time, :close_time
 
 
 json.reviews do 
@@ -15,7 +15,7 @@ end
 json.menu_items do 
     restaurant.menu_items.each do |item|
         json.set! item.id do 
-        json.extract! item, :name, :price, :description, :restaurant_id
+        json.extract! item, :name, :price, :description, :restaurant_id, :category
         end 
     end 
 end 

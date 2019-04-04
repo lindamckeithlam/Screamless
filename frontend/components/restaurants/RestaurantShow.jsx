@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar";
+import { Grid, Row, Col } from "react-flexbox-grid";
 import {
   fetchRestaurant,
   fetchRestaurants
@@ -55,7 +56,12 @@ class RestaurantShow extends React.Component {
     }
 
     if (this.props.currentRestaurant.menu_items) {
-      menu = <MenuItems menu_items={this.props.currentRestaurant.menu_items} />;
+      menu = (
+        <MenuItems
+          restaurantId={this.props.currentRestaurant.id}
+          menuItems={this.props.currentRestaurant.menu_items}
+        />
+      );
     }
 
     return (
@@ -76,32 +82,54 @@ class RestaurantShow extends React.Component {
         </div>
         <div className="restaurant-line" />
         {menu}
-        <div className="restaurant-bottom">
-          <div className="restaurant-info2">
-            <h3>About {this.props.currentRestaurant.name}</h3>
-            <InitMap address={this.props.currentRestaurant.address} />
-            <p>{this.props.currentRestaurant.address}</p>
-            <div className="restaurant-line" />
-            <p>{this.props.currentRestaurant.phone}</p>
-            <div className="restaurant-line" />
-          </div>
-          <div className="restaurant-hours">
-            <h3>Hours</h3>
-            <br />
-            <span>
-              <p>Today</p>
-              {this.props.currentRestaurant.open_time}-
-              {this.props.currentRestaurant.close_time}
-            </span>
-            <div className="restaurant-line" />
-          </div>
-        </div>
-        <div className="restaurant-reviews-main">
-          <h3>Reviews for {this.props.currentRestaurant.name}</h3>
 
-          <span>{count} ratings</span>
-        </div>
-        {reviews}
+        <Grid fluid className="restaurant-bottom">
+          <Row>
+            <h3>About {this.props.currentRestaurant.name}</h3>
+          </Row>
+          <Row>
+            <div>Restaruant description blah lbah</div>
+          </Row>
+          <Row>
+            <div>$$$</div>
+          </Row>
+          <Row>
+            <Col xs>
+              <Row>
+                <InitMap address={this.props.currentRestaurant.address} />
+              </Row>
+              <Row>
+                <p>{this.props.currentRestaurant.address}</p>
+                <div className="restaurant-line" />
+              </Row>
+              <Row>
+                <p>{this.props.currentRestaurant.phone}</p>
+                <div className="restaurant-line" />
+              </Row>
+            </Col>
+            <Col xs>
+              <Row>
+                <h3>Hours</h3>
+              </Row>
+              <Row>
+                <Col xs>Today</Col>
+                <Col xs>
+                  {`${this.props.currentRestaurant.open_time}:00am - ${
+                    this.props.currentRestaurant.close_time
+                  }:00pm`}
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <div className="restaurant-reviews-main">
+              <h3>Reviews for {this.props.currentRestaurant.name}</h3>
+
+              <span>{count} ratings</span>
+            </div>
+          </Row>
+          <Row>{reviews}</Row>
+        </Grid>
         <Footer />
       </div>
     );
@@ -112,3 +140,36 @@ export default connect(
   msp,
   mdp
 )(RestaurantShow);
+
+/**
+ * <Row>
+  <div className="restaurant-info2">
+    <h3>About {this.props.currentRestaurant.name}</h3>
+              <div>Restaruant description blah lbah</div>
+              <div>$$$</div> 
+<InitMap address={this.props.currentRestaurant.address} />
+  <p>{this.props.currentRestaurant.address}</p>
+  <div className="restaurant-line" />
+  <p>{this.props.currentRestaurant.phone}</p>
+  <div className="restaurant-line" />
+  </div >
+  <div className="restaurant-hours">
+    <h3>Hours</h3>
+    <br />
+    <span>
+      <p>Today</p>
+      {this.props.currentRestaurant.open_time}-
+                {this.props.currentRestaurant.close_time}
+    </span>
+    <div className="restaurant-line" />
+  </div>
+</Row >
+  <Row>
+    <div className="restaurant-reviews-main">
+      <h3>Reviews for {this.props.currentRestaurant.name}</h3>
+
+      <span>{count} ratings</span>
+    </div>
+  </Row>
+  <Row>{reviews}</Row>
+ *  */

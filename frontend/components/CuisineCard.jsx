@@ -15,17 +15,8 @@ const styles = {
 function CuisineCard(props) {
   const { classes } = props;
 
-  function filterBrowseCuisine() {
-    // set a filter in state
-    // if (props.cuisineName !== 'See all restaurants) {
-    //    this.props.onFilterCuisine(props.cuisineName)
-    // }
-
-    this.props.history.push("/browse");
-  }
-
   return (
-    <Link to="/browse" onClick={filterBrowseCuisine}>
+    <Link to="/browse">
       <Avatar alt="Remy Sharp" src={props.url} className={classes.bigAvatar} />
       {props.cuisineName}
     </Link>
