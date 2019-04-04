@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # require "faker"
 
+MenuItem.destroy_all
 User.destroy_all
 User.create({
   first_name: "Demo",
@@ -117,7 +118,6 @@ i = 0
 end
 
 item_categories = ["appetizer", "entree", "dessert"]
-MenuItem.destroy_all
 restaurant_ids.each do |rest_id|
   20.times do
     MenuItem.create(
