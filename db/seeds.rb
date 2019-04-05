@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # require "faker"
-
+require "open-uri"
+Restaurant.destroy_all
 MenuItem.destroy_all
 User.destroy_all
+Review.destroy_all
 User.create({
   first_name: "Demo",
   last_name: "User",
@@ -86,7 +88,6 @@ nyc_addresses = ["25 St Marks Pl, New York, NY 10003", "108 E 4th St, New York, 
                  "301 Park Ave, New York, NY 10022", "45 E 45th St, New York, NY 10017", "230 Park Ave, New York, NY 10017", "70 Vanderbilt Ave, New York, NY 10017",
                  "E 47th St & Park Ave, New York, NY 10017", "101 E 47th St, New York, NY 10017"]
 
-Restaurant.destroy_all
 i = 0
 50.times do
   Restaurant.create(
@@ -100,7 +101,8 @@ i = 0
   i += 1
 end
 
-Review.destroy_all
+Restaurant.first.photo.attach(io: open("https://s3.us-east-2.amazonaws.com/screamless-seed/good-food-great-friends.jpg"), filename: "first_restaurant")
+
 restaurant_ids = Restaurant.pluck(:id)
 user_ids = User.pluck(:id)
 cuisines = Restaurant.pluck(:cuisine_name).uniq

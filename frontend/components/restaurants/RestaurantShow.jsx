@@ -68,7 +68,7 @@ class RestaurantShow extends React.Component {
       <div className="restaurant-showpage-container">
         <NavBar />
         <div className="restaurant-banner">
-          IMG GOES HERE!!!!!!
+          {/* <img src={this.props.currentRestaurant.image_url} /> */}
           <div className="restaurant-info">
             <h1>{this.props.currentRestaurant.name}</h1>
             <p>{this.props.currentRestaurant.address}</p>
