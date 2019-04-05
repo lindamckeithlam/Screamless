@@ -29,4 +29,6 @@ class Restaurant < ApplicationRecord
   has_many :menu_items,
            class_name: "MenuItem",
            foreign_key: :restaurant_id
+
+  has_one_attached :photo
 end

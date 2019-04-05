@@ -25,16 +25,17 @@ function OrderCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+          image="http://four32c.com/wp-content/uploads/2015/09/desserts.png"
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            Malted Strawberry Bites
           </Typography>
           <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            The malted whipped cream in these fruity cream puffs is a
+            revelation--make it alone to top pies, sundaes or hot cocoa, and be
+            sure to lick the beaters!
           </Typography>
         </CardContent>
       </CardActionArea>

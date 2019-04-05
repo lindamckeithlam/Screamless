@@ -31,7 +31,7 @@ function RestaurantCard(props) {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image="https://images.happycow.net/venues/1024/14/27/hcmp142747_497146.jpeg"
+              image="https://media1.fdncms.com/stranger/imager/u/original/34939068/original-oysters_bubbles_happy_hour_nov.jpg"
               title="Quantum Leap"
             />
             <CardContent>

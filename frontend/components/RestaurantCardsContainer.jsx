@@ -17,7 +17,7 @@ class RestaurantCardsContainer extends React.Component {
     this.props.onFetchRestaurants();
   }
   renderRestaurants = () => {
-    let restaurantRows = this.props.restaurants.reduce(
+    let restaurantRows = Object.values(this.props.restaurants).reduce(
       (rows, restaurant, i) => {
         let rowIndex = Math.floor(i / 3);
 

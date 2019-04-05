@@ -19,7 +19,7 @@ class RestaurantBrowseRow extends React.Component {
             <Link to={`menu/${r.id}`}>
               <img
                 style={{ height: 90, width: 90 }}
-                src="https://images.happycow.net/venues/1024/14/27/hcmp142747_497146.jpeg"
+                src="https://www.mygingergarlickitchen.com/wp-content/uploads/2016/08/recipes-Jaipuri-Aloo-Pyaaz-Ki-Sabzi-anupama-paliwal-my-ginger-garlic-kitchen-2-2.jpg"
               />
             </Link>
           </Col>
