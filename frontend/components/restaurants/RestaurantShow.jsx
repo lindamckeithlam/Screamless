@@ -71,8 +71,11 @@ class RestaurantShow extends React.Component {
           {/* <img src={this.props.currentRestaurant.image_url} /> */}
           <div className="restaurant-info">
             <h1>{this.props.currentRestaurant.name}</h1>
-            <p>{this.props.currentRestaurant.address}</p>
-            <p>{this.props.currentRestaurant.phone}</p>
+            <span>
+              {this.props.currentRestaurant.address}
+              {"                 "}
+              {this.props.currentRestaurant.phone}
+            </span>
           </div>
         </div>
         <div className="restaurant-links">
@@ -85,7 +88,7 @@ class RestaurantShow extends React.Component {
 
         <Grid fluid className="restaurant-bottom">
           <Row>
-            <h3>About {this.props.currentRestaurant.name}</h3>
+            <h3 id="about">About {this.props.currentRestaurant.name}</h3>
           </Row>
           <Row>
             <div>Restaruant description blah lbah</div>

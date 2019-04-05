@@ -854,6 +854,19 @@ input[type="last_name"] {
 
 .restaurant-links {
   margin-left: 7.8%;
+  padding: 1%;
+}
+.restaurant-links a {
+  color: #0e8a90;
+  opacity: 1;
+}
+
+.restaurant-links a:hover {
+  border-bottom: 3px solid#0e8a90;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  // background-color: #0e8a90;
 }
 
 .restaurant-line {
@@ -868,15 +881,25 @@ input[type="last_name"] {
 .restaurant-info {
   margin-left: 8%;
   width: 50%;
+  padding: 1%;
 }
 
-.restaurant-info2 {
-  width: 50%;
+.restaurant-info span {
+  font-size: 16px;
+  font-family: "Graphik";
+}
+
+.restaurant-info h1 {
+  font-weight: 600;
+  font-family: "Graphik";
+  font-size: 30.8px;
+  line-height: 1.243;
 }
 .restaurant-bottom {
   max-width: 1056px;
   margin: 0 auto;
   padding: 16px;
+  padding-bottom: 2%;
 }
 
 .restaurant-hours h1 {
@@ -895,6 +918,7 @@ input[type="last_name"] {
   width: 50%;
 }
 .restaurant-reviews-main {
+  padding-top: 2%;
 }
 
 .restaurant-reviews-main span {
@@ -964,6 +988,13 @@ input[type="last_name"] {
   font-size: 14px;
   font-family: "Graphik";
 }
+.menu-item-container h2 {
+  font-weight: 600;
+  font-family: "Graphik";
+  font-size: 22px;
+  line-height: 1.40395;
+  margin: 1%;
+}
 
 .list-group-item {
   width: 70%;
@@ -978,7 +1009,7 @@ input[type="last_name"] {
 .menu-item-button-container {
   border-radius: 3px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   max-width: 504px;
   background-color: white;
 }
