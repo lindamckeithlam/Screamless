@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 // import errorsReducer from "./errors_reducer.js";
-// import entitiesReducer from "./entities_reducer";
+import cuisineReducer from "./cuisines_reducer";
 import currentUserReducer from "./current_user_reducer";
 import sessionsReducer from "./sessions_reducer";
 import restaurantReducer from "./restaurant_reducer";
@@ -15,5 +15,6 @@ export default combineReducers({
   ui: uiReducer,
   currentUser: currentUserReducer,
   restaurants: restaurantReducer,
-  currentOrder: currentOrderReducer
+  currentOrder: currentOrderReducer,
+  cuisines: cuisineReducer
 });

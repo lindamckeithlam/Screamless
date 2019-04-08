@@ -8,7 +8,6 @@ class RestaurantBrowseRow extends React.Component {
   render() {
     let restaurantIndex = <div />;
     if (this.props.restaurants !== undefined) {
-      debugger;
       restaurantIndex = Object.values(this.props.restaurants).map(r => (
         <Row
           style={{ padding: "10px", cursor: "pointer" }}

@@ -6,40 +6,48 @@ import Carousel from "react-multi-carousel";
 
 import {
   fetchRestaurant,
-  fetchRestaurants
+  fetchRestaurants,
+  fetchCuisines,
+  fetchCuisine
 } from "../actions/restaurant_actions";
 
 const msp = state => {
   return {
-    restaurants: Object.values(state.restaurants.restaurants)
+    restaurants: Object.values(state.restaurants.restaurants),
+    cuisines: Object.values(state.cuisines)
   };
 };
 
 const mdp = dispatch => ({
   onFetchRestaurants: () => dispatch(fetchRestaurants()),
-  onFetchRestaurant: id => dispatch(fetchRestaurant(id))
+  onFetchRestaurant: id => dispatch(fetchRestaurant(id)),
+  onFetchCuisines: () => dispatch(fetchCuisines()),
+  onFetchCuisine: id => dispatch(fetchCuisine(id))
 });
 
 class BrowseByCuisine extends React.Component {
-  getCarousel = () => {
-    const cuisines = [];
+  componentDidMount() {
+    this.props.onFetchCuisines();
+  }
 
-    {
-      this.props.restaurants.forEach(r => {
-        if (cuisines.includes(r.cuisine_name) === false) {
-          cuisines.push(r.cuisine_name);
-        }
-      });
+  getCarousel = () => {
+    let cuisines = [];
+    if (cuisines.length !== 23) {
+      {
+        this.props.restaurants.forEach(r => {
+          if (cuisines.includes(r.cuisine_name) === false) {
+            cuisines.push(r.cuisine_name);
+          }
+        });
+      }
+    } else {
+      cuisines = this.props.cuisines[0];
     }
 
     if (!cuisines.length) return;
 
     const cuisineCards = cuisines.map((c, idx) => (
-      <CuisineCard
-        key={idx}
-        cuisineName={c}
-        url="https://res.cloudinary.com/grubhub/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/salads.jpg"
-      />
+      <CuisineCard key={idx} cuisineName={c} url={c.img_url} />
     ));
 
     cuisineCards.unshift(
@@ -49,7 +57,7 @@ class BrowseByCuisine extends React.Component {
         url="https://i.imgur.com/5wiDGLB.png"
       />
     );
-
+    debugger;
     return (
       <Carousel
         responsive={responsive}

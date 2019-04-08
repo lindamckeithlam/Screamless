@@ -19,9 +19,9 @@ class RestaurantCardsContainer extends React.Component {
   renderRestaurants = () => {
     let restaurantRows = Object.values(this.props.restaurants).reduce(
       (rows, restaurant, i) => {
-        let rowIndex = Math.floor(i / 3);
+        let rowIndex = Math.floor(i / 4);
 
-        i % 3 === 0
+        i % 4 === 0
           ? (rows[rowIndex] = [restaurant])
           : rows[rowIndex].push(restaurant);
 
@@ -46,33 +46,34 @@ class RestaurantCardsContainer extends React.Component {
   };
 
   render() {
+    let most_popular = <div />;
     if (this.props.restaurants.length === 0) {
-      return <div />;
-    }
-
-    return (
-      <>
-        <div className="modal-header-order-explore">
-          Explore our collections
-        </div>
-
-        <br />
+      return most_popular;
+    } else {
+      most_popular = (
         <div className="toprated-category-container">
-          {/* <div className="toprated-category">
-          
-          </div> */}
+          <div className="modal-header-order-explore">
+            Explore our collections
+          </div>
+
+          <br />
 
           <div className="test-container">
             <Link to="/browse" className="link-test">
               <h2 className="toprated-text">Most popular near you</h2>
             </Link>
           </div>
-
-          <Grid className="cuisine-container">
-            <Row>{/* <div className="modal-header-order" /> */}</Row>
-            {this.renderRestaurants()}
-          </Grid>
         </div>
+      );
+    }
+
+    return (
+      <>
+        <Grid className="cuisine-container">
+          <Row>{/* <div className="modal-header-order" /> */}</Row>
+          {/* {most_popular} */}
+          {this.renderRestaurants()}
+        </Grid>
       </>
     );
   }

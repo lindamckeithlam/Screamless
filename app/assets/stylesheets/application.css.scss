@@ -244,7 +244,7 @@
   vertical-align: middle;
 }
 .toprated-category-container {
-  display: flex;
+  display: inline-block;
   margin-bottom: 10px;
   margin-left: 4.5%;
   margin-right: 4%;
@@ -850,6 +850,7 @@ input[type="last_name"] {
   border-color: rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
 .restaurant-links {
@@ -914,6 +915,21 @@ input[type="last_name"] {
   line-height: 1.40395;
 }
 
+.restaurant-banner-img img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  // width: auto\9;
+  -ms-interpolation-mode: bicubic;
+}
+
+.restaurant-banner-img {
+  margin: 0 auto;
+  width: 1900px;
+  max-height: 270px;
+  overflow: hidden;
+}
+
 .restaurant-hours {
   width: 50%;
 }
@@ -924,6 +940,11 @@ input[type="last_name"] {
 .restaurant-reviews-main span {
   color: rgba(0, 0, 0, 0.55);
   font-size: 12px;
+}
+
+.review-body {
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 // cusine cards

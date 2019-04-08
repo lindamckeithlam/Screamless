@@ -9,11 +9,16 @@ export const fetchRestaurant = id =>
     url: `/api/restaurants/${id}`,
     data: { id }
   });
-// const api = "e7c1db62b5bfa277d4f7bb312bb4b07e";
 
-// export const fetchZomatoMenu = () => (
-//   $.ajax({
-//     method: 'GET',
-//     url: ``
-//   })
-// )
+export const fetchCuisines = () =>
+  $.ajax({
+    method: "GET",
+    url: `/api/cuisines`
+  });
+
+export const fetchCuisine = id =>
+  $.ajax({
+    method: "GET",
+    url: `/api/cuisines/${id}`,
+    data: { id }
+  });

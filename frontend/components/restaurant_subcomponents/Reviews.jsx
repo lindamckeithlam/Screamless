@@ -36,7 +36,7 @@ class Reviews extends React.Component {
                 </div>
               </div>
             </div>
-            <div>{review.body}</div>
+            <div className="review-body">{review.body}</div>
           </div>
         ))}
       </div>

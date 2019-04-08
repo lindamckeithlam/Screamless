@@ -11,6 +11,8 @@ Restaurant.destroy_all
 MenuItem.destroy_all
 User.destroy_all
 Review.destroy_all
+Cuisine.destroy_all
+
 User.create({
   first_name: "Demo",
   last_name: "User",
@@ -88,26 +90,70 @@ nyc_addresses = ["25 St Marks Pl, New York, NY 10003", "108 E 4th St, New York, 
                  "301 Park Ave, New York, NY 10022", "45 E 45th St, New York, NY 10017", "230 Park Ave, New York, NY 10017", "70 Vanderbilt Ave, New York, NY 10017",
                  "E 47th St & Park Ave, New York, NY 10017", "101 E 47th St, New York, NY 10017"]
 
+images = ["https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner2.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner3.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner4.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner5.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner6.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner8.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner9.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner10.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner11.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner7.jpeg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner12.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner13.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/dennis-prescott-fried-chicken.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner14.jpg",
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner15.jpg"]
+
+cuisine_names = ["Vietnamese",
+                 "Ramen",
+                 "Vegetarian",
+                 "Tex Mex",
+                 "Ethiopean",
+                 "Chinese",
+                 "Sandwiches",
+                 "Brazilian",
+                 "French",
+                 "Mexican",
+                 "Comfort Food",
+                 "Japanese",
+                 "American (New)",
+                 "Thai",
+                 "Bar",
+                 "Korean",
+                 "Vegan",
+                 "Burgers",
+                 "Italian",
+                 "Healthy",
+                 "Asian",
+                 "Indian",
+                 "Bakery"]
+
+cuisine_names.each do |cuisine|
+  Cuisine.create(cuisine_name: cuisine, img_url: images.sample)
+end
+
 i = 0
 50.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
-    cuisine_name: Faker::Restaurant.type,
+    cuisine_name: cuisine_names.sample,
     phone: Faker::Number.number(8).to_s,
     address: nyc_addresses[i],
     open_time: "11:00AM",
     close_time: "11:00PM",
+    img_url: images.sample,
   )
   i += 1
 end
 
-Restaurant.first.photo.attach(io: open("https://s3.us-east-2.amazonaws.com/screamless-seed/good-food-great-friends.jpg"), filename: "first_restaurant")
-
 restaurant_ids = Restaurant.pluck(:id)
 user_ids = User.pluck(:id)
-cuisines = Restaurant.pluck(:cuisine_name).uniq
 ratings = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
 prices = [15.00, 15.99, 10.99, 8.99, 11.99, 20.00, 18.99, 12.99, 13.99, 7.99, 6.99, 14.99]
+
 i = 0
 50.times do
   Review.create(

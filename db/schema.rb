@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_193859) do
+ActiveRecord::Schema.define(version: 2019_04_08_210116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2019_04_04_193859) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cuisines", force: :cascade do |t|
+    t.string "cuisine_name"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "menu_items", force: :cascade do |t|
     t.integer "restaurant_id", null: false
     t.integer "price", null: false
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_193859) do
     t.string "cuisine_name"
     t.float "rating"
     t.float "price"
+    t.string "img_url"
     t.integer "open_time"
     t.integer "close_time"
     t.string "type"

@@ -68,12 +68,16 @@ class RestaurantShow extends React.Component {
       <div className="restaurant-showpage-container">
         <NavBar />
         <div className="restaurant-banner">
-          {/* <img src={this.props.currentRestaurant.image_url} /> */}
+          <div className="restaurant-banner-img">
+            <img src={this.props.currentRestaurant.img_url} />
+          </div>
           <div className="restaurant-info">
             <h1>{this.props.currentRestaurant.name}</h1>
             <span>
               {this.props.currentRestaurant.address}
               {"                 "}
+              <i className="fas fa-phone" />
+              {"      "}
               {this.props.currentRestaurant.phone}
             </span>
           </div>
@@ -106,7 +110,11 @@ class RestaurantShow extends React.Component {
                 <div className="restaurant-line" />
               </Row>
               <Row>
-                <p>{this.props.currentRestaurant.phone}</p>
+                <p>
+                  <i className="fas fa-phone" />
+                  {"      "}
+                  {this.props.currentRestaurant.phone}
+                </p>
                 <div className="restaurant-line" />
               </Row>
             </Col>
