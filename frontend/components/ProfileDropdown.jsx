@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
-
+import { Link } from "react-router-dom";
 class ProfileDropdown extends React.Component {
   state = {
     anchorEl: null
@@ -43,7 +43,12 @@ class ProfileDropdown extends React.Component {
           onClose={this.handleClose}
           TransitionComponent={Fade}
         >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+          <MenuItem onClick={this.handleClose}>
+            <Link to="/account/profile" className="clickable">
+              Profile{" "}
+            </Link>
+          </MenuItem>
+
           <MenuItem onClick={this.handleClose}>My account</MenuItem>
           <MenuItem onClick={this.handleLogout}>{`Not ${user &&
             user.first_name}? Logout`}</MenuItem>
