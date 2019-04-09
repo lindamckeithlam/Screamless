@@ -5,21 +5,27 @@ class RestaurantBrowseRow extends React.Component {
   clickRestaurantRow() {
     // this.props.history.push(`/restaurants/${this.props.restaurant.id}`);
   }
+
+  renderPrice(num) {
+    let price = "";
+
+    for (let i = 0; i < num; i++) price += "$";
+
+    return price;
+  }
   render() {
     let restaurantIndex = <div />;
     if (this.props.restaurants !== undefined) {
-      restaurantIndex = Object.values(this.props.restaurants).map(r => (
+      restaurantIndex = this.props.restaurants.map((r, idx) => (
         <Row
+          key={r.name + idx.toString()}
           style={{ padding: "10px", cursor: "pointer" }}
           onClick={this.clickRestaurantRow}
         >
-          <Col xs={12} sm={3} md={2} lg={1}>
+          <Col xs={2}>
             {/* Image of Restaurant */}
             <Link to={`menu/${r.id}`}>
-              <img
-                style={{ height: 90, width: 90 }}
-                src="https://www.mygingergarlickitchen.com/wp-content/uploads/2016/08/recipes-Jaipuri-Aloo-Pyaaz-Ki-Sabzi-anupama-paliwal-my-ginger-garlic-kitchen-2-2.jpg"
-              />
+              <img className="restaurant-row-img" src={r.img_url} />
             </Link>
           </Col>
           <Col xs>
@@ -35,7 +41,7 @@ class RestaurantBrowseRow extends React.Component {
           <Col xs>
             <Row>
               {/* Rating Stars */}
-              <div>5 stars</div>
+              <div>{`${r.rating.toFixed(2)} stars`}</div>
             </Row>
             <Row>
               {/* # of Ratings */}
@@ -44,7 +50,7 @@ class RestaurantBrowseRow extends React.Component {
           </Col>
           <Col xs>
             {/* Price */}
-            <div>$$$</div>
+            <div>{this.renderPrice(r.price)}</div>
           </Col>
         </Row>
       ));

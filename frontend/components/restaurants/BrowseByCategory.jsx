@@ -4,14 +4,58 @@ import NavBar from "../NavBar";
 import BrowseByCuisine from "../BrowseByCuisine";
 import RestaurantBrowseRowsContainer from "../RestaurantBrowseRowsContainer";
 import Footer from "../footer";
+import classNames from "classnames";
+import { connect } from "react-redux";
+
+import {
+  filterByOpenNow,
+  clearAllFilters,
+  filterByRating,
+  filterByPrice
+} from "../../actions/filter_actions";
+
+const msp = state => {
+  return {
+    filters: state.filters
+  };
+};
+
+const mdp = dispatch => ({
+  onClearAllFilters: () => dispatch(clearAllFilters(cuisine)),
+  onFilterByOpenNow: () => dispatch(filterByOpenNow()),
+  onFilterByRating: rating => dispatch(filterByRating(rating)),
+  onFilterByPrice: price => dispatch(filterByPrice(price))
+});
+
 class BrowseByCategory extends React.Component {
-  //   toggleShow(e) {
-  //     if (e.target.matches(".feature")) {
-  //       // toggle class .show
-  //     }
-  //   }
+  clearAll = e => {
+    e.preventDefault();
+
+    this.props.onClearAllFilters();
+  };
+  toggleOpenFilter = () => {
+    this.props.onFilterByOpenNow();
+  };
+
+  filterRating = rating => {
+    if (this.props.filters.rating === rating) {
+      this.props.onFilterByRating(null);
+    } else {
+      this.props.onFilterByRating(rating);
+    }
+  };
+
+  filterPrice = price => {
+    if (this.props.filters.price === price) {
+      this.props.onFilterByPrice(null);
+    } else {
+      this.props.onFilterByPrice(price);
+    }
+  };
 
   render() {
+    const { filters } = this.props;
+    const rating = filters.rating;
     return (
       <>
         <NavBar />
@@ -20,25 +64,26 @@ class BrowseByCategory extends React.Component {
           <div className="category-left">
             <h1>Filters</h1>
             <span>
-              <a href="#">Clear All</a>
+              <a onClick={this.clearAll} href="#">
+                Clear All
+              </a>
             </span>
             <br />
             <h2>Restaurants</h2>
             <h2>Catering</h2>
             <br />
-            <button>Delivery</button>
-            <button>Pickup</button>
-            <br />
             <span className="today-asap">
-              Deliver my food -<a href="#">Today, ASAP</a>
+              Deliver my food -
+              <a onClick={e => e.preventDefault()} href="">
+                Today, ASAP
+              </a>
             </span>
 
             <div>
               <div className="feature-container">
-                {/* onClick={toggleShow} */}
-                <div id="flip">
+                <div className="clickable" id="flip">
                   <h3>Feature</h3>
-                  {/* have both angle up/down, show one or the other onClick (toggle)*/}
+
                   <i className="fas fa-angle-down" id="down" />
                 </div>
                 <div id="panel">
@@ -50,7 +95,11 @@ class BrowseByCategory extends React.Component {
                     <input type="checkbox" />
                     Coupons
                     <br />
-                    <input type="checkbox" />
+                    <input
+                      checked={filters.openNow}
+                      onChange={this.toggleOpenFilter}
+                      type="checkbox"
+                    />
                     Open Now
                     <br />
                   </form>
@@ -62,27 +111,57 @@ class BrowseByCategory extends React.Component {
                 <h3>Rating</h3>
 
                 <div className="rating-box">
-                  <div className="star-container">
+                  <div
+                    onClick={() => this.filterRating(1)}
+                    className={classNames({
+                      "star-container": true,
+                      "star-filtered": rating && rating >= 1
+                    })}
+                  >
                     <i className="fas fa-star" />
                   </div>
                   <div className="vl" />
 
-                  <div className="star-container">
+                  <div
+                    onClick={() => this.filterRating(2)}
+                    className={classNames({
+                      "star-container": true,
+                      "star-filtered": rating && rating >= 2
+                    })}
+                  >
                     <i className="fas fa-star" />
                   </div>
                   <div className="vl" />
 
-                  <div className="star-container">
+                  <div
+                    onClick={() => this.filterRating(3)}
+                    className={classNames({
+                      "star-container": true,
+                      "star-filtered": rating && rating >= 3
+                    })}
+                  >
                     <i className="fas fa-star" />
                   </div>
                   <div className="vl" />
 
-                  <div className="star-container">
+                  <div
+                    onClick={() => this.filterRating(4)}
+                    className={classNames({
+                      "star-container": true,
+                      "star-filtered": rating && rating >= 4
+                    })}
+                  >
                     <i className="fas fa-star" />
                   </div>
                   <div className="vl" />
 
-                  <div className="star-container">
+                  <div
+                    onClick={() => this.filterRating(5)}
+                    className={classNames({
+                      "star-container": true,
+                      "star-filtered": rating && rating >= 5
+                    })}
+                  >
                     <i className="fas fa-star" />
                   </div>
                 </div>
@@ -90,35 +169,42 @@ class BrowseByCategory extends React.Component {
               <h3>Price</h3>
 
               <div className="rating-box">
-                {/* <div className="dollar1 dollar"> */}
-                <i className="fas fa-dollar-sign" />
-                {/* </div> */}
+                <div className="clickable" onClick={() => this.filterPrice(1)}>
+                  <i className="fas fa-dollar-sign" />
+                </div>
+
                 <div className="vl" />
-                {/* <div className="dollar2 dollar"> */}
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                {/* </div> */}
+
+                <div className="clickable" onClick={() => this.filterPrice(2)}>
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                </div>
+
                 <div className="vl" />
-                {/* <div className="dollar3 dollar"> */}
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                {/* </div> */}
+
+                <div className="clickable" onClick={() => this.filterPrice(3)}>
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                </div>
                 <div className="vl" />
-                {/* <div className="dollar4 dollar"> */}
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                {/* </div> */}
+
+                <div className="clickable" onClick={() => this.filterPrice(4)}>
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                </div>
+
                 <div className="vl" />
-                {/* <div className="dollar5 dollar"> */}
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                <i className="fas fa-dollar-sign" />
-                {/* </div> */}
+
+                <div className="clickable" onClick={() => this.filterPrice(5)}>
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                  <i className="fas fa-dollar-sign" />
+                </div>
               </div>
             </div>
           </div>
@@ -133,5 +219,7 @@ class BrowseByCategory extends React.Component {
     );
   }
 }
-
-export default BrowseByCategory;
+export default connect(
+  msp,
+  mdp
+)(BrowseByCategory);

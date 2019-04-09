@@ -9,6 +9,7 @@
 #  cuisine_name :string
 #  rating       :float
 #  price        :float
+#  img_url      :string
 #  open_time    :integer
 #  close_time   :integer
 #  type         :string

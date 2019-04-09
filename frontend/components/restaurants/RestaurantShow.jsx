@@ -125,9 +125,8 @@ class RestaurantShow extends React.Component {
               <Row>
                 <Col xs>Today</Col>
                 <Col xs>
-                  {`${this.props.currentRestaurant.open_time}:00am - ${
-                    this.props.currentRestaurant.close_time
-                  }:00pm`}
+                  {`${this.props.currentRestaurant.open_time}:00am - ${this
+                    .props.currentRestaurant.close_time - 12}:00pm`}
                 </Col>
               </Row>
             </Col>
@@ -151,36 +150,3 @@ export default connect(
   msp,
   mdp
 )(RestaurantShow);
-
-/**
- * <Row>
-  <div className="restaurant-info2">
-    <h3>About {this.props.currentRestaurant.name}</h3>
-              <div>Restaruant description blah lbah</div>
-              <div>$$$</div> 
-<InitMap address={this.props.currentRestaurant.address} />
-  <p>{this.props.currentRestaurant.address}</p>
-  <div className="restaurant-line" />
-  <p>{this.props.currentRestaurant.phone}</p>
-  <div className="restaurant-line" />
-  </div >
-  <div className="restaurant-hours">
-    <h3>Hours</h3>
-    <br />
-    <span>
-      <p>Today</p>
-      {this.props.currentRestaurant.open_time}-
-                {this.props.currentRestaurant.close_time}
-    </span>
-    <div className="restaurant-line" />
-  </div>
-</Row >
-  <Row>
-    <div className="restaurant-reviews-main">
-      <h3>Reviews for {this.props.currentRestaurant.name}</h3>
-
-      <span>{count} ratings</span>
-    </div>
-  </Row>
-  <Row>{reviews}</Row>
- *  */

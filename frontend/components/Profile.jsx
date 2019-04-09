@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
 import BrowseByCuisine from "./BrowseByCuisine";
-import PreviousOrders from "./PreviousOrders";
+import PreviousOrders from "./users/PreviousOrders";
 import RestaurantCardsContainer from "./RestaurantCardsContainer";
 import Footer from "./footer";
 import InitMap from "./GoogleMap";

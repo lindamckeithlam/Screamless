@@ -9,6 +9,7 @@
 #  cuisine_name :string
 #  rating       :float
 #  price        :float
+#  img_url      :string
 #  open_time    :integer
 #  close_time   :integer
 #  type         :string
@@ -31,4 +32,12 @@ class Restaurant < ApplicationRecord
            foreign_key: :restaurant_id
 
   has_one_attached :photo
+
+  def rating
+    self.reviews.map { |r| r.rating.to_f }.sum / self.review_count
+  end
+
+  def review_count
+    self.reviews.length
+  end
 end

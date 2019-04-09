@@ -7,7 +7,7 @@ import ProfileDropdown from "./ProfileDropdown";
 import NavBarModal from "./NavBarModal";
 import ShoppingBagDropdown from "./ShoppingBagDropdown";
 
-const msp = (state, ownProps) => {
+const msp = state => {
   return {
     user: state.currentUser
   };

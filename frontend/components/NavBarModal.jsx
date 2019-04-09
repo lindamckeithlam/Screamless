@@ -2,9 +2,9 @@ import React from "react";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import { logout } from "../actions/session_actions";
+import { logout, saveCurrentUserAddress } from "../actions/session_actions";
 import { connect } from "react-redux";
-import SplashSearch from "./SplashSearch";
+import ModalSearch from "./ModalSearch";
 
 const msp = state => {
   return {
@@ -13,7 +13,8 @@ const msp = state => {
 };
 
 const mdp = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  onSaveAddress: (id, address) => dispatch(saveCurrentUserAddress(id, address))
 });
 
 class NavBarModal extends React.Component {
@@ -25,7 +26,7 @@ class NavBarModal extends React.Component {
     };
   }
   render() {
-    const { isShown, hideModal } = this.props;
+    const { isShown, hideModal, onSaveAddress } = this.props;
     const { orderType } = this.state;
 
     if (!isShown) return <div />;
@@ -68,7 +69,12 @@ class NavBarModal extends React.Component {
           </div>
 
           <div className="modal-address">{`${orderType} Address`}</div>
-          <SplashSearch placeholder="Enter your address" />
+          <ModalSearch
+            onSaveAddress={onSaveAddress}
+            id={this.props.user.id}
+            onCloseModal={hideModal}
+            placeholder="Enter your address"
+          />
         </div>
       </div>
     );

@@ -13,14 +13,23 @@ const styles = {
 };
 
 function CuisineCard(props) {
-  const { classes } = props;
+  const { classes, url, cuisineName, onClick } = props;
 
-  return (
-    <Link to="/browse">
-      <Avatar alt="Remy Sharp" src={props.url} className={classes.bigAvatar} />
-      {props.cuisineName}
-    </Link>
-  );
+  if (window.location.href.includes("browse")) {
+    return (
+      <div onClick={onClick} style={{ cursor: "pointer" }}>
+        <Avatar alt={cuisineName} src={url} className={classes.bigAvatar} />
+        {cuisineName}
+      </div>
+    );
+  } else {
+    return (
+      <Link onClick={onClick} to="/browse">
+        <Avatar alt="Remy Sharp" src={url} className={classes.bigAvatar} />
+        {cuisineName}
+      </Link>
+    );
+  }
 }
 
 CuisineCard.propTypes = {

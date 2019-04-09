@@ -7,14 +7,15 @@ import Carousel from "react-multi-carousel";
 import {
   fetchRestaurant,
   fetchRestaurants,
-  fetchCuisines,
-  fetchCuisine
+  fetchCuisines
 } from "../actions/restaurant_actions";
+
+import { filterByCuisine, clearAllFilters } from "../actions/filter_actions";
 
 const msp = state => {
   return {
-    restaurants: Object.values(state.restaurants.restaurants),
-    cuisines: Object.values(state.cuisines)
+    restaurants: state.restaurants.restaurants,
+    cuisines: state.cuisines.cuisines
   };
 };
 
@@ -22,7 +23,8 @@ const mdp = dispatch => ({
   onFetchRestaurants: () => dispatch(fetchRestaurants()),
   onFetchRestaurant: id => dispatch(fetchRestaurant(id)),
   onFetchCuisines: () => dispatch(fetchCuisines()),
-  onFetchCuisine: id => dispatch(fetchCuisine(id))
+  onFilterByCuisine: cuisine => dispatch(filterByCuisine(cuisine)),
+  onClearAllFilters: () => dispatch(clearAllFilters(cuisine))
 });
 
 class BrowseByCuisine extends React.Component {
@@ -31,23 +33,16 @@ class BrowseByCuisine extends React.Component {
   }
 
   getCarousel = () => {
-    let cuisines = [];
-    if (cuisines.length !== 23) {
-      {
-        this.props.restaurants.forEach(r => {
-          if (cuisines.includes(r.cuisine_name) === false) {
-            cuisines.push(r.cuisine_name);
-          }
-        });
-      }
-    } else {
-      cuisines = this.props.cuisines[0];
-    }
-
+    const { cuisines, onFilterByCuisine, onClearAllFilters } = this.props;
     if (!cuisines.length) return;
 
     const cuisineCards = cuisines.map((c, idx) => (
-      <CuisineCard key={idx} cuisineName={c} url={c.img_url} />
+      <CuisineCard
+        onClick={() => onFilterByCuisine(c.cuisine_name)}
+        key={idx}
+        cuisineName={c.cuisine_name}
+        url={c.img_url}
+      />
     ));
 
     cuisineCards.unshift(
@@ -55,9 +50,9 @@ class BrowseByCuisine extends React.Component {
         key="all-restaurants"
         cuisineName="See all restaurants"
         url="https://i.imgur.com/5wiDGLB.png"
+        onClick={onClearAllFilters}
       />
     );
-    debugger;
     return (
       <Carousel
         responsive={responsive}

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import OrderCard from "./OrderCard";
+import OrderCard from "../OrderCard";
 
 const msp = (state, ownProps) => {
   return {

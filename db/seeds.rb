@@ -31,6 +31,7 @@ User.create({
   first_name: "Steven",
   last_name: "D",
   password: "starwars",
+
   email: "steven@screamless.com",
 })
 
@@ -38,6 +39,7 @@ User.create({
   first_name: "Kit",
   last_name: "Harington",
   password: "youknownothing",
+
   email: "jonsno@screamless.com",
 })
 
@@ -45,6 +47,7 @@ User.create({
   first_name: "Aria",
   last_name: "Stark",
   password: "agirlhasnoname",
+
   email: "aria@screamless.com",
 })
 
@@ -52,6 +55,7 @@ User.create({
   first_name: "David",
   last_name: "Dickinson",
   password: "thatmakesoneofus",
+
   email: "david@david.com",
 })
 
@@ -59,6 +63,7 @@ User.create({
   first_name: "JJ",
   last_name: "Yang",
   password: "helpmesoomi",
+
   email: "helpme@robinhood.com",
 })
 
@@ -66,6 +71,7 @@ User.create({
   first_name: "Mike",
   last_name: "Mike",
   password: "bubbletea",
+
   email: "mike@petsy.com",
 })
 
@@ -73,6 +79,7 @@ User.create({
   first_name: "Nick",
   last_name: "Schneider",
   password: "lasagna",
+
   email: "meansiloveyou@italian.com",
 })
 
@@ -105,7 +112,22 @@ images = ["https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner13.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/dennis-prescott-fried-chicken.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner14.jpg",
-          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner15.jpg"]
+          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner15.jpg",
+          "https://vietnam.travel/sites/default/files/inline-images/Vietnamese%20food.jpg"]
+
+cuisine_images = ["https://twtx.co/wp-content/uploads/2017/07/Ritas-Enchiladas-1600x800.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/vietnam%20pho-2.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Hanoi%20Pho-09.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/mekong%20delta%20restaurants-14.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/top-vietnamese-dishes-2_2.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Food-7.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-12.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Hue-19.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-5.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-6.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes.jpg",
+                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-3.jpg",
+                  "https://assets.epicurious.com/photos/57978b27c9298e54495917d5/6:4/w_620%2Ch_413/black-bean-and-vegetable-burritos.jpg"]
 
 cuisine_names = ["Vietnamese",
                  "Ramen",
@@ -132,26 +154,31 @@ cuisine_names = ["Vietnamese",
                  "Bakery"]
 
 cuisine_names.each do |cuisine|
-  Cuisine.create(cuisine_name: cuisine, img_url: images.sample)
+  Cuisine.create(cuisine_name: cuisine, img_url: cuisine_images.sample)
 end
 
 i = 0
+
+open_times = [7, 8, 9, 10, 11, 12]
+close_times = [20, 21, 22, 23, 24]
+restaurant_prices = [1, 2, 3, 4, 5]
 50.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
     cuisine_name: cuisine_names.sample,
     phone: Faker::Number.number(8).to_s,
     address: nyc_addresses[i],
-    open_time: "11:00AM",
-    close_time: "11:00PM",
-    img_url: images.sample,
+    open_time: open_times.sample,
+    close_time: close_times.sample,
+    img_url: images[(i % images.length)],
+    price: restaurant_prices.sample,
   )
   i += 1
 end
 
 restaurant_ids = Restaurant.pluck(:id)
 user_ids = User.pluck(:id)
-ratings = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+ratings = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5, 5]
 prices = [15.00, 15.99, 10.99, 8.99, 11.99, 20.00, 18.99, 12.99, 13.99, 7.99, 6.99, 14.99]
 
 i = 0

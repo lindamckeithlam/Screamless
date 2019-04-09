@@ -7,6 +7,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import ProfileContainer from "./Profile";
 import BrowseByCategory from "./restaurants/BrowseByCategory";
 import RestaurantShow from "./restaurants/RestaurantShow";
+import PersonalProfileContainer from "./users/PersonalProfileContainer";
 class App extends Component {
   render() {
     return (
@@ -17,6 +18,10 @@ class App extends Component {
         <Switch>
           <Route path="/browse" component={BrowseByCategory} />
           <ProtectedRoute path="/lets-eat" component={ProfileContainer} />
+          <ProtectedRoute
+            path="/account"
+            component={PersonalProfileContainer}
+          />
           <AuthRoute exact path="/" component={Splash} />
           <AuthRoute path="/create-account" component={SignupFormContainer} />
           <AuthRoute path="/login" component={LoginFormContainer} />

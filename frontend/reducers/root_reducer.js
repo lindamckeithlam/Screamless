@@ -6,6 +6,7 @@ import sessionsReducer from "./sessions_reducer";
 import restaurantReducer from "./restaurant_reducer";
 import currentOrderReducer from "./current_order_reducer";
 import sessionErrorsReducer from "./session_error_reducer";
+import filterReducer from "./filter_reducer";
 import uiReducer from "./ui_reducer";
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   currentUser: currentUserReducer,
   restaurants: restaurantReducer,
   currentOrder: currentOrderReducer,
-  cuisines: cuisineReducer
+  cuisines: cuisineReducer,
+  filters: filterReducer
 });

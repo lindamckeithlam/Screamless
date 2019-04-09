@@ -780,6 +780,14 @@ input[type="last_name"] {
   width: 100%;
   padding: 2% 6.5%;
   border-radius: 8%;
+  cursor: pointer;
+}
+
+.star-filtered {
+  background-color: #0e8a90;
+  .fa-star {
+    color: white;
+  }
 }
 
 .star-container:hover {
@@ -1045,4 +1053,57 @@ input[type="last_name"] {
   background-color: #efefef;
   width: 100%;
   height: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
+
+.pac-container {
+  z-index: 99999;
+}
+
+.restaurant-row-img {
+  height: 90px;
+  width: 90px;
+  max-width: 90px;
+  object-fit: cover;
+}
+.user-profile-container {
+  display: flex;
+  height: 90vh;
+  font-family: "Graphik";
+}
+
+.user-profile-left {
+  flex: 0 0 25%;
+  max-width: 25%;
+  background: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.your-account {
+  font-size: 26.8px;
+  line-height: 1.30656;
+  font-weight: 400;
+}
+
+.user-profile-left a {
+  font-size: 15.4px;
+  line-height: 1.595;
+  color: #2b8282;
+  font-weight: 400;
+}
+.user-profile-left a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.user-profile-right {
+  width: 75%;
+  background-color: #efefef;
 }
