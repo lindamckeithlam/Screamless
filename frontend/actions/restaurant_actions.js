@@ -13,7 +13,7 @@ export const fetchRestaurants = () => dispatch =>
 export const fetchRestaurant = id => dispatch =>
   RestaurantApi.fetchRestaurant(id).then(currentRestaurant =>
     dispatch({
-      type: RECEIVE_ONE_RESTAURANT,
+      type: RECEIVE_ONE_RESTAURANT, //
       currentRestaurant: currentRestaurant,
       restaurantId: currentRestaurant.id
     })
