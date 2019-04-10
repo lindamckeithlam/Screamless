@@ -45,11 +45,15 @@ class ProfileDropdown extends React.Component {
         >
           <MenuItem onClick={this.handleClose}>
             <Link to="/account/profile" className="clickable">
-              Profile{" "}
+              My Account
             </Link>
           </MenuItem>
 
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
+          <MenuItem onClick={this.handleClose}>
+            <Link to="/account/history" className="clickable">
+              Past Orders
+            </Link>
+          </MenuItem>
           <MenuItem onClick={this.handleLogout}>{`Not ${user &&
             user.first_name}? Logout`}</MenuItem>
         </Menu>

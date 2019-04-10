@@ -27,7 +27,7 @@ class PersonalProfile extends React.Component {
               <a href="/#/account/history">Past orders</a>
             </li>
           </ul>
-          <div />
+
           <div className="user-profile-right">
             <Switch>
               <Route exact path="/account/profile" component={AccountDetails} />

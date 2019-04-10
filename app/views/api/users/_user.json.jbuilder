@@ -1,1 +1,1 @@
-json.extract! user, :id, :email, :first_name, :last_name, :address
+json.extract! user, :id, :email, :first_name, :last_name, :address, :orders

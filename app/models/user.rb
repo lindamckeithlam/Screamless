@@ -9,6 +9,8 @@
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  phone_number    :string
+#  address         :string
+#  orders          :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -20,6 +22,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
   attr_reader :password
+
   has_many :reviews,
            class_name: "Review",
            foreign_key: :reviewer_id

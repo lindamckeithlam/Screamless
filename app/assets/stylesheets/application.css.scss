@@ -34,13 +34,13 @@
 }
 
 .seamlesslogo {
-  width: 15vw;
+  width: 19vw;
   height: 100%;
   position: relative;
   border-radius: 5%;
   z-index: 1;
-  left: 7vw;
-  top: 5vw;
+  left: 5vw;
+  top: 8vw;
 }
 
 .splash-links {
@@ -1025,11 +1025,6 @@ input[type="last_name"] {
   margin: 1%;
 }
 
-.list-group-item {
-  width: 70%;
-  padding-bottom: 2%;
-}
-
 .menu-item-name {
   font-weight: 400px;
 }
@@ -1077,6 +1072,7 @@ input[type="last_name"] {
   display: flex;
   height: 90vh;
   font-family: "Graphik";
+  margin-left: 2.3%;
 }
 
 .user-profile-left {
@@ -1087,23 +1083,65 @@ input[type="last_name"] {
 }
 
 .your-account {
-  font-size: 26.8px;
-  line-height: 1.30656;
-  font-weight: 400;
+  font-size: 23.3px;
+  line-height: 1.37337;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 22px;
+  border-bottom: none;
+  font-family: "Graphik";
 }
 
-.user-profile-left a {
-  font-size: 15.4px;
+.user-profile-left li {
+  font-size: 14.5px;
   line-height: 1.595;
   color: #2b8282;
-  font-weight: 400;
+  font-weight: 550;
+  margin: 5px;
+  padding-bottom: 2%;
+}
+.user-profile-left a {
+  font-size: 14.5px;
+  line-height: 1.595;
+  color: #2b8282;
+  font-weight: 550;
 }
 .user-profile-left a:hover {
   cursor: pointer;
   text-decoration: none;
+  color: #124646;
+}
+.user-profile-left a:focus {
+  color: black;
 }
 
 .user-profile-right {
   width: 75%;
   background-color: #efefef;
+}
+
+.card {
+  width: 98%;
+  margin: 0.9%;
+}
+
+.card-body h5 {
+  padding-bottom: 2%;
+  font-family: "Graphik";
+  font-weight: 500;
+}
+
+.card-body p {
+  font-family: "Graphik";
+  padding-bottom: 2%;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.card-body h6 {
+  font-family: "Graphik";
+  font-size: 14px;
+  line-height: 1.6;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #e4e4e4;
 }

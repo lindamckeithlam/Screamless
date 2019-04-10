@@ -11,3 +11,10 @@ export const fetchUser = id => {
     url: `/api/users/${id}`
   });
 };
+
+// export const fetchUserPastOrders = userId => {
+//   return $.ajax({
+//     method: 'get',
+
+//   })
+// }

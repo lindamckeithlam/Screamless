@@ -107,7 +107,6 @@ images = ["https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner9.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner10.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner11.jpg",
-          "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner7.jpeg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner12.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner13.jpg",
           "https://s3.us-east-2.amazonaws.com/screamless-seed/dennis-prescott-fried-chicken.jpg",
@@ -178,7 +177,7 @@ end
 
 restaurant_ids = Restaurant.pluck(:id)
 user_ids = User.pluck(:id)
-ratings = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5, 5]
+ratings = [1, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5, 5]
 prices = [15.00, 15.99, 10.99, 8.99, 11.99, 20.00, 18.99, 12.99, 13.99, 7.99, 6.99, 14.99]
 
 i = 0

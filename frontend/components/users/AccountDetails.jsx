@@ -16,13 +16,23 @@ class AccountDetails extends React.Component {
   render() {
     return (
       <div className="account-details">
-        <p>Your Account</p>
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Your Account</h5>
 
-        <label>Name</label>
-        <p>{this.props.user.first_name}</p>
-        <p>{this.props.user.last_name}</p>
-        <label>Email</label>
-        <p>{this.props.user.email}</p>
+            <p className="card-text">Name</p>
+
+            <h6 className="card-subtitle mb-2 text-muted">
+              {this.props.user.first_name}
+              {"   "}
+              {this.props.user.last_name}
+            </h6>
+            <p className="card-text">Email</p>
+            <h6 className="card-subtitle mb-2 text-muted">
+              {this.props.user.email}
+            </h6>
+          </div>
+        </div>
       </div>
     );
   }

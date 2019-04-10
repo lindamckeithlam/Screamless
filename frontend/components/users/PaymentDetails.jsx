@@ -16,10 +16,17 @@ class PaymentDetails extends React.Component {
   render() {
     return (
       <div className="account-details">
-        <p>Your Account</p>
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Your Account</h5>
 
-        <label>Saved Card</label>
-        <p>VISA••••5860, exp 11 / 22</p>
+            <p className="card-text">Saved Cards</p>
+
+            <h6 className="card-subtitle mb-2 text-muted">
+              VISA••••5860, exp 11 / 22
+            </h6>
+          </div>
+        </div>
       </div>
     );
   }

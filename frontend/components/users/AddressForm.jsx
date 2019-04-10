@@ -16,9 +16,16 @@ const mdp = dispatch => ({
 class AddressForm extends React.Component {
   render() {
     return (
-      <div className="address">
-        <p>Home</p>
-        <p>{this.props.address}</p>
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title">Address</h5>
+
+          <p className="card-text">Home</p>
+
+          <h6 className="card-subtitle mb-2 text-muted">
+            {this.props.address}
+          </h6>
+        </div>
       </div>
     );
   }
