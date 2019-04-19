@@ -1145,3 +1145,41 @@ input[type="last_name"] {
   padding-bottom: 2%;
   border-bottom: 1px solid #e4e4e4;
 }
+
+.checkout-button-container {
+  margin: 0 auto;
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  bottom: 80px;
+}
+
+.checkout-button,
+.checkout-button:hover,
+.checkout-button:active {
+  width: 100%;
+  background-color: #13aa37;
+  border-color: #13aa37;
+}
+
+.cart-error-title {
+  margin: 0;
+  padding: 16px 0;
+  font-size: 24px;
+  color: #cacaca;
+  position: relative;
+  left: 50%;
+}
+.cart-error-emptyCart {
+  padding: 10px;
+  top: 25%;
+  position: fixed;
+}
+
+.empty-cart-button,
+.empty-cart-button:hover,
+.empty-cart-button:active {
+  color: #2b8282;
+  background-color: transparent;
+  border-color: transparent;
+}

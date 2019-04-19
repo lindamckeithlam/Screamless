@@ -1,29 +1,58 @@
 /* eslint-disable no-case-declarations */
-
-import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { RECEIVE_ITEM } from "../actions/restaurant_actions";
+import {
+  RECEIVE_ITEM,
+  REMOVE_ALL_ITEMS,
+  REMOVE_ITEM
+} from "../actions/restaurant_actions";
 const initialState = {
   restaurantId: null,
   items: []
 };
 
-const currentOrderReducer = (state = initialState, action) => {
+const getInitialState = () => {
+  const order = localStorage.getItem("CURRENT_ORDER_STORAGE");
+
+  return order ? JSON.parse(order) : initialState;
+};
+
+const currentOrderReducer = (state = getInitialState(), action) => {
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      const { id, email, last_name, first_name } = action.user;
-      // return { ...state, [action.user.id]: action.user };
-      return Object.assign({}, state, {
-        ...state,
-        id,
-        email,
-        last_name,
-        first_name
-      });
     case RECEIVE_ITEM:
       const { restaurantId, item } = action;
-      // add logic to make sure you cant add iutems from multiple restaurants
-      // ahndle multiple quantities of an item
-      return { ...state, items: [...state.items, item], restaurantId };
+      // add logic to make sure you cant add items from multiple restaurants
+      // handle multiple quantities of an item
+      const newState = {
+        ...state,
+        items: [...state.items, item],
+        restaurantId
+      };
+
+      // set current order to localstorage so it persists
+      localStorage.setItem("CURRENT_ORDER_STORAGE", JSON.stringify(newState));
+
+      return newState;
+    case REMOVE_ITEM:
+      const newItems = [...state.items];
+      const idx = newItems.findIndex(item => item.name === action.item.name);
+      newItems.splice(idx, 1);
+
+      const removedState = {
+        ...state,
+        items: newItems
+      };
+
+      // set current order to localstorage so it persists
+      localStorage.setItem(
+        "CURRENT_ORDER_STORAGE",
+        JSON.stringify(removedState)
+      );
+
+      return removedState;
+    case REMOVE_ALL_ITEMS:
+      // clear current order localstorage
+      localStorage.removeItem("CURRENT_ORDER_STORAGE");
+
+      return initialState;
     default:
       return state;
   }

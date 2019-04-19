@@ -32,17 +32,19 @@ const styles = {
 function ModalSearch(props) {
   const { classes, placeholder, id } = props;
   const [address, setAddress] = useState("");
-  // const geocoder = new google.maps.Geocoder();
-  // const address = document.getElementById('location_search').value;
 
   useEffect(() => {
     const input = document.getElementById("location_search");
     const options = {
-      types: ["(cities)"],
       componentRestrictions: { country: "usa" }
     };
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
-    autocomplete.getPlace();
+
+    const gmaps = new google.maps.places.Autocomplete(input, options);
+
+    google.maps.event.addListener(gmaps, "place_changed", () => {
+      const place = gmaps.getPlace();
+      place.geometry && setAddress(place.formatted_address);
+    });
   }, []);
 
   function saveAddress() {
