@@ -24,7 +24,8 @@ class LoginForm extends React.Component {
       .then(() => this.props.history.push("/lets-eat"));
   };
 
-  handleDemoUser = () => {
+  handleDemoUser = e => {
+    e.preventDefault();
     this.props
       .onLogin({
         email: "demo@demouser.com",
