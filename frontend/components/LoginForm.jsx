@@ -25,10 +25,12 @@ class LoginForm extends React.Component {
   };
 
   handleDemoUser = () => {
-    this.props.onLogin({
-      password: "blackbearsarebest",
-      email: "demo@demouser.com"
-    });
+    this.props
+      .onLogin({
+        email: "demo@demouser.com",
+        password: "blackbearsarebest"
+      })
+      .then(() => this.props.history.push("/lets-eat"));
   };
 
   renderErrors = () => {

@@ -5,14 +5,14 @@
 #  id                    :bigint(8)        not null, primary key
 #  user_id               :integer          not null
 #  restaurant_id         :integer          not null
+#  restaurant_name       :string           not null
 #  subtotal              :float            not null
 #  tax                   :float            not null
 #  tip                   :float
 #  delivery_fee          :float
 #  total                 :float            not null
 #  delivery_instructions :string
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
+#  items                 :string
 #
 
 class Order < ApplicationRecord

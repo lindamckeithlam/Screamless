@@ -1,48 +1,39 @@
 import React from "react";
 import { connect } from "react-redux";
+import { fetchUserOrders } from "../../actions/order_actions.js";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import OrderCard from "../OrderCard";
 
 const msp = (state, ownProps) => {
   return {
-    // orders: state.currentUser.orders
+    orders: state.currentUser.orders
   };
 };
 
-const mdp = dispatch => ({});
+const mdp = dispatch => ({
+  onFetchOrders: () => dispatch(fetchUserOrders())
+});
 
 class BrowseByCuisine extends React.Component {
+  componentDidMount() {
+    this.props.onFetchOrders();
+  }
   renderOrders() {
-    // const orderCards =  this.props.orders.map(order => {
-    //   <Col key={order.id} xs><OrderCard order={order} /></Col>
-    // });
+    const orders = this.props.orders.slice(0, 5);
+    const orderCards = orders.map(order => {
+      return (
+        <Col key={order.id} xs>
+          <OrderCard order={order} />
+        </Col>
+      );
+    });
 
-    // return <Row>{orderCards}</Row>;
-    return (
-      <Row>
-        <Col xs>
-          <OrderCard />
-        </Col>
-        <Col xs>
-          <OrderCard />
-        </Col>
-        <Col xs>
-          <OrderCard />
-        </Col>
-        <Col xs>
-          <OrderCard />
-        </Col>
-        <Col xs>
-          <OrderCard />
-        </Col>
-      </Row>
-    );
+    return <Row>{orderCards}</Row>;
   }
   render() {
-    // if (this.props.orders.length === 0) {
-    //   return <div />;
-    // }
-
+    if (this.props.orders.length === 0) {
+      return <div />;
+    }
     return (
       <Grid className="cuisine-container">
         <Row>

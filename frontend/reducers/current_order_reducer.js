@@ -6,7 +6,14 @@ import {
 } from "../actions/restaurant_actions";
 const initialState = {
   restaurantId: null,
-  items: []
+  restaurantName: null,
+  items: [],
+  delivery_fee: 0,
+  delivery_instructions: "",
+  tax: 0,
+  tip: 0,
+  total: 0,
+  subtotal: 0
 };
 
 const getInitialState = () => {
@@ -18,13 +25,16 @@ const getInitialState = () => {
 const currentOrderReducer = (state = getInitialState(), action) => {
   switch (action.type) {
     case RECEIVE_ITEM:
-      const { restaurantId, item } = action;
+      const { restaurantId, restaurantName, item } = action;
       // add logic to make sure you cant add items from multiple restaurants
       // handle multiple quantities of an item
       const newState = {
         ...state,
         items: [...state.items, item],
-        restaurantId
+        restaurantId,
+        restaurantName,
+        total: state.total + item.price,
+        subtotal: state.subtotal + item.price
       };
 
       // set current order to localstorage so it persists
@@ -34,11 +44,14 @@ const currentOrderReducer = (state = getInitialState(), action) => {
     case REMOVE_ITEM:
       const newItems = [...state.items];
       const idx = newItems.findIndex(item => item.name === action.item.name);
+      const removedItem = newItems[idx];
       newItems.splice(idx, 1);
 
       const removedState = {
         ...state,
-        items: newItems
+        items: newItems,
+        total: state.total - removedItem.price,
+        subtotal: state.subtotal - removedItem.price
       };
 
       // set current order to localstorage so it persists

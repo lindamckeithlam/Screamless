@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import find from "lodash/find";
 
 const styles = {
   card: {
@@ -18,33 +19,50 @@ const styles = {
   }
 };
 
-function OrderCard(props) {
-  const { classes } = props;
-  return (
-    <Card onClick={() => console.log("order clicked")} className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="http://four32c.com/wp-content/uploads/2015/09/desserts.png"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Malted Strawberry Bites
-          </Typography>
-          <Typography component="p">
-            The malted whipped cream in these fruity cream puffs is a
-            revelation--make it alone to top pies, sundaes or hot cocoa, and be
-            sure to lick the beaters!
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
+const msp = (state, ownProps) => {
+  return {
+    ...ownProps,
+    restaurant: find(
+      state.restaurants.restaurants,
+      r => r.id === ownProps.order.restaurantId
+    )
+  };
+};
+
+class OrderCard extends React.Component {
+  render() {
+    const { classes, order, restaurant } = this.props;
+    return (
+      <Link style={{ textDecoration: "none" }} to={`/orders/${order.id}`}>
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={restaurant && restaurant.img_url}
+              title={order.restaurantName}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {order.restaurantName}
+              </Typography>
+              <Typography component="p">
+                {restaurant && restaurant.address}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Link>
+    );
+  }
 }
 
 OrderCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(OrderCard);
+const OrderCardContainer = connect(
+  msp,
+  null
+)(OrderCard);
+
+export default withStyles(styles)(OrderCardContainer);

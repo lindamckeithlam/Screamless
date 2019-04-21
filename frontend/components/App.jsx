@@ -7,7 +7,10 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import ProfileContainer from "./Profile";
 import BrowseByCategory from "./restaurants/BrowseByCategory";
 import RestaurantShow from "./restaurants/RestaurantShow";
+import OrderShow from "./orders/OrderShow";
+import OrdersIndex from "./orders/OrdersIndex";
 import PersonalProfileContainer from "./users/PersonalProfileContainer";
+
 class App extends Component {
   render() {
     return (
@@ -29,6 +32,8 @@ class App extends Component {
             path="/menu/:restaurant_id"
             component={RestaurantShow}
           />
+          <ProtectedRoute path="/orders/:order_id" component={OrderShow} />
+          <ProtectedRoute exact path="/orders" component={OrdersIndex} />
         </Switch>
       </div>
     );

@@ -11,7 +11,8 @@ const msp = (state, props) => {
 };
 
 const mdp = (dispatch, props) => ({
-  onAddItem: item => dispatch(addItemToBag(item, props.restaurantId))
+  onAddItem: item =>
+    dispatch(addItemToBag(item, props.restaurantId, props.restaurantName))
 });
 
 class MenuItems extends React.Component {

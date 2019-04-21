@@ -5,7 +5,6 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const REMOVE_ALL_ITEMS = "REMOVE_ALL_ITEMS";
 export const RECEIVE_CUISINES = "RECEIVE_CUISINES";
 import * as RestaurantApi from "../util/restaurant_util";
-import * as OrdersApi from "../util/order_util";
 
 export const fetchRestaurants = () => dispatch =>
   RestaurantApi.fetchRestaurants().then(restaurants =>
@@ -24,20 +23,16 @@ export const fetchRestaurant = id => dispatch =>
     })
   );
 
-export const checkoutOrder = () => (dispatch, getState) => {
-  const currentOrder = getState().currentOrder.currentOrder;
+export const fetchSingleRestaurant = id => dispatch =>
+  RestaurantApi.fetchRestaurant(id).then(restaurant =>
+    dispatch({
+      type: RECEIVE_RESTAURANTS,
+      restaurants: restaurant
+    })
+  );
 
-  OrdersApi.createOrder(currentOrder).then(order => {
-    // dispatch that oder was created
-    // navigate to new order complete page
-    // add this order to users previous order
-    // dispatch({
-    // })
-  });
-};
-
-export const addItemToBag = (item, restaurantId) => dispatch =>
-  dispatch({ type: RECEIVE_ITEM, item, restaurantId });
+export const addItemToBag = (item, restaurantId, restaurantName) => dispatch =>
+  dispatch({ type: RECEIVE_ITEM, item, restaurantId, restaurantName });
 
 export const removeItemFromBag = item => dispatch =>
   dispatch({ type: REMOVE_ITEM, item });

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :edit, :update]
     resources :restaurants, only: [:create, :show, :destroy, :index]
     resources :cuisines, only: [:show, :index]
+    resources :orders, only: [:show, :index, :create]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

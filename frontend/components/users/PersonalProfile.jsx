@@ -5,8 +5,17 @@ import PreviousOrders from "./PreviousOrders";
 import PaymentDetails from "./PaymentDetails";
 import AccountDetails from "./AccountDetails";
 import { Switch, Route } from "react-router-dom";
+import { fetchRestaurants } from "../../actions/restaurant_actions";
+import { connect } from "react-redux";
+
+const mdp = dispatch => ({
+  onFetchRestaurants: () => dispatch(fetchRestaurants())
+});
 
 class PersonalProfile extends React.Component {
+  componentDidMount() {
+    this.props.onFetchRestaurants();
+  }
   render() {
     return (
       <div>
@@ -42,4 +51,7 @@ class PersonalProfile extends React.Component {
   }
 }
 
-export default PersonalProfile;
+export default connect(
+  null,
+  mdp
+)(PersonalProfile);

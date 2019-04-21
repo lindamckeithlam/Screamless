@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { withStyles } from "@material-ui/core/styles";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import Badge from "@material-ui/core/Badge";
@@ -15,12 +16,13 @@ import Button from "react-bootstrap/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {
   removeItemFromBag,
-  removeAllItemsFromBag,
-  checkoutOrder
+  removeAllItemsFromBag
 } from "../actions/restaurant_actions";
+import { checkoutOrder } from "../actions/order_actions";
 
 const msp = (state, ownProps) => {
   return {
+    ...ownProps,
     currentOrder: state.currentOrder
   };
 };
@@ -29,7 +31,7 @@ const mdp = dispatch => {
   return {
     onRemoveItem: item => dispatch(removeItemFromBag(item)),
     onRemoveAll: () => dispatch(removeAllItemsFromBag()),
-    onCheckout: () => dispatch(checkoutOrder())
+    onCheckout: history => dispatch(checkoutOrder(history))
   };
 };
 
@@ -59,6 +61,11 @@ class ShoppingBagDropdown extends React.Component {
 
   closeDrawer = () => {
     this.setState({ expanded: false });
+  };
+
+  onCheckout = () => {
+    const { history, onCheckout } = this.props;
+    onCheckout(history);
   };
 
   renderExpandedBag = () => {
@@ -95,8 +102,8 @@ class ShoppingBagDropdown extends React.Component {
   };
 
   getSideBarList() {
-    const { classes, onRemoveItem, onRemoveAll, onCheckout } = this.props;
-    const { items } = this.props.currentOrder;
+    const { classes, onRemoveItem, onRemoveAll } = this.props;
+    const { items, subtotal } = this.props.currentOrder;
     const itemsMap = {};
 
     items.forEach(
@@ -115,13 +122,10 @@ class ShoppingBagDropdown extends React.Component {
         </div>
       );
     }
-    let total = 0;
     return (
       <div className={classes.list}>
         <List>
           {itemArr.map((item, index) => {
-            const cost = item.price * item.count;
-            total += cost;
             return (
               <ListItem button key={item.name + index.toString()}>
                 <ListItemText primary={item.count} />
@@ -135,7 +139,7 @@ class ShoppingBagDropdown extends React.Component {
                 <ListItemIcon onClick={() => onRemoveItem(item)}>
                   <DeleteIcon />
                 </ListItemIcon>
-                <ListItemText primary={`$ ${cost}`} />
+                <ListItemText primary={`$ ${item.price}`} />
               </ListItem>
             );
           })}
@@ -144,7 +148,7 @@ class ShoppingBagDropdown extends React.Component {
         <List>
           <ListItem button>
             <ListItemText primary={"Items subtotal:"} />
-            <ListItemText primary={`$ ${total}`} />
+            <ListItemText primary={`$ ${subtotal}`} />
           </ListItem>
           <ListItem button>
             <Button className="empty-cart-button" onClick={onRemoveAll}>
@@ -156,7 +160,7 @@ class ShoppingBagDropdown extends React.Component {
         <div className="checkout-button-container">
           <Button
             className="checkout-button"
-            onClick={onCheckout}
+            onClick={this.onCheckout}
             variant="primary"
             size="lg"
           >
@@ -192,8 +196,10 @@ class ShoppingBagDropdown extends React.Component {
   }
 }
 
-const container = connect(
-  msp,
-  mdp
-)(ShoppingBagDropdown);
+const container = withRouter(
+  connect(
+    msp,
+    mdp
+  )(ShoppingBagDropdown)
+);
 export default withStyles(styles)(container);

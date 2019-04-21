@@ -3,11 +3,17 @@ import ReactDOM from "react-dom";
 import configureStore from "./store";
 import Root from "./components/RootComponent";
 import Geocode from "react-geocode";
+import { initialState } from "./reducers/current_user_reducer.js";
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
     const preloadedState = {
-      currentUser: { ...window.currentUser },
+      currentUser: {
+        ...initialState,
+        ...window.currentUser,
+        orders: [],
+        orderId: null
+      },
       sessions: { id: window.currentUser.id }
     };
     store = configureStore(preloadedState);

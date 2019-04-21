@@ -59,6 +59,7 @@ class RestaurantShow extends React.Component {
       menu = (
         <MenuItems
           restaurantId={this.props.currentRestaurant.id}
+          restaurantName={this.props.currentRestaurant.name}
           menuItems={this.props.currentRestaurant.menu_items}
         />
       );
