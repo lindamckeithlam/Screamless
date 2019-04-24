@@ -28,7 +28,6 @@ import {
 import { checkoutOrder } from "../actions/order_actions";
 
 const msp = (state, ownProps) => {
-  debugger;
   return {
     ...ownProps,
     currentOrder: state.currentOrder,
@@ -87,7 +86,6 @@ class ShoppingBagDropdown extends React.Component {
   };
 
   renderModal = () => {
-    debugger;
     return (
       <Dialog
         className="checkout-instructions-modal"
