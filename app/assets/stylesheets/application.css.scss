@@ -578,7 +578,7 @@ input[type="last_name"] {
   width: 100%;
 }
 .cuisine-container-previous-orders {
-  // display: flex; 
+  // display: flex;
   width: 100%;
   // flex-direction: row;
   justify-content: space-evenly;
@@ -1266,8 +1266,14 @@ input[type="last_name"] {
   border-color: transparent;
 }
 
-.order-show-container {
+// Order Confirmation Page //
+
+.order-show-details-heading {
   background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 .order-show-right {
@@ -1276,6 +1282,16 @@ input[type="last_name"] {
 .order-show-left {
   width: 30%;
   padding: 1%;
+}
+.order-show-details-heading a {
+  text-decoration: none;
+  color: rgb(43, 130, 130);
+  font-size: 13px;
+  margin-top: -2px;
+}
+
+.order-show-details-heading a:hover {
+  color: rgb(16, 70, 70);
 }
 
 .cuisine-container {
@@ -1289,11 +1305,12 @@ input[type="last_name"] {
   font-family: "Graphik";
 }
 
-.order-show-container h1 {
+.order-show-details-heading h1 {
   font-family: "Graphik";
   font-weight: 600;
   font-size: 29px;
   line-height: 1.32;
+  margin-top: 2%;
 }
 
 .order-show-restaurant-details h1 {
