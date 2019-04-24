@@ -28,9 +28,11 @@ import {
 import { checkoutOrder } from "../actions/order_actions";
 
 const msp = (state, ownProps) => {
+  debugger;
   return {
     ...ownProps,
-    currentOrder: state.currentOrder
+    currentOrder: state.currentOrder,
+    user: state.currentUser
   };
 };
 
@@ -85,17 +87,28 @@ class ShoppingBagDropdown extends React.Component {
   };
 
   renderModal = () => {
+    debugger;
     return (
       <Dialog
+        className="checkout-instructions-modal"
         open={this.state.showModal}
         onClose={this.handleCloseModal}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Checkout</DialogTitle>
+        <DialogTitle id="form-dialog-title">Review and place order</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Delivery Instructions add a tip etc
+            Review address, payments, and tip to complete your purchase
           </DialogContentText>
+          <div className="order-settings-modal">
+            <h5>Your Order Settings</h5>
+            <h6>Delivery, ASAP </h6>
+
+            <p className="user-info-modal">
+              {this.props.user.first_name} {this.props.user.last_name}
+            </p>
+            <p className="user-info-modal">{this.props.user.address}</p>
+          </div>
           <TextField
             autoFocus
             margin="dense"
@@ -106,10 +119,15 @@ class ShoppingBagDropdown extends React.Component {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleCloseModal} color="primary">
+          <Button
+            className="checkout-button-modal"
+            onClick={this.handleCloseModal}
+            color="primary"
+          >
             Cancel
           </Button>
           <Button
+            className="checkout-button-modal"
             onClick={() => {
               this.onCheckout();
               this.handleCloseModal();
@@ -242,7 +260,6 @@ class ShoppingBagDropdown extends React.Component {
             color="primary"
           >
             <i className="fas fa-shopping-bag" />
-            {/* <ShoppingBasketIcon /> */}
           </Badge>
         </IconButton>
 

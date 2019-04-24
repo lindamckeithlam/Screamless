@@ -38,6 +38,7 @@ const styles = theme => ({
 
 class OrderShow extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     const { onFetchOrder, orderId } = this.props;
     onFetchOrder(orderId);
   }
@@ -112,7 +113,7 @@ class OrderShow extends React.Component {
                 <div className="order-show-items">
                   <div className="order-date">
                     <p>Order date {order.order_date}</p>
-                    <p>Order #31620759-4737721</p>
+                    <p>Order #31620759-4737721{order.id}</p>
                   </div>
                   <div className="line" />
                   <Typography component="p">
@@ -133,29 +134,29 @@ class OrderShow extends React.Component {
                 </div>
                 <div className="order-show-total">
                   <li>
-                    <p>Items subtotal: </p>
-                    <p> {`$ ${subtotal}.00`}</p>
+                    <span>Items subtotal: </span>
+                    <span>{`$ ${subtotal}.00`}</span>
                   </li>
                   <li>
-                    <p>Sales tax: </p>
-                    <p> {`$ ${salestax}`}</p>
-                  </li>
-
-                  <li>
-                    <p>Delivery Fee: </p>
-                    <p className="delivery">Free</p>
+                    <span>Sales tax: </span>
+                    <span> {`$ ${salestax}`}</span>
                   </li>
 
                   <li>
-                    <p>Tip: </p>
-                    <p> {`$ ${tip}`}</p>
+                    <span>Delivery Fee: </span>
+                    <span className="delivery">Free</span>
+                  </li>
+
+                  <li>
+                    <span>Tip: </span>
+                    <span>{`$ ${tip}`}</span>
                   </li>
                   <div className="line" />
                 </div>
                 <div className="order-show-total">
                   <li>
-                    <p>Total:</p>
-                    <p> {`$ ${order.total.toFixed(2)}`}</p>
+                    <span>Total:</span>
+                    <span>{`$ ${order.total.toFixed(2)}`}</span>
                   </li>
                 </div>
               </div>

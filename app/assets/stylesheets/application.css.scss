@@ -878,6 +878,34 @@ input[type="last_name"] {
   cursor: pointer;
 }
 
+.checkout-button-modal {
+  color: white;
+  background-color: rgb(43, 130, 130);
+  border: 1px solid rgb(43, 130, 130);
+}
+
+.checkout-button-modal:hover {
+  cursor: pointer;
+  background-color: rgb(16, 70, 70);
+  text-decoration: none;
+}
+
+.checkout-instructions-modal {
+  .user-info-modal {
+    font-size: 14px;
+  }
+  h6 {
+    color: rgb(43, 130, 130);
+    font-weight: 600;
+    font-size: 16px;
+  }
+  h5 {
+    padding: 2% 0%;
+  }
+  .order-settings-modal {
+    padding: 3% 0%;
+  }
+}
 .bag-container {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -1375,16 +1403,19 @@ input[type="last_name"] {
   display: flex;
   justify-content: space-between;
   padding: 0.5% 2%;
+  margin: 2% 0%;
 }
 
-.order-show-total li {
-  display: flex;
-  justify-content: space-between;
+.order-show-total {
+  li {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    font-family: "Graphik";
+  }
 }
 
-.order-show-items li {
-  padding-bottom: 2%;
-}
 .cuisine-links {
   color: black;
   font-size: 13.5px;
@@ -1397,7 +1428,7 @@ input[type="last_name"] {
 }
 
 .line {
-  border-bottom: 2px solid #efefef;
+  border-bottom: 1px solid #efefef;
   width: 95.5%;
   margin: 0 auto;
 }
