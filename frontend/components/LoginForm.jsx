@@ -16,6 +16,7 @@ class LoginForm extends React.Component {
   componentDidMount() {
     this.props.onClear();
   }
+
   handleSubmit = e => {
     e.preventDefault();
 

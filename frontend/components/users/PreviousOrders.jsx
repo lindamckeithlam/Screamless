@@ -39,7 +39,9 @@ class BrowseByCuisine extends React.Component {
         <Row>
           <div className="modal-header-order">Your Orders</div>
         </Row>
-        {this.renderOrders()}
+        <div className="cuisine-container-previous-orders">
+          {this.renderOrders()}
+        </div>
       </Grid>
     );
   }

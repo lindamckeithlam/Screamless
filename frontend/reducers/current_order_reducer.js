@@ -4,13 +4,15 @@ import {
   REMOVE_ALL_ITEMS,
   REMOVE_ITEM
 } from "../actions/restaurant_actions";
+
+import { REORDER_ITEMS } from "../actions/order_actions";
 const initialState = {
   restaurantId: null,
   restaurantName: null,
   items: [],
   delivery_fee: 0,
   delivery_instructions: "",
-  tax: 0,
+  tax: 0.0875,
   tip: 0,
   total: 0,
   subtotal: 0
@@ -33,7 +35,7 @@ const currentOrderReducer = (state = getInitialState(), action) => {
         items: [...state.items, item],
         restaurantId,
         restaurantName,
-        total: state.total + item.price,
+        total: (state.total + item.price) * (1 + state.tax),
         subtotal: state.subtotal + item.price
       };
 
@@ -41,6 +43,28 @@ const currentOrderReducer = (state = getInitialState(), action) => {
       localStorage.setItem("CURRENT_ORDER_STORAGE", JSON.stringify(newState));
 
       return newState;
+
+    case REORDER_ITEMS:
+      // add logic to make sure you cant add items from multiple restaurants
+      // handle multiple quantities of an item
+      debugger;
+      const reorderState = {
+        ...state,
+        items: action.order.items,
+        restaurantId: action.order.restaurantId,
+        restaurantName: action.order.restaurantNames
+        // total: ,
+        // subtotal: ,
+        ///other stuff from order
+      };
+
+      // set current order to localstorage so it persists
+      localStorage.setItem(
+        "CURRENT_ORDER_STORAGE",
+        JSON.stringify(reorderState)
+      );
+
+      return reorderState;
     case REMOVE_ITEM:
       const newItems = [...state.items];
       const idx = newItems.findIndex(item => item.name === action.item.name);

@@ -11,7 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 const styles = {
   card: {
-    maxWidth: 345
+    maxWidth: 345,
+    marginBottom: "5%"
   },
   media: {
     height: 140
@@ -20,7 +21,30 @@ const styles = {
 
 function RestaurantCard(props) {
   const { classes, restaurant } = props;
+  // debugger;
   // onClick = {() => this.props.onFetchRestaurant(restaurant.id).then(props.)
+  let reviews = (
+    <div className="star-ratings">
+      <div
+        className="star-ratings-top"
+        style={{ width: `${(restaurant.rating / 5) * 100}%` }}
+      >
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+      </div>
+      <div className="star-ratings-bottom">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <Link to={`/menu/${restaurant.id}`} className="link-test">
@@ -38,6 +62,10 @@ function RestaurantCard(props) {
               <Typography gutterBottom variant="h5" component="h2">
                 {restaurant.name}
               </Typography>
+              <div className="cuisine-name-rating">
+                <p className="cuisine-name">{restaurant.cuisine_name}</p>{" "}
+                <span>{reviews}</span>
+              </div>
               <Typography component="p">{restaurant.address}</Typography>
             </CardContent>
           </CardActionArea>

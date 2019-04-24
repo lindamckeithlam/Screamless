@@ -45,6 +45,14 @@ class User < ApplicationRecord
     return self.session_token
   end
 
+  def formatted_phone
+    if self.phone_number
+      return "(" + self.phone_number[0..2] + ") " + self.phone_number[3...6] + "-" + self.phone_number[6..-1]
+    else
+      return ""
+    end
+  end
+
   private
 
   def self.find_by_credentials(email, password)

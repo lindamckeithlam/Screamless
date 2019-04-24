@@ -21,7 +21,9 @@ class ProfileContainer extends React.Component {
         {/* Top Nav Bar */}
         <NavBar />
         {/* Browse By Cuisine */}
-        <BrowseByCuisine />
+        <div className="profile-subcontainer">
+          <BrowseByCuisine />
+        </div>
         {/* Previous Orders */}
         <PreviousOrders />
         {/* Restaurant Cards */}

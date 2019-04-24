@@ -35,9 +35,17 @@ const currentUserReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER_ADDRESS:
       return { ...state, address: action.address };
     case RECEIVE_ONE_ORDER:
+      const idx = state.orders.findIndex(o => o.id === action.order.id);
+
+      let orders = [...state.orders];
+      if (idx !== -1) {
+        orders[idx] = action.order;
+      } else {
+        orders.push(action.order);
+      }
       return {
         ...state,
-        orders: [...state.orders, action.order],
+        orders,
         orderId: action.order.id
       };
     case RECEIVE_PREVIOUS_ORDERS:

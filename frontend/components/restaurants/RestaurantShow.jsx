@@ -79,7 +79,7 @@ class RestaurantShow extends React.Component {
               {"                 "}
               <i className="fas fa-phone" />
               {"      "}
-              {this.props.currentRestaurant.phone}
+              {this.props.currentRestaurant.formatted_phone}
             </span>
           </div>
         </div>
@@ -95,9 +95,7 @@ class RestaurantShow extends React.Component {
           <Row>
             <h3 id="about">About {this.props.currentRestaurant.name}</h3>
           </Row>
-          <Row>
-            <div>Restaruant description blah lbah</div>
-          </Row>
+          <Row>{/* <div>Restaruant description blah lbah</div> */}</Row>
           <Row>
             <div>$$$</div>
           </Row>
@@ -114,7 +112,7 @@ class RestaurantShow extends React.Component {
                 <p>
                   <i className="fas fa-phone" />
                   {"      "}
-                  {this.props.currentRestaurant.phone}
+                  {this.props.currentRestaurant.formatted_phone}
                 </p>
                 <div className="restaurant-line" />
               </Row>

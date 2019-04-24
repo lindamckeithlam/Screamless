@@ -34,7 +34,11 @@ class ProfileDropdown extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          {`Hi, ${user && user.first_name}!`}
+          <div className="hi-user">
+            {`Hi, ${user && user.first_name}!    `}
+            {"    "}
+            <i className="fas fa-angle-down" />
+          </div>
         </Button>
         <Menu
           id="fade-menu"

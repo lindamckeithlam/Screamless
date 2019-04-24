@@ -14,6 +14,13 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Button from "react-bootstrap/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+// import { Modal } from "react-bootstrap";
 import {
   removeItemFromBag,
   removeAllItemsFromBag
@@ -56,7 +63,8 @@ const styles = theme => ({
 
 class ShoppingBagDropdown extends React.Component {
   state = {
-    expanded: false
+    expanded: false,
+    showModal: false
   };
 
   closeDrawer = () => {
@@ -66,6 +74,53 @@ class ShoppingBagDropdown extends React.Component {
   onCheckout = () => {
     const { history, onCheckout } = this.props;
     onCheckout(history);
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleShowModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  renderModal = () => {
+    return (
+      <Dialog
+        open={this.state.showModal}
+        onClose={this.handleCloseModal}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Checkout</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Delivery Instructions add a tip etc
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Delivery Instructions"
+            type="email"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleCloseModal} color="primary">
+            Cancel
+          </Button>
+          <Button
+            onClick={() => {
+              this.onCheckout();
+              this.handleCloseModal();
+            }}
+            color="primary"
+          >
+            Checkout
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
   };
 
   renderExpandedBag = () => {
@@ -160,7 +215,7 @@ class ShoppingBagDropdown extends React.Component {
         <div className="checkout-button-container">
           <Button
             className="checkout-button"
-            onClick={this.onCheckout}
+            onClick={this.handleShowModal}
             variant="primary"
             size="lg"
           >
@@ -186,11 +241,13 @@ class ShoppingBagDropdown extends React.Component {
             classes={{ badge: classes.badge }}
             color="primary"
           >
-            <ShoppingBasketIcon />
+            <i className="fas fa-shopping-bag" />
+            {/* <ShoppingBasketIcon /> */}
           </Badge>
         </IconButton>
 
         {this.renderExpandedBag()}
+        {this.renderModal()}
       </div>
     );
   }

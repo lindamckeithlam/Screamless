@@ -40,4 +40,8 @@ class Restaurant < ApplicationRecord
   def review_count
     self.reviews.length
   end
+
+  def formatted_phone
+    return "(" + self.phone[0..2] + ") " + self.phone[3...6] + "-" + self.phone[6..-1]
+  end
 end

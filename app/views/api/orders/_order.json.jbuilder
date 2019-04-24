@@ -1,5 +1,5 @@
 
-json.extract! order, :id
+json.extract! order, :id, :restaurant_name, :items, :restaurant_id, :total
 
 
 

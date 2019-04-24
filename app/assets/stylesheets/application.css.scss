@@ -450,7 +450,7 @@ input[type="last_name"] {
   z-index: 1030;
   display: flex;
   width: 100%;
-  height: 60px;
+  height: 65px;
   color: #2b8282;
   transform: translateZ(0);
   align-items: center;
@@ -461,16 +461,24 @@ input[type="last_name"] {
   padding: 1%;
 }
 
+.fa-angle-down {
+  font-size: 16px;
+}
+
 .MuiButton-label-73 {
-  font-weight: 600;
+  font-weight: 500;
   color: rgb(43, 130, 130);
   font-family: "Graphik";
+  font-size: 14px;
+  line-height: 36px;
   text-transform: none;
+  width: 30%;
 }
 
 .modal-text {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
+  line-height: 36px;
   font-family: "Graphik";
 }
 
@@ -487,15 +495,20 @@ input[type="last_name"] {
   left: 0vw;
   top: 0vw;
 }
+.nav-search-bar {
+  .MuiPaper-elevation1-8 {
+    box-shadow: none;
+  }
+}
 
 .fa-bell {
-  font-size: 30px;
+  font-size: 27px;
   padding-top: 15px;
   color: rgb(43, 130, 130);
   padding: 5px;
 }
 .fa-shopping-bag {
-  font-size: 30px;
+  font-size: 27px;
   padding-top: 15px;
   color: rgb(43, 130, 130);
   padding: 5px;
@@ -516,10 +529,17 @@ input[type="last_name"] {
 
 /* Profile */
 .profile-container {
-  height: 100vh;
+  height: fit-content;
   width: 100vw;
   background-color: #efefef;
   position: absolute;
+}
+
+.profile-subcontainer {
+  height: 45vh;
+  width: 100vw;
+  background-color: white;
+  border-bottom: 1px solid #bebebe;
 }
 
 .seamlesslogo-nav-container img {
@@ -549,6 +569,37 @@ input[type="last_name"] {
   width: 576px;
   min-height: 350px;
 }
+
+.reorder-button {
+  color: #2b8282;
+  background: 0 0;
+  border-color: #2b8282;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.cuisine-container-previous-orders {
+  // display: flex; 
+  width: 100%;
+  // flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.reorder-button:hover {
+  border-color: #123b3b;
+  color: white;
+  background-color: #123b3b;
+}
+.order-card-container:hover {
+  color: #0b2525;
+}
+
+// .reorder-button {
+//   width: 50%;
+//   outline-color: rgb(43, 130, 130) !important;
+//   font-size: 16px;
+//   font-family: "Graphik";
+//   text-align: center;
+// }
 /* 
 .btn:active,
 .active {
@@ -609,7 +660,9 @@ input[type="last_name"] {
   cursor: pointer;
   background-color: rgb(16, 70, 70);
 }
-
+.category-right .modal-header-order {
+  margin-top: 0;
+}
 .modal-header-order {
   font-size: 23.3px;
   line-height: 1.37337;
@@ -702,6 +755,7 @@ input[type="last_name"] {
 
 .category-right {
   width: 75vw;
+  padding: 1.5%;
 }
 
 .category-left h1 {
@@ -971,6 +1025,34 @@ input[type="last_name"] {
   text-shadow: 0px 1px 0 #a2a2a2;
 
   &-top {
+    color: #d4a31bfb;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: block;
+  }
+  &-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+}
+
+.star-ratings {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 17px;
+  height: 30px;
+  width: 100px;
+  // margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+
+  &-top {
     color: #e7711b;
     padding: 0;
     position: absolute;
@@ -1188,6 +1270,92 @@ input[type="last_name"] {
   background-color: #efefef;
 }
 
+.order-show-right {
+  width: 70%;
+}
+.order-show-left {
+  width: 30%;
+  padding: 1%;
+}
+
 .cuisine-container {
   margin-bottom: 40px;
+}
+.cuisine-name {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 14px;
+  margin-top: -11px;
+  margin-bottom: 5px;
+  font-family: "Graphik";
+}
+
+.order-show-container h1 {
+  font-family: "Graphik";
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1.32;
+}
+
+.order-show-restaurant-details h1 {
+  text-align: left;
+}
+
+.order-show-container p {
+  color: black;
+  font-size: 14px;
+  font-family: "Graphik";
+  text-align: left;
+  margin-bottom: 2%;
+}
+
+.order-show-right li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5% 2%;
+}
+
+.order-show-total li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-show-items li {
+  padding-bottom: 2%;
+}
+.cuisine-links {
+  color: black;
+  font-size: 13.5px;
+  text-align: center;
+}
+
+.cuisine-links:hover {
+  text-decoration: none;
+  color: rgb(43, 130, 130);
+}
+
+.line {
+  border-bottom: 2px solid #efefef;
+  width: 95.5%;
+  margin: 0 auto;
+}
+
+.phone-number {
+  color: #0e8a90;
+}
+
+.user-info p {
+  color: rgba(0, 0, 0, 0.507);
+  // padding: 3% 0%;
+}
+.user-payment h3 {
+  font-size: 22px;
+  font-family: "Graphik";
+  font-weight: 500;
+}
+.user-payment {
+  display: flex;
+  padding: 3% 0%;
+}
+.item-names {
+  text-overflow: ellipsis;
 }

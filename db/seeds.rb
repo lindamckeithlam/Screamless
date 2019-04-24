@@ -165,7 +165,7 @@ restaurant_prices = [1, 2, 3, 4, 5]
   Restaurant.create(
     name: Faker::Restaurant.name,
     cuisine_name: cuisine_names.sample,
-    phone: Faker::Number.number(8).to_s,
+    phone: Faker::Number.number(10).to_s,
     address: nyc_addresses[i],
     open_time: open_times.sample,
     close_time: close_times.sample,
