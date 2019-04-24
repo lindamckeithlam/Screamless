@@ -25,4 +25,16 @@ class Order < ApplicationRecord
   belongs_to :restaurant,
              class_name: :Restaurant,
              foreign_key: :restaurant_id
+
+  def order_date
+    time = self.created_at.strftime("%H:%M").split(":")
+    date = self.created_at.strftime("%b %d, %Y")
+    if (time[0].to_i) > 12
+      time[0] = time[0].to_i - 12
+      time = time.join(":")
+      date + " " + time + " PM"
+    else
+      date + " " + time + " AM"
+    end
+  end
 end

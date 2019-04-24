@@ -1276,22 +1276,67 @@ input[type="last_name"] {
   height: 100%;
 }
 
+.order-show-restaurant-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+  font-family: "Graphik";
+  padding: 4% 0%;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.87);
+  h4 {
+    font-weight: 500;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.32;
+  }
+  .phone-number {
+    color: #0e8a90;
+    padding: 2% 0%;
+  }
+}
+
+.order-show-reorder {
+  .reorder-button {
+    background-color: rgb(43, 130, 130);
+    color: white;
+    width: 300px;
+  }
+  .reorder-button:hover {
+    cursor: pointer;
+    background-color: rgb(16, 70, 70);
+  }
+}
+
 .order-show-right {
   width: 70%;
+  .order-date {
+    margin-left: 2%;
+  }
 }
 .order-show-left {
   width: 30%;
   padding: 1%;
 }
-.order-show-details-heading a {
-  text-decoration: none;
-  color: rgb(43, 130, 130);
-  font-size: 13px;
-  margin-top: -2px;
+.order-show-details-heading {
+  h1 {
+    margin-top: 2%;
+  }
+  a {
+    text-decoration: none;
+    color: rgb(43, 130, 130);
+    font-size: 13px;
+  }
 }
 
 .order-show-details-heading a:hover {
   color: rgb(16, 70, 70);
+}
+.order-show-container-bottom {
+  display: flex;
+  margin: 3% 0%;
 }
 
 .cuisine-container {
@@ -1305,24 +1350,25 @@ input[type="last_name"] {
   font-family: "Graphik";
 }
 
-.order-show-details-heading h1 {
+.order-show-container-bottom h1 {
   font-family: "Graphik";
-  font-weight: 600;
-  font-size: 29px;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 1.32;
   margin-top: 2%;
 }
 
-.order-show-restaurant-details h1 {
-  text-align: left;
-}
-
-.order-show-container p {
-  color: black;
-  font-size: 14px;
-  font-family: "Graphik";
-  text-align: left;
-  margin-bottom: 2%;
+.order-show-container {
+  .delivery {
+    color: #0e8a90;
+  }
+  p {
+    color: black;
+    font-size: 14px;
+    font-family: "Graphik";
+    text-align: left;
+    margin-bottom: 2%;
+  }
 }
 
 .order-show-right li {
@@ -1354,10 +1400,6 @@ input[type="last_name"] {
   border-bottom: 2px solid #efefef;
   width: 95.5%;
   margin: 0 auto;
-}
-
-.phone-number {
-  color: #0e8a90;
 }
 
 .user-info p {
