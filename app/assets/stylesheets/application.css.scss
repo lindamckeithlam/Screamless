@@ -466,6 +466,12 @@ input[type="last_name"] {
   font-size: 16px;
 }
 
+.fa-close {
+  font-size: 30px;
+  color: rgb(16, 70, 70);
+  padding: 3%;
+}
+
 .MuiButton-label-73 {
   font-weight: 500;
   color: rgb(43, 130, 130);
@@ -1448,4 +1454,55 @@ input[type="last_name"] {
 }
 .item-names {
   text-overflow: ellipsis;
+}
+.review-modal {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  textarea {
+    width: 400px;
+    height: 90px;
+    font-family: "Graphik";
+    outline-color: rgb(43, 130, 130);
+    border-radius: 3px;
+  }
+  overflow-wrap: break-word;
+}
+.review-button-modal {
+  color: white;
+  background-color: rgb(43, 130, 130);
+  border: 1px solid rgb(43, 130, 130);
+  margin: 2%;
+  // overflow-wrap: break-word;
+}
+
+.review-button-modal:hover {
+  cursor: pointer;
+  background-color: rgb(16, 70, 70);
+  text-decoration: none;
+}
+
+.order-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color: #888;
+}
+.order-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  color: "orange";
+}
+.order-rating-top > span:hover:before,
+span:focus:before,
+.order-rating-top > span:hover ~ span:before {
+  content: "\2605";
+  color: #d4651bfb;
+  position: absolute;
+}
+
+.order-rating-top {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color: #d4651bfb;
 }

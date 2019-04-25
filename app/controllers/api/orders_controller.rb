@@ -13,7 +13,6 @@ class Api::OrdersController < ApplicationController
     @restaurant = @order.restaurant
     @user = @order.user
 
-    # @ordered_from = Restaurant.find_by(id: params[:restaurant_id])
     if @order
       render :show
       # render json: @order, status: 200

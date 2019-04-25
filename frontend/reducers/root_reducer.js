@@ -8,6 +8,7 @@ import currentOrderReducer from "./current_order_reducer";
 import sessionErrorsReducer from "./session_error_reducer";
 import filterReducer from "./filter_reducer";
 import uiReducer from "./ui_reducer";
+import reviewsReducer from "./reviews_reducer";
 
 export default combineReducers({
   // entities: entitiesReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   restaurants: restaurantReducer,
   currentOrder: currentOrderReducer,
   cuisines: cuisineReducer,
-  filters: filterReducer
+  filters: filterReducer,
+  reviews: reviewsReducer
 });

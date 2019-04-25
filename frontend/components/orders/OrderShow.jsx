@@ -7,10 +7,18 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "react-bootstrap/Button";
 import { fetchRestaurant } from "../../actions/restaurant_actions";
+import { createReview } from "../../actions/review_actions";
+import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
+import Drawer from "@material-ui/core/Drawer";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const msp = (state, ownProps) => {
   const orderId = Number(ownProps.match.params.order_id);
-  // state.orders[ownProps.match.params.order_id]
 
   return {
     ...ownProps,
@@ -22,7 +30,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   onFetchOrder: id => dispatch(fetchOrder(id)),
-  onReorder: order => dispatch(reorderItems(order))
+  onReorder: order => dispatch(reorderItems(order)),
+  onPostReview: review => dispatch(createReview(review))
 });
 
 const styles = theme => ({
@@ -32,16 +41,150 @@ const styles = theme => ({
     margin: "30px auto",
     height: 1000,
     width: 800
-    // display: "flex"
+  },
+  badge: {
+    width: "150px",
+    top: "50%",
+    backgroundColor: "#ff9100",
+    border: "2px solid #ff9100",
+    color: "white"
+  },
+  list: {
+    width: 380
+  },
+  drawer: {
+    top: "60px"
+  },
+  dialog: {
+    width: 1000,
+    height: 600,
+    margin: "20px auto"
   }
 });
 
 class OrderShow extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
-    const { onFetchOrder, orderId } = this.props;
+    const { onFetchOrder, orderId, onPostReview } = this.props;
     onFetchOrder(orderId);
   }
+
+  state = {
+    expanded: false,
+    showModal: false,
+    body: "",
+    rating: 4,
+    restaurant_id: this.restaurantId
+  };
+  success = false;
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleShowModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  onCreateReview = (restaurant_id, reviewer_id) => {
+    this.props
+      .onPostReview({
+        body: this.state.body,
+        rating: this.state.rating,
+        restaurant_id: restaurant_id,
+        reviewer_id: reviewer_id
+      })
+      .then(location.reload());
+  };
+
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({ body: e.target.value });
+  };
+
+  renderModal = () => {
+    const { classes } = this.props;
+    return (
+      <Dialog
+        className={classes.dialog}
+        open={this.state.showModal}
+        onClose={this.handleCloseModal}
+        aria-labelledby="form-dialog-title"
+      >
+        <i className="fa fa-close" onClick={this.handleCloseModal} />
+
+        <DialogTitle id="form-dialog-title">
+          Rate and Review {this.props.order.restaurantName}
+        </DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            <div class="order-rating">
+              <div
+                class="order-rating-top"
+                // style={{ width: `${this.state.rating / 5 / 100}%` }}
+              >
+                <span id="1" onClick={() => this.setState({ rating: 1 })}>
+                  ☆
+                </span>
+                <span id="2" onClick={() => this.setState({ rating: 2 })}>
+                  ☆
+                </span>
+                <span id="3" onClick={() => this.setState({ rating: 3 })}>
+                  ☆
+                </span>
+                <span id="4" onClick={() => this.setState({ rating: 4 })}>
+                  ☆
+                </span>
+                <span id="5" onClick={() => this.setState({ rating: 5 })}>
+                  ☆
+                </span>
+              </div>
+            </div>
+            {/* Review address, payments, and tip to complete your purchase */}
+          </DialogContentText>
+          <div className="review-modal">
+            <label>Write a Review</label>
+            <textarea
+              wrap="hard"
+              type="text"
+              value={this.state.body}
+              onChange={this.handleChange}
+              placeholder="Writing a review gets you one step closer to earning Top Reviewer status. 
+              Tell us what you loved about this order"
+            />
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            className="review-button-modal"
+            onClick={this.handleCloseModal}
+            color="primary"
+          >
+            Cancel
+          </Button>
+          <Button
+            className="review-button-modal"
+            onClick={() => {
+              this.onCreateReview(
+                this.props.order.restaurant_id,
+                this.props.user.id
+              );
+              this.handleCloseModal();
+            }}
+            color="primary"
+          >
+            Submit your Rating & Review
+          </Button>
+        </DialogActions>
+        <DialogContent />
+      </Dialog>
+    );
+  };
+
+  closeDrawer = () => {
+    this.setState({ expanded: false });
+  };
 
   render() {
     const { classes, order, user } = this.props;
@@ -58,7 +201,7 @@ class OrderShow extends React.Component {
     ).toLocaleTimeString();
     let currentTime = date.slice(0, date.length - 6) + date.split(" ")[1];
     let futureTime = date2.slice(0, date2.length - 6) + date2.split(" ")[1];
-
+    debugger;
     return (
       <div className="order-show-details-heading">
         <h1>Order Details</h1>
@@ -70,6 +213,32 @@ class OrderShow extends React.Component {
                 <p>Ordered From</p>
                 <h1>{order.restaurantName}</h1>
                 <p>Estimated delivery</p>
+
+                <div>
+                  <IconButton
+                    style={{
+                      width: "150px",
+                      borderRadius: "8px",
+                      backgroundColor: "#ff9100"
+                    }}
+                    onClick={() =>
+                      this.setState({ expanded: !this.state.expanded })
+                    }
+                    aria-label="shopping-cart"
+                    className={classes.margin}
+                  >
+                    <Badge
+                      badgeContent={"Leave a review"}
+                      classes={{ badge: classes.badge }}
+                      color="secondary"
+                      onClick={this.handleShowModal}
+                    />
+                  </IconButton>
+
+                  {/* {this.renderExpandedBag()} */}
+                  {this.renderModal()}
+                </div>
+
                 <h4>{`${currentTime} - ${futureTime}`} </h4>
               </div>
               <div className="order-show-reorder">
@@ -102,7 +271,7 @@ class OrderShow extends React.Component {
                     <div className="line" />
                     <div className="user-payment">
                       <p>Payment Method Credit Card</p>
-                      {/* <p>Credit Card</p> */}
+
                       <h3>{`$${order.total.toFixed(2)}`}</h3>
                     </div>
                   </div>
