@@ -70,10 +70,12 @@ class NavBarModal extends React.Component {
 
           <div className="modal-address">{`${orderType} Address`}</div>
           <ModalSearch
+            className="nav-search-bar"
             onSaveAddress={onSaveAddress}
             id={this.props.user.id}
             onCloseModal={hideModal}
             placeholder="Enter your address"
+            style={{ outline: "none" }}
           />
         </div>
       </div>

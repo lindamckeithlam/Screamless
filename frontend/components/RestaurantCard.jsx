@@ -21,8 +21,7 @@ const styles = {
 
 function RestaurantCard(props) {
   const { classes, restaurant } = props;
-  // debugger;
-  // onClick = {() => this.props.onFetchRestaurant(restaurant.id).then(props.)
+
   let reviews = (
     <div className="star-ratings">
       <div

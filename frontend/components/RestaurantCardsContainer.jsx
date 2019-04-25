@@ -69,7 +69,7 @@ class RestaurantCardsContainer extends React.Component {
 
     return (
       <>
-        <Grid className="cuisine-container">
+        <Grid className="cuisine-container-2">
           <Row>{/* <div className="modal-header-order" /> */}</Row>
           {/* {most_popular} */}
           {this.renderRestaurants()}

@@ -47,7 +47,7 @@ const currentOrderReducer = (state = getInitialState(), action) => {
     case REORDER_ITEMS:
       // add logic to make sure you cant add items from multiple restaurants
       // handle multiple quantities of an item
-      debugger;
+
       const reorderState = {
         ...state,
         items: action.order.items,

@@ -5,16 +5,21 @@ class GoogleMap extends React.Component {
     super(props);
 
     this.state = {
-      lat: this.props.lat || 40.755408,
-      lng: this.props.lng || -73.34831
+      lat: this.props.lat || 40.7638,
+      lng: this.props.lng || -73.9918181
     };
   }
 
   componentDidMount() {
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 14,
+      zoom: 15,
       center: this.state
     });
+    // map.setCenter(this.state);
+    // var marker = new google.maps.Marker({
+    //   map: map,
+    //   position: this.state.geometry.location
+    // });
   }
 
   componentDidUpdate() {
@@ -24,11 +29,10 @@ class GoogleMap extends React.Component {
     });
 
     const geocoder = new google.maps.Geocoder();
-    const currentAddress =
-      document.getElementById("location_search").value || this.props.address;
+    const currentAddress = this.props.address;
 
     const options = {
-      types: ["(cities)"]
+      componentRestrictions: { country: "usa" }
     };
 
     const autocomplete = new google.maps.places.Autocomplete(
@@ -47,7 +51,7 @@ class GoogleMap extends React.Component {
   }
 
   render() {
-    return <div id="map" />;
+    return <div className="map" id="map" />;
   }
 }
 

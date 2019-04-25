@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
@@ -7,7 +8,11 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import DirectionsIcon from "@material-ui/icons/Directions";
-import { useEffect } from "react";
+import InputAutosuggest from "./InputAutosuggest";
+import uniq from "lodash/uniq";
+import { connect } from "react-redux";
+import { fetchRestaurants } from "../actions/restaurant_actions";
+import { filterByCuisine } from "../actions/filter_actions";
 
 const styles = {
   root: {
@@ -33,59 +38,151 @@ const styles = {
   }
 };
 
-function SplashSearch(props) {
-  const { classes, placeholder } = props;
-  const [address, setAddress] = useState("");
-  // const geocoder = new google.maps.Geocoder();
-  // const address = document.getElementById('location_search').value;
+function mapRestaurants(restaurants) {
+  return restaurants.map(r => ({
+    value: r.id,
+    label: r.name,
+    group: "restaurant"
+  }));
+}
 
-  // useEffect(() => {
-  //   function activateAutocomplete() {
-  //     const input = document.getElementById("location_search");
-  //     const options = {
-  //       types: ["(cities)"],
-  //       componentRestrictions: { country: "usa" }
-  //     };
-  //     const autocomplete = new google.maps.places.Autocomplete(input, options);
-  //     autocomplete.getPlace();
-  //   }
-  // }, []);
+function mapCuisines(cuisines) {
+  return cuisines.map(c => ({
+    value: c,
+    label: c,
+    group: "cuisine"
+  }));
+}
 
-  // geocoder.geocode({ 'address': address }, (results, status) => {
-  //   if (status == 'OK') {
-  //     //logic here
-  //   } else {
-  //     //logic here
-  //   }
-  // })
-  return (
-    <Paper className={classes.root} elevation={1}>
-      <IconButton className={classes.iconButton} aria-label="Search">
-        <SearchIcon />
-      </IconButton>
-      <InputBase
-        className={classes.input}
-        value={address}
-        onChange={e => setAddress(e.target.value)}
-        placeholder={placeholder}
-        id="location_search"
-      />
+const msp = state => {
+  const restaurants = state.restaurants.restaurants;
+  const cuisines = uniq(restaurants.map(r => r.cuisine_name));
 
-      <Divider className={classes.divider} />
-      <IconButton
-        color="primary"
-        className={classes.iconButton}
-        aria-label="Directions"
-        onClick={() => console.log(`im clicked!! address is ${address}`)}
-      >
-        <DirectionsIcon />
-      </IconButton>
-    </Paper>
-  );
+  return {
+    restaurants: mapRestaurants(restaurants),
+    cuisines: mapCuisines(cuisines)
+  };
+};
+
+const mdp = dispatch => ({
+  onFilterCuisine: cuisine => dispatch(filterByCuisine(cuisine)),
+  onFetchRestaurants: () => dispatch(fetchRestaurants())
+});
+
+class SplashSearch extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.searchRef = React.createRef();
+  }
+
+  componentDidMount() {
+    const { restaurants, onFetchRestaurants } = this.props;
+    // Search on enter
+    window.addEventListener("keypress", e => {
+      var key = e.which || e.keyCode;
+      key === 13 && this.onClickSearch();
+    });
+
+    if (!restaurants.length) {
+      onFetchRestaurants();
+    }
+  }
+
+  onClickSearch = () => {
+    const search = this.searchRef;
+    const suggestions = search.state.suggestions;
+
+    if (!suggestions.length) {
+      this.props.history.push("/browse");
+    }
+
+    return this.handleClick(search.state.suggestions[0].options[0]);
+  };
+
+  handleClick = e => {
+    if (e.group === "restaurant") {
+      this.onClickRestaurant(e.value);
+    } else {
+      this.onClickCuisine(e.value);
+    }
+  };
+
+  onClickRestaurant = id => {
+    this.props.history.push(`/menu/${id}`);
+  };
+
+  onClickCuisine = cuisine => {
+    this.props.history.push("/browse");
+    this.props.onFilterCuisine(cuisine);
+  };
+
+  onSearch = () => {
+    console.log(`im clicked!! search is ${this.state.search}`);
+  };
+
+  getOptions = () => {
+    const { restaurants, cuisines } = this.props;
+  };
+
+  render() {
+    const { classes, placeholder, restaurants, cuisines } = this.props;
+    const options = [
+      { title: "Restaurants", options: restaurants },
+      { title: "Cuisines", options: cuisines }
+    ];
+
+    return (
+      <Paper className={classes.root} elevation={1}>
+        <IconButton className={classes.iconButton} aria-label="Search">
+          <SearchIcon />
+        </IconButton>
+
+        <InputAutosuggest
+          innerRef={node => (this.searchRef = node)}
+          handleClick={this.handleClick}
+          placeholder={placeholder}
+          options={options}
+        />
+      </Paper>
+    );
+  }
 }
 
 SplashSearch.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SplashSearch);
+const SplashSearchContainer = withRouter(
+  connect(
+    msp,
+    mdp
+  )(SplashSearch)
+);
+
+export default withStyles(styles)(SplashSearchContainer);
+
+// return (
+//   <Paper className={classes.root} elevation={1}>
+//     <IconButton className={classes.iconButton} aria-label="Search">
+//       <SearchIcon />
+//     </IconButton>
+
+//     <InputBase
+//       className={classes.input}
+//       value={this.state.search}
+//       onChange={e => this.setState({ search: e.target.value })}
+//       placeholder={placeholder}
+//     />
+
+//     <Divider className={classes.divider} />
+//     <IconButton
+//       color="primary"
+//       className={classes.iconButton}
+//       aria-label="Directions"
+//       onClick={this.onSearch}
+//     >
+//       <DirectionsIcon />
+//     </IconButton>
+//   </Paper>
+// );

@@ -52,7 +52,7 @@ class Splash extends React.Component {
                   <h1 className="splash-header">delivered</h1>
                 </div>
                 <form>
-                  <SplashSearch placeholder="Enter a delivery address" />
+                  <SplashSearch placeholder="Pizza, sushi, chinese" />
                 </form>
               </div>
             </div>

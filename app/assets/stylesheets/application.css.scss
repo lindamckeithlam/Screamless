@@ -14,8 +14,9 @@
 -*= require_self
  */
 @import "react-multi-carousel/lib/styles.css";
-#map {
+.map {
   width: 100%;
+  margin: 0% 1%;
   height: 250px;
 }
 
@@ -500,6 +501,9 @@ input[type="last_name"] {
     box-shadow: none;
   }
 }
+.suggestionsList:hover {
+  cursor: pointer;
+}
 
 .fa-bell {
   font-size: 27px;
@@ -536,7 +540,7 @@ input[type="last_name"] {
 }
 
 .profile-subcontainer {
-  height: 45vh;
+  height: fit-content;
   width: 100vw;
   background-color: white;
   border-bottom: 1px solid #bebebe;
@@ -593,42 +597,13 @@ input[type="last_name"] {
   color: #0b2525;
 }
 
-// .reorder-button {
-//   width: 50%;
-//   outline-color: rgb(43, 130, 130) !important;
-//   font-size: 16px;
-//   font-family: "Graphik";
-//   text-align: center;
-// }
-/* 
-.btn:active,
-.active {
-  color: white !important;
-  background-color: rgb(43, 130, 130) !important;
-  border-color: rgb(43, 130, 130) !important;
-} */
-
-/* .btn-group-toggle > .btn,
-.btn-group-toggle > .btn-group > .btn {
-  margin-bottom: 0;
-  background-color: white;
-  color: rgb(43, 130, 130);
-  border-color: white;
-}
-
-.btn:hover {
-  background-color: rgb(16, 70, 70);
-  outline: 0;
-  border: none;
-  padding: 9.5px;
-} */
-
 .toggle-button-modal {
   width: 265px;
   padding: 10px 15px;
   background-color: white !important;
   border-color: rgba(0, 0, 0, 0.2) !important;
   color: #2b8282 !important;
+  box-shadow: none;
 }
 
 .toggle-button-modal:hover {
@@ -636,6 +611,7 @@ input[type="last_name"] {
   padding: 10px 15px;
   background-color: #1e5c5c;
   color: white;
+  box-shadow: none;
 }
 
 .toggle-button-modal-selected {
@@ -645,20 +621,24 @@ input[type="last_name"] {
   padding: 10px 15px;
   background-color: rgb(16, 70, 70) !important;
   border-color: rgb(16, 70, 70) !important;
+  box-shadow: none;
 }
 
-.toggle-button-modal-selected:hover {
+.toggle-button-modal-selected:hover,
+.toggle-button-modal-selected:focus {
   color: white;
   width: 265px;
   padding: 10px 15px;
   background-color: rgb(16, 70, 70);
   border-color: rgb(16, 70, 70);
+  box-shadow: none;
 }
 
 .toggle-button-modal:hover,
 .toggle-button-modal-selected:hover {
   cursor: pointer;
   background-color: rgb(16, 70, 70);
+  box-shadow: none;
 }
 .category-right .modal-header-order {
   margin-top: 0;
@@ -756,6 +736,9 @@ input[type="last_name"] {
 .category-right {
   width: 75vw;
   padding: 1.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .category-left h1 {
@@ -1178,6 +1161,21 @@ input[type="last_name"] {
   max-width: 90px;
   object-fit: cover;
 }
+.restaurant-rows:hover {
+  background-color: rgba(128, 128, 128, 0.185);
+  text-decoration: none;
+}
+
+.restaurant-row-name {
+  color: rgb(43, 130, 130);
+  font-family: "Graphik";
+  font-weight: 500;
+}
+.restaurant-row-cuisine-name {
+  color: #8f8e8e;
+  font-size: 14px;
+  font-family: "Graphik";
+}
 .user-profile-container {
   display: flex;
   height: 90vh;
@@ -1369,7 +1367,9 @@ input[type="last_name"] {
 
 .cuisine-container {
   margin-bottom: 40px;
+  padding-top: 20px;
 }
+
 .cuisine-name {
   color: rgba(0, 0, 0, 0.55);
   font-size: 14px;

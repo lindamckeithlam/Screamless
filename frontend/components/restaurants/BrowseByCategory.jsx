@@ -166,9 +166,9 @@ class BrowseByCategory extends React.Component {
                   </div>
                 </div>
               </div>
-              <h3>Price</h3>
+              {/* <h3>Price</h3> */}
 
-              <div className="rating-box">
+              {/* <div className="rating-box">
                 <div className="clickable" onClick={() => this.filterPrice(1)}>
                   <i className="fas fa-dollar-sign" />
                 </div>
@@ -205,7 +205,7 @@ class BrowseByCategory extends React.Component {
                   <i className="fas fa-dollar-sign" />
                   <i className="fas fa-dollar-sign" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="category-right">

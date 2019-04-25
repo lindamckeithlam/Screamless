@@ -17,42 +17,74 @@ class RestaurantBrowseRow extends React.Component {
     let restaurantIndex = <div />;
     if (this.props.restaurants !== undefined) {
       restaurantIndex = this.props.restaurants.map((r, idx) => (
-        <Row
-          key={r.name + idx.toString()}
-          style={{ padding: "10px", cursor: "pointer" }}
-          onClick={this.clickRestaurantRow}
-        >
-          <Col xs={2}>
-            {/* Image of Restaurant */}
-            <Link to={`menu/${r.id}`}>
-              <img className="restaurant-row-img" src={r.img_url} />
-            </Link>
-          </Col>
-          <Col xs>
-            <Row>
-              {/* Name */}
-              <div>{r.name}</div>
+        <div className="restaurant-rows">
+          <Link className="restaurant-rows" to={`/menu/${r.id}`}>
+            <Row
+              key={r.name + idx.toString()}
+              style={{
+                padding: "2% 0%",
+                cursor: "pointer"
+              }}
+              onClick={this.clickRestaurantRow}
+            >
+              <Col xs={2}>
+                {/* Image of Restaurant */}
+
+                <img className="restaurant-row-img" src={r.img_url} />
+              </Col>
+              <Col xs>
+                <Row>
+                  {/* Name */}
+                  <div className="restaurant-row-name">{r.name}</div>
+                </Row>
+                <Row>
+                  {/* Category */}
+                  <div className="restaurant-row-cuisine-name">
+                    {r.cuisine_name}
+                  </div>
+                </Row>
+              </Col>
+              <Col xs>
+                <Row>
+                  {/* Rating Stars */}
+                  <div className="star-ratings">
+                    <div
+                      className="star-ratings-top"
+                      style={{ width: `${(r.rating / 5) * 100}%` }}
+                    >
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                    </div>
+                    <div className="star-ratings-bottom">
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                      <span>★</span>
+                    </div>
+                  </div>
+                  {/* <div>{`${r.rating.toFixed(2)} stars`}</div> */}
+                </Row>
+                <Row>
+                  {/* # of Ratings */}
+                  <div className="restaurant-row-cuisine-name">
+                    {" "}
+                    {r.review_count} ratings
+                  </div>
+                </Row>
+              </Col>
+              <Col xs>
+                {/* Price */}
+                <div className="restaurant-row-cuisine-name">
+                  {this.renderPrice(r.price)}
+                </div>
+              </Col>
             </Row>
-            <Row>
-              {/* Category */}
-              <div>{r.cuisine_name}</div>
-            </Row>
-          </Col>
-          <Col xs>
-            <Row>
-              {/* Rating Stars */}
-              <div>{`${r.rating.toFixed(2)} stars`}</div>
-            </Row>
-            <Row>
-              {/* # of Ratings */}
-              <div> {r.review_count} ratings</div>
-            </Row>
-          </Col>
-          <Col xs>
-            {/* Price */}
-            <div>{this.renderPrice(r.price)}</div>
-          </Col>
-        </Row>
+          </Link>
+        </div>
       ));
     }
 

@@ -58,7 +58,6 @@ class OrderShow extends React.Component {
     ).toLocaleTimeString();
     let currentTime = date.slice(0, date.length - 6) + date.split(" ")[1];
     let futureTime = date2.slice(0, date2.length - 6) + date2.split(" ")[1];
-    // debugger;
 
     return (
       <div className="order-show-details-heading">

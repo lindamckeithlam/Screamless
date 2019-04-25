@@ -62,7 +62,12 @@ class NavBar extends React.Component {
           </div>
         </Link>
         <div
-          style={{ cursor: "pointer" }}
+          style={{
+            cursor: "pointer",
+            width: "300px",
+            display: "flex",
+            justifyContent: "space-around"
+          }}
           onClick={() => this.setState({ showModal: !showModal })}
         >
           {/* Dymanically change the words Delivery/Pickup and Enter and Address/USER_ADDRESS with app props */}

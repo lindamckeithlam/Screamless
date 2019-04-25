@@ -8,19 +8,22 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import DirectionsIcon from "@material-ui/icons/Directions";
 import { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 const styles = {
   root: {
     padding: "2px 4px",
     display: "flex",
     alignItems: "center",
-    width: 400
+    width: "100%"
   },
   input: {
     marginLeft: 8,
     flex: 1
   },
   iconButton: {
-    padding: 10
+    padding: 10,
+    color: "rgb(42,130,130)",
+    fontSize: "29px"
   },
   divider: {
     width: 1,
@@ -50,6 +53,7 @@ function ModalSearch(props) {
   function saveAddress() {
     props.onSaveAddress(id, address);
     props.onCloseModal();
+    props.history.push("/browse");
   }
   return (
     <Paper className={classes.root} elevation={1}>
@@ -81,4 +85,4 @@ ModalSearch.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ModalSearch);
+export default withRouter(withStyles(styles)(ModalSearch));

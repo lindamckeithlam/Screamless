@@ -116,17 +116,26 @@ images = ["https://s3.us-east-2.amazonaws.com/screamless-seed/resbanner.jpg",
 
 cuisine_images = ["https://twtx.co/wp-content/uploads/2017/07/Ritas-Enchiladas-1600x800.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/vietnam%20pho-2.jpg",
-                  "https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Hanoi%20Pho-09.jpg",
-                  "https://vietnam.travel/sites/default/files/inline-images/mekong%20delta%20restaurants-14.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2019/03/04141012/lime-roasted-salmon-skillet-square-500x500.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2019/03/04145803/opener-wide.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/top-vietnamese-dishes-2_2.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Food-7.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-12.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18145209/fc78me043-01-main.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Hue-19.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-5.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18123709/051130038-01-yakitori-chicken-kebab-recipe-main.jpg",
                   "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-6.jpg",
-                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes.jpg",
-                  "https://vietnam.travel/sites/default/files/inline-images/Must%20try%20Vietnamese%20Dishes-3.jpg",
-                  "https://assets.epicurious.com/photos/57978b27c9298e54495917d5/6:4/w_620%2Ch_413/black-bean-and-vegetable-burritos.jpg"]
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18172720/051101053-01-pomegranate-balsamic-carrots-recipe-main.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18173859/051091065_01-main.jpg",
+                  "https://assets.epicurious.com/photos/57978b27c9298e54495917d5/6:4/w_620%2Ch_413/black-bean-and-vegetable-burritos.jpg",
+                  "https://spicysouthernkitchen.com/wp-content/uploads/mexican-cobb-salad-9.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18184727/051123075-01-korean-bbq-chicken-main.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18123900/051128069-01-matzo-ball-soup-recipe-main.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18234746/051102025-02-smoked-salmon-deviled-eggs-recipe-thumb1x1.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2018/01/03133110/65_ChashuRamen_WIDE.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18182933/fc59is016-01-main.jpg",
+                  "https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18173927/051091055_01-main.jpg"]
 
 cuisine_names = ["Vietnamese",
                  "Ramen",
@@ -142,7 +151,7 @@ cuisine_names = ["Vietnamese",
                  "Japanese",
                  "American (New)",
                  "Thai",
-                 "Bar",
+                 "Pizza",
                  "Korean",
                  "Vegan",
                  "Burgers",
@@ -151,9 +160,10 @@ cuisine_names = ["Vietnamese",
                  "Asian",
                  "Indian",
                  "Bakery"]
-
+i = 0
 cuisine_names.each do |cuisine|
-  Cuisine.create(cuisine_name: cuisine, img_url: cuisine_images.sample)
+  Cuisine.create(cuisine_name: cuisine, img_url: cuisine_images[i])
+  i += 1
 end
 
 i = 0
@@ -161,7 +171,7 @@ i = 0
 open_times = [7, 8, 9, 10, 11, 12]
 close_times = [20, 21, 22, 23, 24]
 restaurant_prices = [1, 2, 3, 4, 5]
-50.times do
+53.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
     cuisine_name: cuisine_names.sample,
@@ -181,7 +191,7 @@ ratings = [1, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5, 5]
 prices = [15.00, 15.99, 10.99, 8.99, 11.99, 20.00, 18.99, 12.99, 13.99, 7.99, 6.99, 14.99]
 
 i = 0
-50.times do
+52.times do
   Review.create(
     restaurant_id: restaurant_ids[i],
     reviewer_id: user_ids[i],
