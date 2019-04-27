@@ -70,7 +70,7 @@
   position: relative;
   left: 35%;
   width: 50%;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 1.5vw;
 }
 
@@ -101,7 +101,7 @@
 .splash-bottom2 p,
 .splash-bottom3 p {
   text-align: center;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 14px;
 }
 
@@ -109,7 +109,7 @@
 .splash-bottom2 h4,
 .splash-bottom3 h4 {
   text-align: center;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 18px;
   font-weight: 600;
   padding-bottom: 5%;
@@ -119,7 +119,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 .splash-delivery-left {
   width: 50%;
@@ -148,7 +148,7 @@
   display: flex;
   padding: 4%;
   align-items: center;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .about-left {
@@ -173,7 +173,7 @@
 }
 
 .special-offers-container {
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   background-color: #0e8a90;
   display: flex;
   padding: 4%;
@@ -227,14 +227,14 @@
 
 @font-face {
   font-family: "Eesti";
-  src: url("../fonts/Eesti.ttf");
+  src: font-url("../fonts/Eesti.ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Graphik";
-  src: url("../fonts/Graphik.ttf");
+  src: font-url("../fonts/Graphik-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -275,7 +275,7 @@
 }
 
 .toprated-text {
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   color: black;
   font-weight: 700;
   background-color: rgba(255, 255, 255, 0.637);
@@ -302,7 +302,7 @@
   margin-top: 100px;
   padding: 23px;
   background-color: white;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 14px;
 }
 
@@ -359,7 +359,7 @@ input[type="password"] {
 .signin-header {
   font-size: 21px;
   font-weight: bold;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   padding: 0px;
   padding-bottom: 20px;
   margin-right: 0;
@@ -385,7 +385,7 @@ input[type="last_name"] {
 
 .signup-header {
   font-weight: bold;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   padding: 0px;
   padding-bottom: 20px;
   margin-right: 0;
@@ -397,7 +397,7 @@ input[type="last_name"] {
   font-weight: bold;
   font-size: 14px;
   line-height: 1.595;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   background: rgb(43, 130, 130);
   border-color: rgb(43, 130, 130) 7;
   width: 100%;
@@ -482,7 +482,7 @@ input[type="last_name"] {
 .MuiButton-label-73 {
   font-weight: 500;
   color: rgb(43, 130, 130);
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 14px;
   line-height: 36px;
   text-transform: none;
@@ -493,7 +493,7 @@ input[type="last_name"] {
   font-weight: 500;
   font-size: 14px;
   line-height: 36px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .modal-between {
@@ -664,7 +664,7 @@ input[type="last_name"] {
   margin-bottom: 10px;
   margin-top: 22px;
   border-bottom: none;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 .modal-header-order-explore {
   font-size: 23.3px;
@@ -675,7 +675,7 @@ input[type="last_name"] {
   margin-top: 22px;
   margin-left: 4.4%;
   border-bottom: none;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .modal-address {
@@ -706,7 +706,7 @@ input[type="last_name"] {
   display: flex;
   justify-content: space-between;
   color: #fff;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   line-height: inherit;
   padding: 48px 16px;
 }
@@ -737,7 +737,7 @@ input[type="last_name"] {
 
 .category-container {
   display: flex;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .category-left {
@@ -802,7 +802,7 @@ input[type="last_name"] {
   display: none;
   z-index: 9;
   width: 100%;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 #panel .fa-angle-up {
   position: absolute;
@@ -975,12 +975,12 @@ input[type="last_name"] {
 
 .restaurant-info span {
   font-size: 16px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .restaurant-info h1 {
   font-weight: 600;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 30.8px;
   line-height: 1.243;
 }
@@ -998,7 +998,7 @@ input[type="last_name"] {
 
 .restaurant-showpage-container h3 {
   font-weight: 600;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 22px;
   line-height: 1.40395;
 }
@@ -1097,7 +1097,7 @@ input[type="last_name"] {
 
 .review-container {
   font-size: 14px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   // margin: 0 7.9%;
 }
 
@@ -1113,7 +1113,7 @@ input[type="last_name"] {
   padding: 1% 1.5%;
   color: white;
   margin-bottom: 2%;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-weight: 600;
 }
 
@@ -1123,11 +1123,11 @@ input[type="last_name"] {
   margin: 0 7.9%;
   flex-direction: column;
   font-size: 14px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 .menu-item-container h2 {
   font-weight: 600;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 22px;
   line-height: 1.40395;
   margin: 1%;
@@ -1230,18 +1230,18 @@ input[type="last_name"] {
 
 .restaurant-row-name {
   color: rgb(43, 130, 130);
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-weight: 500;
 }
 .restaurant-row-cuisine-name {
   color: #8f8e8e;
   font-size: 14px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 .user-profile-container {
   display: flex;
   height: 90vh;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   margin-left: 2.3%;
 }
 
@@ -1260,7 +1260,7 @@ input[type="last_name"] {
   margin-bottom: 10px;
   margin-top: 22px;
   border-bottom: none;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .user-profile-left li {
@@ -1298,18 +1298,18 @@ input[type="last_name"] {
 
 .card-body h5 {
   padding-bottom: 2%;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-weight: 500;
 }
 
 .card-body p {
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   padding-bottom: 2%;
   font-size: 14px;
   line-height: 1.6;
 }
 .card-body h6 {
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   padding-bottom: 2%;
@@ -1368,7 +1368,7 @@ input[type="last_name"] {
   display: flex;
   justify-content: space-between;
   margin: 1%;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   padding: 4% 0%;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.87);
@@ -1437,11 +1437,11 @@ input[type="last_name"] {
   font-size: 14px;
   margin-top: -11px;
   margin-bottom: 5px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
 }
 
 .order-show-container-bottom h1 {
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.32;
@@ -1455,7 +1455,7 @@ input[type="last_name"] {
   p {
     color: black;
     font-size: 14px;
-    font-family: "Graphik";
+    font-family: "Graphik", sans-serif;
     text-align: left;
     margin-bottom: 2%;
   }
@@ -1474,7 +1474,7 @@ input[type="last_name"] {
     justify-content: space-between;
     color: rgba(0, 0, 0, 0.87);
     font-size: 14px;
-    font-family: "Graphik";
+    font-family: "Graphik", sans-serif;
   }
 }
 
@@ -1501,7 +1501,7 @@ input[type="last_name"] {
 }
 .user-payment h3 {
   font-size: 22px;
-  font-family: "Graphik";
+  font-family: "Graphik", sans-serif;
   font-weight: 500;
 }
 .user-payment {
@@ -1518,7 +1518,7 @@ input[type="last_name"] {
   textarea {
     width: 400px;
     height: 90px;
-    font-family: "Graphik";
+    font-family: "Graphik", sans-serif;
     outline-color: rgb(43, 130, 130);
     border-radius: 3px;
   }
