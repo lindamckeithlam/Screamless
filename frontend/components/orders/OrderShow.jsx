@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchOrder, reorderItems } from "../../actions/order_actions";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import find from "lodash/find";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -31,7 +32,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
   onFetchOrder: id => dispatch(fetchOrder(id)),
   onReorder: order => dispatch(reorderItems(order)),
-  onPostReview: review => dispatch(createReview(review))
+  onPostReview: review => dispatch(createReview(review)),
+  onReorder: order => dispatch(reorderItems(order))
 });
 
 const styles = theme => ({
@@ -201,7 +203,7 @@ class OrderShow extends React.Component {
     ).toLocaleTimeString();
     let currentTime = date.slice(0, date.length - 6) + date.split(" ")[1];
     let futureTime = date2.slice(0, date2.length - 6) + date2.split(" ")[1];
-    debugger;
+
     return (
       <div className="order-show-details-heading">
         <h1>Order Details</h1>
@@ -242,7 +244,16 @@ class OrderShow extends React.Component {
                 <h4>{`${currentTime} - ${futureTime}`} </h4>
               </div>
               <div className="order-show-reorder">
-                <Button className="reorder-button">Reorder Now</Button>
+                <Button
+                  onClick={() => {
+                    this.props.onReorder(order);
+
+                    this.props.history.push(`/menu/${order.restaurantId}`);
+                  }}
+                  className="reorder-button"
+                >
+                  Reorder Now
+                </Button>
               </div>
             </div>
             <div className="line" />
@@ -336,9 +347,11 @@ class OrderShow extends React.Component {
   }
 }
 
-const OrderShowContainer = connect(
-  msp,
-  mdp
-)(OrderShow);
+const OrderShowContainer = withRouter(
+  connect(
+    msp,
+    mdp
+  )(OrderShow)
+);
 
 export default withStyles(styles)(OrderShowContainer);

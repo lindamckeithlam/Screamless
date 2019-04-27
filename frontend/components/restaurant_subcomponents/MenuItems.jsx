@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { connect } from "react-redux";
 import { addItemToBag } from "../../actions/restaurant_actions";
+import classNames from "classnames";
 
 const msp = (state, props) => {
   return {
@@ -29,24 +30,33 @@ class MenuItems extends React.Component {
   };
 
   renderMenuRow = (rowItems, idx) => {
-    return <Row key={idx}>{rowItems.map(this.renderItem)}</Row>;
+    return (
+      <Row style={{ marginBottom: 4 }} key={idx} start="xs">
+        {rowItems.map(this.renderItem)}
+      </Row>
+    );
   };
 
   renderItem = item => {
+    const showDesc = item.restaurant_id % 2 === 0;
+
     return (
       <Col key={item.id} xs>
         <Button
           onClick={() => this.props.onAddItem(item)}
           variant="light"
-          className="menu-item-button-container"
+          className={classNames({
+            "menu-item-button-container": true,
+            "menu-button-desc": showDesc
+          })}
         >
-          <Row>
-            <Col xs>{item.name}</Col>
-            <Col xs>${item.price}</Col>
-          </Row>
-          <Row>
-            <p>{`${item.description.slice(0, 50)}...`}</p>
-          </Row>
+          <div className="flex-container-menu-item">
+            <div className="menu-item-name">{item.name}</div>
+            <div className="menu-item-price">{`$${item.price}.00+`}</div>
+          </div>
+          {showDesc && (
+            <div className="menu-item-description">{item.description}</div>
+          )}
         </Button>
       </Col>
     );

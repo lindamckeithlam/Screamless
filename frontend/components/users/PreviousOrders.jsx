@@ -27,8 +27,11 @@ class BrowseByCuisine extends React.Component {
         </Col>
       );
     });
+    do {
+      orderCards.push(<Col xs />);
+    } while (orderCards.length < 4);
 
-    return <Row>{orderCards}</Row>;
+    return <Row start="xs">{orderCards}</Row>;
   }
   render() {
     if (this.props.orders.length === 0) {

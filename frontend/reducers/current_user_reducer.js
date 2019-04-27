@@ -7,7 +7,9 @@ import {
 
 import {
   RECEIVE_ONE_ORDER,
-  RECEIVE_PREVIOUS_ORDERS
+  RECEIVE_PREVIOUS_ORDERS,
+  REORDER_ITEMS,
+  RESET_REORDER
 } from "../actions/order_actions";
 
 export const initialState = {
@@ -17,7 +19,8 @@ export const initialState = {
   first_name: null,
   orders: [],
   orderId: null,
-  address: null
+  address: null,
+  reorder: false
 };
 
 const currentUserReducer = (state = initialState, action) => {
@@ -52,6 +55,16 @@ const currentUserReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: action.orders
+      };
+    case REORDER_ITEMS:
+      return {
+        ...state,
+        reorder: true
+      };
+    case RESET_REORDER:
+      return {
+        ...state,
+        reorder: false
       };
     default:
       return state;

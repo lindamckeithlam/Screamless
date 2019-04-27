@@ -34,7 +34,11 @@ class RestaurantCardsContainer extends React.Component {
   };
 
   renderRestaurantRow = (rowRestaurants, idx) => {
-    return <Row key={idx}>{rowRestaurants.map(this.renderRestaurant)}</Row>;
+    return (
+      <Row style={{ marginBottom: 5 }} key={idx} start="xs">
+        {rowRestaurants.map(this.renderRestaurant)}
+      </Row>
+    );
   };
 
   renderRestaurant = restaurant => {

@@ -4,12 +4,12 @@ import { Link, withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Button from "react-bootstrap/Button";
 import find from "lodash/find";
+import { reorderItems } from "../actions/order_actions";
 
 const styles = {
   card: {
@@ -32,10 +32,13 @@ const msp = (state, ownProps) => {
   };
 };
 
+const mdp = dispatch => {
+  return {
+    onReorder: order => dispatch(reorderItems(order))
+  };
+};
+
 class OrderCard extends React.Component {
-  // componentDidMount() {
-  //   // location.reload();
-  // }
   render() {
     const { classes, order, restaurant } = this.props;
     let prev_order = {};
@@ -79,7 +82,16 @@ class OrderCard extends React.Component {
             {/* {JSON.stringify(order.items.name)} */}
             {/* {restaurant && restaurant.address} */}
           </Typography>
-          <Button className="reorder-button">Reorder Now</Button>
+          <Button
+            onClick={() => {
+              this.props.onReorder(order);
+
+              this.props.history.push(`/menu/${order.restaurantId}`);
+            }}
+            className="reorder-button"
+          >
+            Reorder Now
+          </Button>
         </CardContent>
       </Card>
     );
@@ -93,7 +105,7 @@ OrderCard.propTypes = {
 const OrderCardContainer = withRouter(
   connect(
     msp,
-    null
+    mdp
   )(OrderCard)
 );
 

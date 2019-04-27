@@ -3,6 +3,7 @@ import { removeAllItemsFromBag } from "./restaurant_actions";
 export const RECEIVE_ONE_ORDER = "RECEIVE_ONE_ORDER";
 export const RECEIVE_PREVIOUS_ORDERS = "RECEIVE_PREVIOUS_ORDERS";
 export const REORDER_ITEMS = "REORDER_ITEMS";
+export const RESET_REORDER = "RESET_REORDER";
 
 export const checkoutOrder = history => (dispatch, getState) => {
   const currentOrder = getState().currentOrder;
@@ -67,4 +68,9 @@ export const reorderItems = order => dispatch =>
   dispatch({
     type: REORDER_ITEMS,
     order
+  });
+
+export const resetReorder = () => dispatch =>
+  dispatch({
+    type: RESET_REORDER
   });

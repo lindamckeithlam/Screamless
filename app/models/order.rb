@@ -34,7 +34,10 @@ class Order < ApplicationRecord
       time = time.join(":")
       date + " " + time + " PM"
     else
-      date + " " + time + " AM"
+      if time.first == "00"
+        time[0] = "12"
+      end
+      date + " " + time.join(":") + " AM"
     end
   end
 end

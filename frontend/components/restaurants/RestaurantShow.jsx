@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "../NavBar";
+
 import { Grid, Row, Col } from "react-flexbox-grid";
+import Sticky from "react-stickynode";
+import * as Scroll from "react-scroll";
+
+import NavBar from "../NavBar";
 import {
   fetchRestaurant,
   fetchRestaurants
@@ -69,7 +73,7 @@ class RestaurantShow extends React.Component {
     return (
       <div className="restaurant-showpage-container">
         <NavBar />
-        <div className="restaurant-banner">
+        <div id="restaurant-banner" className="restaurant-banner">
           <div className="restaurant-banner-img">
             <img src={this.props.currentRestaurant.img_url} />
           </div>
@@ -84,16 +88,34 @@ class RestaurantShow extends React.Component {
             </span>
           </div>
         </div>
-        <div className="restaurant-links">
-          <a href="">Menu</a>
-          <a href="">About</a>
-          <a href="">Review</a>
-        </div>
-        <div className="restaurant-line" />
+        <Sticky innerZ={1000} top="#main-nav">
+          <div className="restaurant-links">
+            <Scroll.Link smooth duration={500} offset={-125} to="menu-section">
+              <span className="green-text">Menu</span>
+            </Scroll.Link>
+            <Scroll.Link
+              smooth
+              duration={1000}
+              offset={-130}
+              to="about-section"
+            >
+              <span className="green-text">About</span>
+            </Scroll.Link>
+            <Scroll.Link
+              className="green-text"
+              smooth
+              duration={1000}
+              offset={-120}
+              to="review-section"
+            >
+              <span className="green-text">Review</span>
+            </Scroll.Link>
+          </div>
+        </Sticky>
+        <div name="menu-section" className="restaurant-line" />
         {menu}
-
         <Grid fluid className="restaurant-bottom">
-          <Row>
+          <Row name="about-section">
             <h3 id="about">About {this.props.currentRestaurant.name}</h3>
           </Row>
           <Row>{/* <div>Restaruant description blah lbah</div> */}</Row>
@@ -132,7 +154,7 @@ class RestaurantShow extends React.Component {
             </Col>
           </Row>
           <Row>
-            <div className="restaurant-reviews-main">
+            <div name="review-section" className="restaurant-reviews-main">
               <h3>Reviews for {this.props.currentRestaurant.name}</h3>
 
               <span>{count} ratings</span>

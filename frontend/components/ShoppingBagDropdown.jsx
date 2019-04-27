@@ -25,13 +25,14 @@ import {
   removeItemFromBag,
   removeAllItemsFromBag
 } from "../actions/restaurant_actions";
-import { checkoutOrder } from "../actions/order_actions";
+import { checkoutOrder, resetReorder } from "../actions/order_actions";
 
 const msp = (state, ownProps) => {
   return {
     ...ownProps,
     currentOrder: state.currentOrder,
-    user: state.currentUser
+    user: state.currentUser,
+    reorder: state.currentUser.reorder
   };
 };
 
@@ -39,7 +40,8 @@ const mdp = dispatch => {
   return {
     onRemoveItem: item => dispatch(removeItemFromBag(item)),
     onRemoveAll: () => dispatch(removeAllItemsFromBag()),
-    onCheckout: history => dispatch(checkoutOrder(history))
+    onCheckout: history => dispatch(checkoutOrder(history)),
+    onResetReorder: () => dispatch(resetReorder())
   };
 };
 
@@ -138,6 +140,13 @@ class ShoppingBagDropdown extends React.Component {
       </Dialog>
     );
   };
+
+  componentDidMount() {
+    if (this.props.reorder) {
+      this.setState({ expanded: true, showModal: true });
+      this.props.onResetReorder();
+    }
+  }
 
   renderExpandedBag = () => {
     if (!this.state.expanded) return;

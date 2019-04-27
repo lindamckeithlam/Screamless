@@ -15,7 +15,8 @@ const initialState = {
   tax: 0.0875,
   tip: 0,
   total: 0,
-  subtotal: 0
+  subtotal: 0,
+  reorder: false
 };
 
 const getInitialState = () => {

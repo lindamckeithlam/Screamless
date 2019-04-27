@@ -55,7 +55,7 @@ class NavBar extends React.Component {
       user_address = <span className="modal-text" />;
     }
     return (
-      <div className="main-nav">
+      <div id="main-nav" className="main-nav">
         <Link to="/lets-eat">
           <div className="seamlesslogo-nav-container">
             <img src={window.seamless20logo} className="seamless-nav-logo" />
