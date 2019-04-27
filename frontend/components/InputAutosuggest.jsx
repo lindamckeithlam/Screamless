@@ -6,6 +6,7 @@ import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
+import ListItem from "@material-ui/core/ListItem";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -153,7 +154,11 @@ class InputAutosuggest extends React.Component {
   };
 
   renderSuggestion = suggestion => {
-    return <span>{suggestion.label}</span>;
+    return (
+      <div className="dropdown-search-label">
+        <ListItem>{suggestion.label}</ListItem>
+      </div>
+    );
   };
 
   render() {

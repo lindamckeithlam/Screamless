@@ -69,41 +69,21 @@ class BrowseByCategory extends React.Component {
               </a>
             </span>
             <br />
-            <h2>Restaurants</h2>
-            <h2>Catering</h2>
-            <br />
-            <span className="today-asap">
-              Deliver my food -
-              <a onClick={e => e.preventDefault()} href="">
-                Today, ASAP
-              </a>
-            </span>
 
             <div>
               <div className="feature-container">
                 <div className="clickable" id="flip">
                   <h3>Feature</h3>
-
-                  <i className="fas fa-angle-down" id="down" />
                 </div>
-                <div id="panel">
-                  <i className="fas fa-angle-up" />
-                  <form className="feature-dropdown">
-                    <input type="checkbox" />
-                    Free Delivery
-                    <br />
-                    <input type="checkbox" />
-                    Coupons
-                    <br />
-                    <input
-                      checked={filters.openNow}
-                      onChange={this.toggleOpenFilter}
-                      type="checkbox"
-                    />
-                    Open Now
-                    <br />
-                  </form>
-                </div>
+                <form className="feature-dropdown">
+                  <input
+                    checked={filters.openNow}
+                    onChange={this.toggleOpenFilter}
+                    type="checkbox"
+                  />
+                  Open Now
+                  <br />
+                </form>
               </div>
 
               <div className="rating-container">

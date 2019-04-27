@@ -53,7 +53,7 @@ const currentOrderReducer = (state = getInitialState(), action) => {
         ...state,
         items: action.order.items,
         restaurantId: action.order.restaurantId,
-        restaurantName: action.order.restaurantNames
+        restaurantName: action.order.restaurantName
         // total: ,
         // subtotal: ,
         ///other stuff from order

@@ -1566,3 +1566,12 @@ span:focus:before,
 .green-text {
   color: rgb(43, 130, 130);
 }
+
+.dropdown-search-label {
+  cursor: pointer;
+}
+
+.dropdown-search-label:hover {
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
