@@ -16,7 +16,7 @@ function renderInputComponent(inputProps) {
   return (
     <InputBase
       fullWidth
-      InputProps={{
+      inputProps={{
         inputRef: node => {
           ref(node);
           inputRef(node);

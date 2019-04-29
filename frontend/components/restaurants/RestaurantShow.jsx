@@ -1,36 +1,78 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Button from "react-bootstrap/Button";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import Sticky from "react-stickynode";
+import { withStyles } from "@material-ui/core/styles";
 import * as Scroll from "react-scroll";
-
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import NavBar from "../NavBar";
 import {
   fetchRestaurant,
   fetchRestaurants
 } from "../../actions/restaurant_actions";
+import { createReview } from "../../actions/review_actions";
 import { connect } from "react-redux";
-
 import InitMap from "../GoogleMap";
-
 import Footer from "../footer";
 import Reviews from "../restaurant_subcomponents/Reviews";
 import MenuItems from "../restaurant_subcomponents/MenuItems";
+import SweetAlert from "react-bootstrap-sweetalert";
 const msp = state => {
   return {
-    currentRestaurant: state.restaurants.currentRestaurant
+    currentRestaurant: state.restaurants.currentRestaurant,
+    user: state.currentUser
   };
 };
 
 const mdp = dispatch => ({
   onFetchRestaurants: () => dispatch(fetchRestaurants()),
-  onFetchRestaurant: id => dispatch(fetchRestaurant(id))
+  onFetchRestaurant: id => dispatch(fetchRestaurant(id)),
+  onPostReview: review => dispatch(createReview(review))
 });
 
+const styles = theme => ({
+  root: {
+    ...theme.mixins.gutters(),
+    padding: 30,
+    margin: "30px auto",
+    height: 1000,
+    width: 800
+  },
+  badge: {
+    width: "150px",
+    top: "50%",
+    backgroundColor: "#ff9100",
+    border: "2px solid #ff9100",
+    color: "white"
+  },
+  list: {
+    width: 380
+  },
+  drawer: {
+    top: "60px"
+  },
+  dialog: {
+    width: 1000,
+    height: 600,
+    margin: "20px auto"
+  }
+});
 class RestaurantShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      expanded: false,
+      showModal: false,
+      body: "",
+      rating: 4,
+      restaurant_id: this.props.currentRestaurant.id,
+      alert: null
+    };
   }
 
   componentDidMount() {
@@ -50,6 +92,102 @@ class RestaurantShow extends React.Component {
       this.props.onFetchRestaurant(this.props.match.params.restaurant_id);
     }
   }
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false, alert: null });
+  };
+
+  handleShowModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  onCreateReview = (restaurant_id, reviewer_id) => {
+    this.props.onPostReview({
+      body: this.state.body,
+      rating: this.state.rating,
+      restaurant_id: restaurant_id,
+      reviewer_id: reviewer_id
+    });
+  };
+
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({ body: e.target.value });
+  };
+
+  renderModal = () => {
+    const { classes } = this.props;
+    return (
+      <Dialog
+        className={classes.dialog}
+        open={this.state.showModal}
+        onClose={this.handleCloseModal}
+        aria-labelledby="form-dialog-title"
+      >
+        <i className="fa fa-close" onClick={this.handleCloseModal} />
+
+        <DialogTitle id="form-dialog-title">
+          Rate and Review {this.props.currentRestaurant.name}
+        </DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            <div className="order-rating">
+              <div
+                className="order-rating-top"
+                // style={{ width: `${this.state.rating / 5 / 100}%` }}
+              >
+                <span id="1" onClick={() => this.setState({ rating: 5 })}>
+                  ☆
+                </span>
+                <span id="2" onClick={() => this.setState({ rating: 4 })}>
+                  ☆
+                </span>
+                <span id="3" onClick={() => this.setState({ rating: 3 })}>
+                  ☆
+                </span>
+                <span id="4" onClick={() => this.setState({ rating: 2 })}>
+                  ☆
+                </span>
+                <span id="5" onClick={() => this.setState({ rating: 1 })}>
+                  ☆
+                </span>
+              </div>
+            </div>
+            {/* Review address, payments, and tip to complete your purchase */}
+          </DialogContentText>
+          <div className="review-modal">
+            <label>Write a Review</label>
+            <textarea
+              wrap="hard"
+              type="text"
+              value={this.state.body}
+              onChange={this.handleChange}
+              placeholder="Writing a review gets you one step closer to earning Top Reviewer status. 
+              Tell us what you loved about this order"
+            />
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            className="review-button-modal"
+            onClick={() => {
+              this.onCreateReview(
+                this.props.currentRestaurant.id,
+                this.props.user.id
+              );
+              this.handleCloseModal();
+            }}
+            color="primary"
+          >
+            Submit your Rating & Review
+          </Button>
+        </DialogActions>
+        <DialogContent />
+      </Dialog>
+    );
+  };
+
   render() {
     let reviews = <div />;
     let count = <p>{count}</p>;
@@ -154,10 +292,28 @@ class RestaurantShow extends React.Component {
             </Col>
           </Row>
           <Row>
-            <div name="review-section" className="restaurant-reviews-main">
-              <h3>Reviews for {this.props.currentRestaurant.name}</h3>
+            <div
+              name="review-section"
+              className="restaurant-reviews-main-container"
+            >
+              <div className="restaurant-reviews-main">
+                <h3>Reviews for {this.props.currentRestaurant.name}</h3>
+                <span>{count} ratings</span>
+              </div>
 
-              <span>{count} ratings</span>
+              <Button
+                onClick={() =>
+                  this.setState({
+                    expanded: !this.state.expanded,
+                    showModal: true
+                  })
+                }
+                aria-label="shopping-cart"
+                className="leave-review-button"
+              >
+                Leave a Review
+              </Button>
+              {this.renderModal()}
             </div>
           </Row>
           <Row>{reviews}</Row>
@@ -168,7 +324,9 @@ class RestaurantShow extends React.Component {
   }
 }
 
-export default connect(
-  msp,
-  mdp
-)(RestaurantShow);
+export default withStyles(styles)(
+  connect(
+    msp,
+    mdp
+  )(RestaurantShow)
+);

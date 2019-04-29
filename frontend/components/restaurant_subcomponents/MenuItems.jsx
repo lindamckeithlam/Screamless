@@ -71,18 +71,18 @@ class MenuItems extends React.Component {
 
     return (
       <div className="menu-item-background">
-        <Grid fluid className="menu-item-container">
-          <Row>
+        <Grid fluid className="menu-item-container" key="menuItemContainer">
+          <Row key="app">
             <h2>Appetizers</h2>
           </Row>
           {this.renderMenuItems(appetizers)}
 
-          <Row>
+          <Row key="entrees">
             <h2>Entrees</h2>
           </Row>
           {this.renderMenuItems(entrees)}
 
-          <Row>
+          <Row key="desserts">
             <h2>Desserts</h2>
           </Row>
           {this.renderMenuItems(desserts)}

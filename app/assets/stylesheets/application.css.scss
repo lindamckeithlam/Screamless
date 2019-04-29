@@ -594,6 +594,7 @@ input[type="last_name"] {
   margin-bottom: 20px;
   width: 100%;
 }
+
 .cuisine-container-previous-orders {
   // display: flex;
   width: 100%;
@@ -602,6 +603,11 @@ input[type="last_name"] {
 }
 
 .reorder-button:hover {
+  border-color: #123b3b;
+  color: white;
+  background-color: #123b3b;
+}
+.reorder-button:focus {
   border-color: #123b3b;
   color: white;
   background-color: #123b3b;
@@ -1039,6 +1045,11 @@ input[type="last_name"] {
 
 /* Reviews */
 
+.restaurant-reviews-main-container {
+  width: 100%;
+  padding-bottom: 2%;
+}
+
 .star-ratings-css {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
@@ -1051,7 +1062,7 @@ input[type="last_name"] {
   text-shadow: 0px 1px 0 #a2a2a2;
 
   &-top {
-    color: #d4a31bfb;
+    color: #e7711b;
     padding: 0;
     position: absolute;
     z-index: 1;
@@ -1375,11 +1386,7 @@ input[type="last_name"] {
   h4 {
     font-weight: 500;
   }
-  h1 {
-    font-size: 40px;
-    font-weight: 500;
-    line-height: 1.32;
-  }
+
   .phone-number {
     color: #0e8a90;
     padding: 2% 0%;
@@ -1537,6 +1544,11 @@ input[type="last_name"] {
   background-color: rgb(16, 70, 70);
   text-decoration: none;
 }
+.review-button-modal:focus {
+  cursor: pointer;
+  background-color: rgb(16, 70, 70);
+  text-decoration: none;
+}
 
 .order-rating {
   unicode-bidi: bidi-override;
@@ -1574,4 +1586,45 @@ span:focus:before,
 .dropdown-search-label:hover {
   background-color: #e2e6ea;
   border-color: #dae0e5;
+}
+
+.leave-review-button {
+  width: 150px;
+  border-radius: 3px;
+  background-color: #ff9100;
+  color: white;
+  font-family: "Graphik";
+  font-size: 13px;
+  border: 1px solid #ff9100;
+}
+.leave-review-button:hover {
+  border: none;
+  background-color: #ff7b00;
+  color: white;
+  border: 1px solid #ff9100;
+}
+.leave-review-button:focus {
+  border: none;
+  background-color: #ff7b00;
+  color: white;
+  border: 1px solid #ff9100;
+}
+
+.delete-button {
+  color: #ff9100;
+  background: 0 0;
+  border-color: #ff9100;
+  margin-bottom: 20px;
+  width: 20%;
+  font-size: 13px;
+}
+.delete-button:hover {
+  border-color: #ff9100;
+  color: white;
+  background-color: #ff9100;
+}
+.delete-button:focus {
+  border-color: #ff9100;
+  color: white;
+  background-color: #ff9100;
 }

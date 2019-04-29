@@ -1,10 +1,16 @@
-import { RECEIVE_REVIEW } from "../actions/review_actions";
+import { RECEIVE_REVIEW, DELETE_REVIEW } from "../actions/review_actions";
 
-const reviewsReducer = (state = {}, action) => {
+const initialState = {};
+
+const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_REVIEW:
       return action.review;
-
+    case DELETE_REVIEW: {
+      const newState = Object.assign({}, state);
+      delete newState[action.review];
+      return newState;
+    }
     default:
       return state;
   }

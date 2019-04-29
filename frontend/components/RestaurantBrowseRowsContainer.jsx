@@ -30,6 +30,7 @@ const msp = state => {
       return r.open_time < currentHour && r.close_time > currentHour;
     });
   }
+
   return {
     restaurants,
     filters

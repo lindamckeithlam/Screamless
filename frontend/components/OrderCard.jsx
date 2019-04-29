@@ -66,7 +66,11 @@ class OrderCard extends React.Component {
         <CardMedia
           className={classes.media}
           image={restaurant && restaurant.img_url}
-          title={order.restaurantName}
+          title={
+            order.restaurantName.length > 13
+              ? order.restaurantName.substring(0, 10)
+              : order.restaurantName
+          }
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h8">

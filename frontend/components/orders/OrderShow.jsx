@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import { fetchRestaurant } from "../../actions/restaurant_actions";
 import { createReview } from "../../actions/review_actions";
 import Badge from "@material-ui/core/Badge";
-import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
 import Drawer from "@material-ui/core/Drawer";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -78,7 +78,6 @@ class OrderShow extends React.Component {
     rating: 4,
     restaurant_id: this.restaurantId
   };
-  success = false;
 
   handleCloseModal = () => {
     this.setState({ showModal: false });
@@ -121,9 +120,9 @@ class OrderShow extends React.Component {
 
         <DialogContent>
           <DialogContentText>
-            <div class="order-rating">
+            <div className="order-rating">
               <div
-                class="order-rating-top"
+                className="order-rating-top"
                 // style={{ width: `${this.state.rating / 5 / 100}%` }}
               >
                 <span id="1" onClick={() => this.setState({ rating: 1 })}>
@@ -213,33 +212,35 @@ class OrderShow extends React.Component {
             <div className="order-show-restaurant-details">
               <div>
                 <p>Ordered From</p>
-                <h1>{order.restaurantName}</h1>
+
+                <Link
+                  style={{
+                    fontSize: "36px",
+                    fontWeight: 500,
+                    lineHeight: 1.32,
+                    color: "black"
+                  }}
+                  to={`/menu/${order.restaurant_id}`}
+                >
+                  {order.restaurantName}
+                </Link>
+
                 <p>Estimated delivery</p>
 
-                <div>
-                  <IconButton
-                    style={{
-                      width: "150px",
-                      borderRadius: "8px",
-                      backgroundColor: "#ff9100"
-                    }}
-                    onClick={() =>
-                      this.setState({ expanded: !this.state.expanded })
-                    }
-                    aria-label="shopping-cart"
-                    className={classes.margin}
-                  >
-                    <Badge
-                      badgeContent={"Leave a review"}
-                      classes={{ badge: classes.badge }}
-                      color="secondary"
-                      onClick={this.handleShowModal}
-                    />
-                  </IconButton>
+                <Button
+                  onClick={() =>
+                    this.setState({
+                      expanded: !this.state.expanded,
+                      showModal: true
+                    })
+                  }
+                  aria-label="shopping-cart"
+                  className="leave-review-button"
+                >
+                  Leave a Review
+                </Button>
 
-                  {/* {this.renderExpandedBag()} */}
-                  {this.renderModal()}
-                </div>
+                {this.renderModal()}
 
                 <h4>{`${currentTime} - ${futureTime}`} </h4>
               </div>
@@ -265,7 +266,7 @@ class OrderShow extends React.Component {
                   variant="h5"
                   component="h1"
                 >
-                  <h1>{order.restaurantName}</h1>
+                  {order.restaurantName}
                   <p className="phone-number">{order.formatted_phone}</p>
                   <p>{order.address}</p>
 
