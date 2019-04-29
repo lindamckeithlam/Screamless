@@ -47,10 +47,7 @@ function RestaurantCard(props) {
   return (
     <>
       <Link to={`/menu/${restaurant.id}`} className="link-test">
-        <Card
-          onClick={() => console.log("restaurant clicked")}
-          className={classes.card}
-        >
+        <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
               className={classes.media}

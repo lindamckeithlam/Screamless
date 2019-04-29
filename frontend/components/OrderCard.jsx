@@ -73,7 +73,7 @@ class OrderCard extends React.Component {
           }
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h8">
+          <Typography gutterBottom variant="h5" component="h6">
             <Link style={{ textDecoration: "none" }} to={`/orders/${order.id}`}>
               <h4 className="order-card-container" style={{ color: "#2b8282" }}>
                 {order.restaurantName}

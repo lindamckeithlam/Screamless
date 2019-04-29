@@ -117,10 +117,6 @@ class SplashSearch extends React.Component {
     this.props.onFilterCuisine(cuisine);
   };
 
-  onSearch = () => {
-    console.log(`im clicked!! search is ${this.state.search}`);
-  };
-
   getOptions = () => {
     const { restaurants, cuisines } = this.props;
   };
@@ -161,28 +157,3 @@ const SplashSearchContainer = withRouter(
 );
 
 export default withStyles(styles)(SplashSearchContainer);
-
-// return (
-//   <Paper className={classes.root} elevation={1}>
-//     <IconButton className={classes.iconButton} aria-label="Search">
-//       <SearchIcon />
-//     </IconButton>
-
-//     <InputBase
-//       className={classes.input}
-//       value={this.state.search}
-//       onChange={e => this.setState({ search: e.target.value })}
-//       placeholder={placeholder}
-//     />
-
-//     <Divider className={classes.divider} />
-//     <IconButton
-//       color="primary"
-//       className={classes.iconButton}
-//       aria-label="Directions"
-//       onClick={this.onSearch}
-//     >
-//       <DirectionsIcon />
-//     </IconButton>
-//   </Paper>
-// );

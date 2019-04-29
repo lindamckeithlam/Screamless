@@ -153,10 +153,9 @@ class Splash extends React.Component {
 
           <div className="special-offers-right">
             <h4>Stay Connected</h4>
-            <i className="fab fa-facebook" />
-            <i className="fab fa-twitter" />
-            <a href="https://www.instagram.com/funnymemes/">
-              <i className="fab fa-instagram" />
+
+            <a href="https://angel.co/linda-mckeith-lam">
+              <i className="fab fa-angellist" />
             </a>
             <a href="https://www.linkedin.com/in/lindamckeithlam">
               <i className="fab fa-linkedin-in" />

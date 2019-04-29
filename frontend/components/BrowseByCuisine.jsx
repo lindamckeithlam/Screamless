@@ -47,7 +47,6 @@ class BrowseByCuisine extends React.Component {
 
     cuisineCards.unshift(
       <CuisineCard
-        key="all-restaurants"
         cuisineName="See all restaurants"
         url="https://i.imgur.com/5wiDGLB.png"
         onClick={onClearAllFilters}
@@ -69,6 +68,8 @@ class BrowseByCuisine extends React.Component {
   };
 
   render() {
+    const { cuisines, onFilterByCuisine, onClearAllFilters } = this.props;
+
     return (
       <Grid className="cuisine-container">
         <Row>

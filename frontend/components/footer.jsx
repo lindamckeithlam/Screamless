@@ -1,4 +1,5 @@
 import React from "react";
+
 function Footer() {
   return (
     <div className="footer-container">
@@ -9,10 +10,10 @@ function Footer() {
         </div>
         <div className="footer-right">
           <span>
-            <a href="#">Terms of Use</a>
+            <a href="https://lindamckeithlam.github.io/">See more projects</a>
           </span>
           <span>
-            <a href="#">Privacy Policy</a>
+            <a href="mailto:lam.lindamckeith@gmail.com">Contact me!</a>
           </span>
         </div>
       </div>
