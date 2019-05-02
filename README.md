@@ -30,6 +30,9 @@ Using backend Rails validations, customers with invalid credentials will see err
 Upon sign-in, user is greeted with their first name, preloaded address onto navigation bar, and past orders. If no address is given, all restaurants will render below past orders.
 
 ![HomePage](/app/assets/images/homepage.png "Home Page")
+
+### Emplore All Restaurants
+
 ![HomePage](/app/assets/images/homepage2.png "Home Page")
 
 ### Restaurant Profile
@@ -45,6 +48,9 @@ At the bottom of each restaurant show page is a section for reviews ordered by d
 User can go to their profile page by clicking on their name on the top right corner. There, they can see their personal info such as name, email, address, saved payment methods, past orders, and view receipts.
 
 ![UserProfilePage](/app/assets/images/userprofile.png "User Profile")
+
+### Order Settings
+
 ![UserProfilePage](/app/assets/images/pastorders.png "User Profile")
 
 ### Reorder
@@ -70,4 +76,5 @@ User is prompt with a copy of their receipt which lists an estimated arrival tim
 User can also leave a review for the restaurant with a rating and description, which will save to the back end and rerender with a new review count and rating (if applicable).
 
 ![UserconfirmationPage](/app/assets/images/order-confirmation.png "User confirmation")
+
 ![UserConfirmationPage](/app/assets/images/order-confirmation2.png "User Confirmation")
