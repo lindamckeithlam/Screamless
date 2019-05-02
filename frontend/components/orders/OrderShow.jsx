@@ -192,6 +192,7 @@ class OrderShow extends React.Component {
     let subtotal = 0;
     let salestax = 0;
     let tip = 0;
+    debugger;
 
     if (!order) return null;
     let date = new Date(
@@ -336,7 +337,7 @@ class OrderShow extends React.Component {
                 <div className="order-show-total">
                   <li>
                     <span>Total:</span>
-                    <span>{`$ ${order.total.toFixed(2)}`}</span>
+                    <span>{`$ ${(subtotal * 1.27).toFixed(2)}`}</span>
                   </li>
                 </div>
               </div>
