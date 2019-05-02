@@ -14,6 +14,7 @@
 -*= require_self
  */
 @import "react-multi-carousel/lib/styles.css";
+
 .map {
   width: 100%;
   margin: 0% 1%;
@@ -1611,20 +1612,28 @@ span:focus:before,
 }
 
 .delete-button {
-  color: #ff9100;
+  color: rgb(43, 130, 130);
   background: 0 0;
-  border-color: #ff9100;
+  background-color: white;
+  border-color: white;
   margin-bottom: 20px;
-  width: 20%;
+  width: 100%;
+  text-align: right;
   font-size: 13px;
 }
 .delete-button:hover {
-  border-color: #ff9100;
-  color: white;
-  background-color: #ff9100;
+  border-color: white;
+  text-decoration: underline;
+  color: rgb(16, 70, 70);
+  background-color: white;
 }
 .delete-button:focus {
-  border-color: #ff9100;
-  color: white;
-  background-color: #ff9100;
+  border-color: white;
+  color: rgb(16, 70, 70);
+  background-color: white;
+}
+
+.review-actions {
+  display: flex;
+  align-content: flex-end;
 }

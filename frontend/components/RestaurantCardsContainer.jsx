@@ -75,7 +75,7 @@ class RestaurantCardsContainer extends React.Component {
       <>
         <Grid className="cuisine-container-2">
           <Row>{/* <div className="modal-header-order" /> */}</Row>
-          {/* {most_popular} */}
+          <div className="modal-header-order">Explore our collections</div>
           {this.renderRestaurants()}
         </Grid>
       </>

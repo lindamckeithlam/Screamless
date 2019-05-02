@@ -45,7 +45,7 @@ class Reviews extends React.Component {
     // let reviewsArray = Object.values(this.props.reviews).sort(
     //   (a, b) => b.timestamp - a.timestamp
     // );
-    let reviewsArray = Object.values(this.props.reviews).reverse();
+    let reviewsArray = Object.values(this.props.reviews);
 
     return (
       <div>
@@ -80,13 +80,16 @@ class Reviews extends React.Component {
                 </div>
               </div>
               <div className="review-body">{review.body}</div>
-              <Button
-                style={this.style(review)}
-                className="delete-button"
-                onClick={() => this.deleteReview(review.id)}
-              >
-                Delete Review
-              </Button>
+              <div className="review-actions">
+                {" "}
+                <Button
+                  style={this.style(review)}
+                  className="delete-button"
+                  onClick={() => this.deleteReview(review.id)}
+                >
+                  Delete Review
+                </Button>
+              </div>
             </div>
           );
         })}
