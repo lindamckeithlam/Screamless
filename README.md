@@ -30,7 +30,7 @@ Upon sign-in, user is greeted with their first name, preloaded address onto navi
 
 ![HomePage](/app/assets/images/homepage.png "Home Page")
 
-### Emplore All Restaurants
+### Explore All Restaurants
 
 ![HomePage](/app/assets/images/homepage2.png "Home Page")
 
