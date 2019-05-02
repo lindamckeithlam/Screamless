@@ -21,8 +21,7 @@
 
 Screamless offers an easy browsing experience to all restaurants and their menus without the need to sign up or sign in. However, for better access of restricted features such as orders, reviews, and saved profile, it's recommended for users to have an account. This allows users to effortlessly bookmark their favorite places, have multiple addresses, and most importantly order food!
 
-![Signup](/app/assets/images/signup.png "Signup Page")
-![Signin](/app/assets/images/signin.png "Signin Page2")
+![Signup](/app/assets/images/signin-signup.png "Signup Page")
 
 Using backend Rails validations, customers with invalid credentials will see error messages until requirements are fulfilled, and server requests will be made.
 
@@ -46,7 +45,7 @@ At the bottom of each restaurant show page is a section for reviews ordered by d
 User can go to their profile page by clicking on their name on the top right corner. There, they can see their personal info such as name, email, address, saved payment methods, past orders, and view receipts.
 
 ![UserProfilePage](/app/assets/images/userprofile.png "User Profile")
-![UserProfilePage](/app/assets/images/userprofile2.png "User Profile")
+![UserProfilePage](/app/assets/images/pastorders.png "User Profile")
 
 ### Reorder
 
@@ -70,5 +69,5 @@ Each user will have one shopping cart with the following -
 User is prompt with a copy of their receipt which lists an estimated arrival time using live time, their itemized orders, and total.
 User can also leave a review for the restaurant with a rating and description, which will save to the back end and rerender with a new review count and rating (if applicable).
 
-![UserconfirmationPage](/app/assets/images/confirmation-page.png "User confirmation")
-![UserConfirmationPage](/app/assets/images/confirmation-page2.png "User Confirmation")
+![UserconfirmationPage](/app/assets/images/order-confirmation.png "User confirmation")
+![UserConfirmationPage](/app/assets/images/order-confirmation2.png "User Confirmation")
