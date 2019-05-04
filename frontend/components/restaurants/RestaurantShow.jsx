@@ -194,7 +194,12 @@ class RestaurantShow extends React.Component {
     let menu = <div />;
 
     if (this.props.currentRestaurant.reviews) {
-      reviews = <Reviews reviews={this.props.currentRestaurant.reviews} />;
+      reviews = (
+        <Reviews
+          restaurant={this.props.currentRestaurant}
+          reviews={this.props.currentRestaurant.reviews}
+        />
+      );
       count = Object.values(this.props.currentRestaurant.reviews).length;
     }
 

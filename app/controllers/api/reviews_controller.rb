@@ -22,6 +22,19 @@ class Api::ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find_by(id: params[:id])
+    @restaurant = @review.restaurant
+    @user = @review.user
+
+    if @review.update(rparams)
+      render :show
+      # render json: @review, status: 200
+    else
+      render json: @review.errors.full_messages, status: 400
+    end
+  end
+
   def destroy
     @review = Review.find_by(id: params[:id])
 

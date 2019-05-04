@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:create, :show, :destroy, :index]
     resources :cuisines, only: [:show, :index]
     resources :orders, only: [:show, :index, :create]
-    resources :reviews, only: [:create, :show, :destroy]
+    resources :reviews, only: [:create, :show, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

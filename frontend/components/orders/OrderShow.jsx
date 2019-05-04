@@ -192,7 +192,6 @@ class OrderShow extends React.Component {
     let subtotal = 0;
     let salestax = 0;
     let tip = 0;
-    debugger;
 
     if (!order) return null;
     let date = new Date(

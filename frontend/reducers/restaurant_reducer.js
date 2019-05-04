@@ -3,6 +3,7 @@ import {
   RECEIVE_RESTAURANTS
 } from "../actions/restaurant_actions";
 
+import { RECEIVE_REVIEW, DELETE_REVIEW } from "../actions/review_actions";
 const initialState = {
   restaurants: [],
   currentRestaurant: {}
@@ -24,7 +25,17 @@ const restaurantReducer = (state = initialState, action) => {
     //       reviews: newReviews
     //     }
     //   };
-
+    case RECEIVE_REVIEW: {
+      // Object.freeze(state);
+      const state2 = { ...state };
+      state2.currentRestaurant.reviews[action.review.id] = action.review;
+      return state2;
+    }
+    case DELETE_REVIEW: {
+      const newState = { ...state };
+      delete newState.currentRestaurant.reviews[action.review.id];
+      return newState;
+    }
     default:
       return state;
   }

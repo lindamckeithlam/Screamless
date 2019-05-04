@@ -16,3 +16,10 @@ export const deleteReview = id => dispatch =>
       review
     })
   );
+export const editReview = review => dispatch =>
+  ReviewsApi.editReview(review).then(review =>
+    dispatch({
+      type: RECEIVE_REVIEW,
+      review
+    })
+  );
