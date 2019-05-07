@@ -41,25 +41,28 @@ class ProfileDropdown extends React.Component {
           </div>
         </Button>
         <Menu
+          style={{ postion: "absolute", top: "48px" }}
           id="fade-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={this.handleClose}
           TransitionComponent={Fade}
         >
-          <MenuItem onClick={this.handleClose}>
+          <MenuItem className="clickable" onClick={this.handleClose}>
             <Link to="/account/profile" className="clickable">
               My Account
             </Link>
           </MenuItem>
 
-          <MenuItem onClick={this.handleClose}>
+          <MenuItem className="clickable" onClick={this.handleClose}>
             <Link to="/account/history" className="clickable">
               Past Orders
             </Link>
           </MenuItem>
-          <MenuItem onClick={this.handleLogout}>{`Not ${user &&
-            user.first_name}? Logout`}</MenuItem>
+          <MenuItem
+            className="clickable"
+            onClick={this.handleLogout}
+          >{`Not ${user && user.first_name}? Logout`}</MenuItem>
         </Menu>
       </div>
     );

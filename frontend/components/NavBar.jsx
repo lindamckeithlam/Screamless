@@ -89,7 +89,7 @@ class NavBar extends React.Component {
         />
         {/* <ul>...</ul> */}
 
-        <i className="fa fa-bell" />
+        {/* <i className="fa fa-bell" /> */}
         <ProfileDropdown user={user} logout={logout} />
         <ShoppingBagDropdown />
       </div>

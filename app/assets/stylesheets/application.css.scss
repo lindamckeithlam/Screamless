@@ -1217,12 +1217,19 @@ input[type="last_name"] {
   height: 100%;
 }
 
+.hi-user:focus {
+  text-decoration: none;
+  border: none;
+}
+
 .clickable {
   cursor: pointer;
+  color: black;
 }
 
 .clickable:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: rgb(16, 70, 70);
 }
 
 .pac-container {
@@ -1550,31 +1557,6 @@ input[type="last_name"] {
   background-color: rgb(16, 70, 70);
   text-decoration: none;
 }
-
-// .order-rating {
-//   unicode-bidi: bidi-override;
-//   direction: rtl;
-//   color: #888;
-// }
-// .order-rating > span {
-//   display: inline-block;
-//   position: relative;
-//   width: 1.1em;
-//   color: "orange";
-// }
-// .order-rating-top > span:hover:before,
-// span:focus:before,
-// .order-rating-top > span:hover ~ span:before {
-//   content: "\2605";
-//   color: #d4651bfb;
-//   position: absolute;
-// }
-
-// .order-rating-top {
-//   unicode-bidi: bidi-override;
-//   direction: rtl;
-//   color: #d4651bfb;
-// }
 
 .green-text {
   color: rgb(43, 130, 130);
