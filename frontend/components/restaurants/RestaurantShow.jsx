@@ -110,6 +110,10 @@ class RestaurantShow extends React.Component {
     });
   };
 
+  ratingClick(e) {
+    this.setState({ rating: $("input[name='rating']:checked").val() });
+  }
+
   handleChange = e => {
     e.preventDefault();
     this.setState({ body: e.target.value });
@@ -132,27 +136,59 @@ class RestaurantShow extends React.Component {
 
         <DialogContent>
           <DialogContentText>
-            <div className="order-rating">
-              <div
-                className="order-rating-top"
-                // style={{ width: `${this.state.rating / 5 / 100}%` }}
-              >
-                <span id="1" onClick={() => this.setState({ rating: 5 })}>
-                  ☆
-                </span>
-                <span id="2" onClick={() => this.setState({ rating: 4 })}>
-                  ☆
-                </span>
-                <span id="3" onClick={() => this.setState({ rating: 3 })}>
-                  ☆
-                </span>
-                <span id="4" onClick={() => this.setState({ rating: 2 })}>
-                  ☆
-                </span>
-                <span id="5" onClick={() => this.setState({ rating: 1 })}>
-                  ☆
-                </span>
-              </div>
+            <div className="order-rating" />
+            <div className="star-rating">
+              <input
+                type="radio"
+                id="5-stars"
+                name="rating"
+                value="5"
+                onClick={this.ratingClick}
+                required
+              />
+              <label htmlFor="5-stars" className="star">
+                &#9733;
+              </label>
+              <input
+                type="radio"
+                id="4-stars"
+                name="rating"
+                value="4"
+                onClick={this.ratingClick}
+              />
+              <label htmlFor="4-stars" className="star">
+                &#9733;
+              </label>
+              <input
+                type="radio"
+                id="3-stars"
+                name="rating"
+                value="3"
+                onClick={this.ratingClick}
+              />
+              <label htmlFor="3-stars" className="star">
+                &#9733;
+              </label>
+              <input
+                type="radio"
+                id="2-stars"
+                name="rating"
+                value="2"
+                onClick={this.ratingClick}
+              />
+              <label htmlFor="2-stars" className="star">
+                &#9733;
+              </label>
+              <input
+                type="radio"
+                id="1-star"
+                name="rating"
+                value="1"
+                onClick={this.ratingClick}
+              />
+              <label htmlFor="1-star" className="star">
+                &#9733;
+              </label>
             </div>
             {/* Review address, payments, and tip to complete your purchase */}
           </DialogContentText>
