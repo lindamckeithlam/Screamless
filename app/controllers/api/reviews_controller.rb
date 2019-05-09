@@ -16,7 +16,6 @@ class Api::ReviewsController < ApplicationController
 
     if @review
       render :show
-      # render json: @review, status: 200
     else
       render json: @review.errors.full_messages, status: 400
     end
@@ -28,8 +27,8 @@ class Api::ReviewsController < ApplicationController
     @user = @review.user
 
     if @review.update(rparams)
+      @review.update(rparams)
       render :show
-      # render json: @review, status: 200
     else
       render json: @review.errors.full_messages, status: 400
     end

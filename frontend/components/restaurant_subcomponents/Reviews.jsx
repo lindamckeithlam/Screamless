@@ -35,14 +35,74 @@ class Reviews extends React.Component {
       expanded: false,
       showModal: false,
       body: "",
-      rating: 4,
+      rating: null,
       restaurant_id: this.props.restaurant.id,
-      reviewer_id: this.props.user.id
+      reviewer_id: this.props.user.id,
+      check: "5",
+      color1: "grey",
+      color2: "grey",
+      color3: "grey",
+      color4: "grey",
+      color5: "grey"
     };
   }
 
-  ratingClick = e => {
-    this.setState({ rating: $("input[name='rating1']:checked").val() });
+  starStyle5 = e => {
+    e.preventDefault();
+    this.setState({
+      color1: "orange",
+      color2: "orange",
+      color3: "orange",
+      color4: "orange",
+      color5: "orange",
+      rating: Number(e.target.value)
+    });
+  };
+  starStyle4 = e => {
+    e.preventDefault();
+    this.setState({
+      color1: "orange",
+      color2: "orange",
+      color3: "orange",
+      color4: "orange",
+      color5: "grey",
+      rating: Number(e.target.value)
+    });
+  };
+  starStyle3 = e => {
+    e.preventDefault();
+    this.setState({
+      color1: "orange",
+      color2: "orange",
+      color3: "orange",
+      color4: "grey",
+      color5: "grey",
+      rating: Number(e.target.value)
+    });
+  };
+  starStyle2 = e => {
+    e.preventDefault();
+
+    this.setState({
+      color1: "orange",
+      color2: "orange",
+      color3: "grey",
+      color4: "grey",
+      color5: "grey",
+      rating: Number(e.target.value)
+    });
+  };
+
+  starStyle1 = e => {
+    e.preventDefault();
+    this.setState({
+      color1: "orange",
+      color2: "grey",
+      color3: "grey",
+      color4: "grey",
+      color5: "grey",
+      rating: Number(e.target.value)
+    });
   };
 
   handleChange = e => {
@@ -52,6 +112,7 @@ class Reviews extends React.Component {
 
   renderModal = review => {
     const { classes } = this.props;
+
     return (
       <Dialog
         className={classes.dialog}
@@ -67,65 +128,90 @@ class Reviews extends React.Component {
 
         <DialogContent>
           <DialogContentText>
-            <div className="star-rating">
+            <span className="rating">
               <input
                 type="radio"
-                id="5-stars"
-                name="rating1"
+                className="rating-input"
+                id="rating-input-1-5"
+                name="rating-input-1"
+                checked={this.state.check === "5"}
                 value="5"
-                onClick={this.ratingClick.bind(this)}
-                required
+                onClick={this.starStyle5}
               />
-              <label htmlFor="5-stars" className="star">
+              <label
+                htmlFor="rating-input-1-5"
+                className="rating-star"
+                style={{ color: this.state.color5 }}
+              >
                 &#9733;
               </label>
 
               <input
                 type="radio"
-                id="4-stars"
-                name="rating1"
+                className="rating-input"
+                id="rating-input-1-4"
+                name="rating-input-1"
+                checked={this.state.check === "4"}
                 value="4"
-                onClick={this.ratingClick.bind(this)}
+                onClick={this.starStyle4}
               />
-              <label htmlFor="4-stars" className="star">
+              <label
+                htmlFor="rating-input-1-4"
+                className="rating-star"
+                style={{ color: this.state.color4 }}
+              >
                 &#9733;
               </label>
-
               <input
                 type="radio"
-                id="3-stars"
-                name="rating1"
+                className="rating-input"
+                id="rating-input-1-3"
+                name="rating-input-1"
+                checked={this.state.check === "3"}
                 value="3"
-                onClick={this.ratingClick.bind(this)}
+                onClick={this.starStyle3}
               />
-
-              <label htmlFor="3-stars" className="star">
+              <label
+                htmlFor="rating-input-1-3"
+                className="rating-star"
+                style={{ color: this.state.color3 }}
+              >
                 &#9733;
               </label>
-
               <input
                 type="radio"
-                id="2-stars"
-                name="rating1"
+                className="rating-input"
+                id="rating-input-1-2"
+                name="rating-input-1"
+                checked={this.state.check === "2"}
                 value="2"
-                onClick={this.ratingClick.bind(this)}
+                onClick={this.starStyle2}
               />
-              <label htmlFor="2-stars" className="star">
+              <label
+                htmlFor="rating-input-1-2"
+                className="rating-star"
+                style={{ color: this.state.color2 }}
+              >
                 &#9733;
               </label>
-
               <input
                 type="radio"
-                id="1-star"
-                name="rating1"
+                className="rating-input"
+                id="rating-input-1-1"
+                name="rating-input-1"
+                checked={this.state.check === "1"}
                 value="1"
-                onClick={this.ratingClick.bind(this)}
+                onClick={this.starStyle1}
               />
-
-              <label htmlFor="1-star" className="star">
+              <label
+                htmlFor="rating-input-1-1"
+                className="rating-star"
+                style={{ color: this.state.color1 }}
+              >
                 &#9733;
               </label>
-            </div>
+            </span>
+            <p>{this.state.rating}</p>
           </DialogContentText>
           <div className="review-modal">
             <label>Write a Review</label>
@@ -191,10 +277,7 @@ class Reviews extends React.Component {
   }
 
   render() {
-    // let reviewsArray = Object.values(this.props.reviews).sort(
-    //   (a, b) => b.timestamp - a.timestamp
-    // );
-    let reviewsArray = Object.values(this.props.reviews);
+    let reviewsArray = Object.values(this.props.reviews).reverse();
 
     return (
       <div>
@@ -206,6 +289,7 @@ class Reviews extends React.Component {
                   <span>
                     <p className="avatar">{review.first_name.charAt(0)}</p>
                     <h6> {review.first_name} </h6>
+                    <p>{review.rating}</p>
                   </span>
                 </div>
                 <div className="star-ratings-css">
@@ -246,7 +330,7 @@ class Reviews extends React.Component {
                       expanded: !this.state.expanded,
                       showModal: true,
                       body: review.body,
-                      rating: review.rating
+                      rating: this.state.rating
                     })
                   }
                 >

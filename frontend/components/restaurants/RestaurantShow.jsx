@@ -69,7 +69,7 @@ class RestaurantShow extends React.Component {
       expanded: false,
       showModal: false,
       body: "",
-      rating: 4,
+      rating: null,
       restaurant_id: this.props.currentRestaurant.id,
       alert: null
     };
@@ -111,7 +111,8 @@ class RestaurantShow extends React.Component {
   };
 
   ratingClick(e) {
-    this.setState({ rating: $("input[name='rating']:checked").val() });
+    debugger;
+    this.setState({ rating: Number(e.target.value) });
   }
 
   handleChange = e => {
@@ -143,7 +144,7 @@ class RestaurantShow extends React.Component {
                 id="5-stars"
                 name="rating"
                 value="5"
-                onClick={this.ratingClick}
+                onClick={this.ratingClick.bind(this)}
                 required
               />
               <label htmlFor="5-stars" className="star">
@@ -154,7 +155,7 @@ class RestaurantShow extends React.Component {
                 id="4-stars"
                 name="rating"
                 value="4"
-                onClick={this.ratingClick}
+                onClick={this.ratingClick.bind(this)}
               />
               <label htmlFor="4-stars" className="star">
                 &#9733;
@@ -164,7 +165,7 @@ class RestaurantShow extends React.Component {
                 id="3-stars"
                 name="rating"
                 value="3"
-                onClick={this.ratingClick}
+                onClick={this.ratingClick.bind(this)}
               />
               <label htmlFor="3-stars" className="star">
                 &#9733;
@@ -174,7 +175,7 @@ class RestaurantShow extends React.Component {
                 id="2-stars"
                 name="rating"
                 value="2"
-                onClick={this.ratingClick}
+                onClick={this.ratingClick.bind(this)}
               />
               <label htmlFor="2-stars" className="star">
                 &#9733;
@@ -184,7 +185,7 @@ class RestaurantShow extends React.Component {
                 id="1-star"
                 name="rating"
                 value="1"
-                onClick={this.ratingClick}
+                onClick={this.ratingClick.bind(this)}
               />
               <label htmlFor="1-star" className="star">
                 &#9733;
