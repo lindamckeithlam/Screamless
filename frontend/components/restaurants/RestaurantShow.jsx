@@ -23,7 +23,9 @@ import Reviews from "../restaurant_subcomponents/Reviews";
 import MenuItems from "../restaurant_subcomponents/MenuItems";
 import SweetAlert from "react-bootstrap-sweetalert";
 const msp = state => {
+  debugger;
   return {
+    restaurants: state.restaurants,
     currentRestaurant: state.restaurants.currentRestaurant,
     user: state.currentUser
   };
@@ -76,7 +78,6 @@ class RestaurantShow extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
     this.props
       .onFetchRestaurants()
       .then(
@@ -111,7 +112,6 @@ class RestaurantShow extends React.Component {
   };
 
   ratingClick(e) {
-    debugger;
     this.setState({ rating: Number(e.target.value) });
   }
 
@@ -122,6 +122,7 @@ class RestaurantShow extends React.Component {
 
   renderModal = () => {
     const { classes } = this.props;
+
     return (
       <Dialog
         className={classes.dialog}
@@ -226,6 +227,7 @@ class RestaurantShow extends React.Component {
   };
 
   render() {
+    debugger;
     let reviews = <div />;
     let count = <p>{count}</p>;
     let menu = <div />;

@@ -39,7 +39,7 @@ class BrowseByCuisine extends React.Component {
     const cuisineCards = cuisines.map((c, idx) => (
       <CuisineCard
         onClick={() => onFilterByCuisine(c.cuisine_name)}
-        key={idx}
+        key={c.cuisine_name + idx.toString()}
         cuisineName={c.cuisine_name}
         url={c.img_url}
       />

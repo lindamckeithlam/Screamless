@@ -1,8 +1,9 @@
 import React from "react";
-
+import MarkerManager from "./markerManager";
 class GoogleMap extends React.Component {
   constructor(props) {
     super(props);
+    // this.markerManager = null;
 
     this.state = {
       lat: this.props.lat || 40.7638,
@@ -15,14 +16,17 @@ class GoogleMap extends React.Component {
       zoom: 15,
       center: this.state
     });
-    // map.setCenter(this.state);
-    // var marker = new google.maps.Marker({
-    //   map: map,
-    //   position: this.state.geometry.location
-    // });
+
+    // this.markerManager = new MarkerManager(map);
+
+    // Add some markers to the map.
+    // Note: The code uses the JavaScript Array.prototype.map() method to
+    // create an array of markers based on a given "locations" array.
+    // The map() method here has nothing to do with the Google Maps API.
   }
 
   componentDidUpdate() {
+    const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 14,
       center: this.state
@@ -48,6 +52,25 @@ class GoogleMap extends React.Component {
         });
       }
     });
+
+    // if (this.props.addresses) {
+    //   var markers = [];
+    //   this.props.addresses.forEach((address, i) => {
+    //     geocoder.geocode({ address: address }, function(r, s) {
+    //       if (s == "OK") {
+    //         let marker = new google.maps.Marker({
+    //           position: r[0].geometry.location,
+    //           label: labels[i % labels.length]
+    //         });
+    //         markers.push(marker);
+    //       }
+    //     });
+    //   });
+    //   var markerCluster = new MarkerClusterer(map, markers, {
+    //     imagePath:
+    //       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+    //   });
+    // }
   }
 
   render() {

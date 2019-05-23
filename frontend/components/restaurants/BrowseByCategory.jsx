@@ -6,7 +6,8 @@ import RestaurantBrowseRowsContainer from "../RestaurantBrowseRowsContainer";
 import Footer from "../footer";
 import classNames from "classnames";
 import { connect } from "react-redux";
-
+import { fetchRestaurants } from "../../actions/restaurant_actions";
+import MarkerManager from "../markerManager";
 import {
   filterByOpenNow,
   clearAllFilters,
@@ -16,7 +17,8 @@ import {
 
 const msp = state => {
   return {
-    filters: state.filters
+    filters: state.filters,
+    restaurants: state.restaurants.restaurants
   };
 };
 
@@ -24,13 +26,17 @@ const mdp = dispatch => ({
   onClearAllFilters: () => dispatch(clearAllFilters(cuisine)),
   onFilterByOpenNow: () => dispatch(filterByOpenNow()),
   onFilterByRating: rating => dispatch(filterByRating(rating)),
-  onFilterByPrice: price => dispatch(filterByPrice(price))
+  onFilterByPrice: price => dispatch(filterByPrice(price)),
+  onFetchRestaurants: () => dispatch(fetchRestaurants())
 });
 
 class BrowseByCategory extends React.Component {
+  constructor(props) {
+    super(props);
+    this.locations = [];
+  }
   clearAll = e => {
     e.preventDefault();
-
     this.props.onClearAllFilters();
   };
   toggleOpenFilter = () => {
@@ -52,10 +58,21 @@ class BrowseByCategory extends React.Component {
       this.props.onFilterByPrice(price);
     }
   };
+  componentDidMount() {
+    this.props.onFetchRestaurants();
+  }
+
+  findLocations() {
+    if (this.props.restaurants) {
+      this.props.restaurants.forEach(r => this.locations.push(r.address));
+    }
+  }
 
   render() {
     const { filters } = this.props;
     const rating = filters.rating;
+    this.findLocations();
+
     return (
       <>
         <NavBar />
@@ -190,7 +207,7 @@ class BrowseByCategory extends React.Component {
           </div>
           <div className="category-right">
             <BrowseByCuisine />
-            <GoogleMap />
+            <GoogleMap addresses={this.locations} />
             <RestaurantBrowseRowsContainer />
           </div>
         </div>

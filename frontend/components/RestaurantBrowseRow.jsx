@@ -17,7 +17,7 @@ class RestaurantBrowseRow extends React.Component {
     let restaurantIndex = <div />;
     if (this.props.restaurants !== undefined) {
       restaurantIndex = this.props.restaurants.map((r, idx) => (
-        <div className="restaurant-rows">
+        <div className="restaurant-rows" key={r.name + "-" + idx.toString()}>
           <Link className="restaurant-rows" to={`/menu/${r.id}`}>
             <Row
               key={r.name + idx.toString()}
@@ -33,11 +33,12 @@ class RestaurantBrowseRow extends React.Component {
                 <img className="restaurant-row-img" src={r.img_url} />
               </Col>
               <Col xs>
-                <Row>
+                <Row key={r.name + "-" + idx.toString()}>
                   {/* Name */}
+
                   <div className="restaurant-row-name">{r.name}</div>
                 </Row>
-                <Row>
+                <Row key={r.cuisine_name + "-" + idx.toString()}>
                   {/* Category */}
                   <div className="restaurant-row-cuisine-name">
                     {r.cuisine_name}
@@ -45,7 +46,7 @@ class RestaurantBrowseRow extends React.Component {
                 </Row>
               </Col>
               <Col xs>
-                <Row>
+                <Row key={r.rating.toString() + "-" + idx.toString()}>
                   {/* Rating Stars */}
                   <div className="star-ratings">
                     <div
@@ -68,7 +69,7 @@ class RestaurantBrowseRow extends React.Component {
                   </div>
                   {/* <div>{`${r.rating.toFixed(2)} stars`}</div> */}
                 </Row>
-                <Row>
+                <Row key={r.review_count.toString() + "-" + idx.toString()}>
                   {/* # of Ratings */}
                   <div className="restaurant-row-cuisine-name">
                     {" "}

@@ -18,6 +18,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+# require "geocoder"
 
 class Restaurant < ApplicationRecord
   validates :name, :address, :phone, presence: true
@@ -40,6 +41,12 @@ class Restaurant < ApplicationRecord
   def review_count
     self.reviews.length
   end
+
+  # def lng_lat
+  #   results = Geocoder.search(self.address)
+  #   console.log(results.first.coordinates)
+  #   debugger
+  # end
 
   def formatted_phone
     return "(" + self.phone[0..2] + ") " + self.phone[3...6] + "-" + self.phone[6..-1]
