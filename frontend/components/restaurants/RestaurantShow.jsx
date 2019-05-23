@@ -23,7 +23,6 @@ import Reviews from "../restaurant_subcomponents/Reviews";
 import MenuItems from "../restaurant_subcomponents/MenuItems";
 import SweetAlert from "react-bootstrap-sweetalert";
 const msp = state => {
-  debugger;
   return {
     restaurants: state.restaurants,
     currentRestaurant: state.restaurants.currentRestaurant,
@@ -227,7 +226,6 @@ class RestaurantShow extends React.Component {
   };
 
   render() {
-    debugger;
     let reviews = <div />;
     let count = <p>{count}</p>;
     let menu = <div />;

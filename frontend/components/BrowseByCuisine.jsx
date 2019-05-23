@@ -39,7 +39,7 @@ class BrowseByCuisine extends React.Component {
     const cuisineCards = cuisines.map((c, idx) => (
       <CuisineCard
         onClick={() => onFilterByCuisine(c.cuisine_name)}
-        key={c.cuisine_name + idx.toString()}
+        key={idx}
         cuisineName={c.cuisine_name}
         url={c.img_url}
       />
@@ -47,6 +47,7 @@ class BrowseByCuisine extends React.Component {
 
     cuisineCards.unshift(
       <CuisineCard
+        key={Math.floor(Math.random() * 100)}
         cuisineName="See all restaurants"
         url="https://i.imgur.com/5wiDGLB.png"
         onClick={onClearAllFilters}
@@ -72,7 +73,7 @@ class BrowseByCuisine extends React.Component {
 
     return (
       <Grid className="cuisine-container">
-        <Row>
+        <Row key={Math.floor(Math.random() * 100)}>
           <div className="modal-header-order">Browse by cuisine</div>
         </Row>
         <Row>{this.getCarousel()}</Row>

@@ -6,8 +6,8 @@ class GoogleMap extends React.Component {
     // this.markerManager = null;
 
     this.state = {
-      lat: this.props.lat || 40.7638,
-      lng: this.props.lng || -73.9918181
+      lat: 40.7638,
+      lng: -73.9918181
     };
   }
 

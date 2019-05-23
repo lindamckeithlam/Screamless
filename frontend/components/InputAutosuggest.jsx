@@ -6,6 +6,8 @@ import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
+import MaskedInput from "react-maskedinput";
+
 import ListItem from "@material-ui/core/ListItem";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
@@ -17,7 +19,7 @@ function renderInputComponent(inputProps) {
     <InputBase
       fullWidth
       inputProps={{
-        inputRef: node => {
+        ref: node => {
           ref(node);
           inputRef(node);
         },
@@ -25,7 +27,6 @@ function renderInputComponent(inputProps) {
           input: classes.input
         }
       }}
-      
       {...other}
     />
   );
