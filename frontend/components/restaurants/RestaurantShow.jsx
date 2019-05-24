@@ -305,7 +305,10 @@ class RestaurantShow extends React.Component {
           <Row>
             <Col xs>
               <Row>
-                <InitMap address={this.props.currentRestaurant.address} />
+                <InitMap
+                  address={this.props.currentRestaurant.address}
+                  price={this.props.currentRestaurant.price}
+                />
               </Row>
               <Row>
                 <p>{this.props.currentRestaurant.address}</p>

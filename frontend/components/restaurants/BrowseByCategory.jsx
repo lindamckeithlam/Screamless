@@ -23,7 +23,7 @@ const msp = state => {
 };
 
 const mdp = dispatch => ({
-  onClearAllFilters: () => dispatch(clearAllFilters(cuisine)),
+  onClearAllFilters: () => dispatch(clearAllFilters()),
   onFilterByOpenNow: () => dispatch(filterByOpenNow()),
   onFilterByRating: rating => dispatch(filterByRating(rating)),
   onFilterByPrice: price => dispatch(filterByPrice(price)),
@@ -31,14 +31,11 @@ const mdp = dispatch => ({
 });
 
 class BrowseByCategory extends React.Component {
-  constructor(props) {
-    super(props);
-    this.locations = [];
-    this.restaurantNames = [];
-  }
   clearAll = e => {
     e.preventDefault();
-    this.props.onClearAllFilters();
+    this.props
+      .onClearAllFilters()
+      .then(() => this.props.history.push("/browse"));
   };
   toggleOpenFilter = () => {
     this.props.onFilterByOpenNow();
@@ -63,18 +60,9 @@ class BrowseByCategory extends React.Component {
     this.props.onFetchRestaurants();
   }
 
-  findLocations() {
-    if (this.props.restaurants) {
-      this.props.restaurants.forEach(r => {
-        this.locations.push(r.address);
-      });
-    }
-  }
-
   render() {
     const { filters } = this.props;
     const rating = filters.rating;
-    this.findLocations();
 
     return (
       <>
@@ -95,15 +83,17 @@ class BrowseByCategory extends React.Component {
                 <div className="clickable" id="flip">
                   <h3>Feature</h3>
                 </div>
-                <form className="feature-dropdown">
+
+                <label className="checkbox-label">
                   <input
                     checked={filters.openNow}
                     onChange={this.toggleOpenFilter}
                     type="checkbox"
                   />
-                  Open Now
+                  <span className="checkbox-custom" />
+                  <p>Open Now</p>
                   <br />
-                </form>
+                </label>
               </div>
 
               <div className="rating-container">
@@ -210,10 +200,7 @@ class BrowseByCategory extends React.Component {
           </div>
           <div className="category-right">
             <BrowseByCuisine />
-            <GoogleMap
-              restaurants={this.props.restaurants}
-              addresses={this.locations}
-            />
+            <GoogleMap restaurants={this.props.restaurants} />
             <RestaurantBrowseRowsContainer />
           </div>
         </div>

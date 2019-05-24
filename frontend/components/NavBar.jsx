@@ -58,7 +58,11 @@ class NavBar extends React.Component {
       <div id="main-nav" className="main-nav">
         <Link to="/lets-eat">
           <div className="seamlesslogo-nav-container">
-            <img src={window.seamless20logo} className="seamless-nav-logo" />
+            {/* <img src={window.seamless20logo} className="seamless-nav-logo" /> */}
+            <img
+              src="https://s3.us-east-2.amazonaws.com/screamless-seed/screamless-logo.png"
+              className="seamless-nav-logo"
+            />
           </div>
         </Link>
         <div

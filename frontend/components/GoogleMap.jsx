@@ -16,13 +16,18 @@ class GoogleMap extends React.Component {
       zoom: 15,
       center: this.state
     });
-    if (this.props.addresses) {
-      this.updateMarkers(this.props.addresses);
-    }
+    if (!this.props.restaurants) return;
+    this.updateMarkers(this.props.restaurants);
   }
 
   componentDidUpdate() {
-    if (!this.props.addresses) {
+    const oneMarkerLabel = {
+      text: `${this.renderPrice(this.props.price)}`,
+      fontWeight: "800",
+      fontSize: "12px",
+      color: "white"
+    };
+    if (!this.props.restaurants) {
       const currentAddress = this.props.address;
 
       const options = {
@@ -36,7 +41,8 @@ class GoogleMap extends React.Component {
             this.map.setCenter(results[0].geometry.location);
             this.marker = new google.maps.Marker({
               map: this.map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
+              label: oneMarkerLabel
             });
           }
         }.bind(this)
@@ -90,7 +96,7 @@ class GoogleMap extends React.Component {
             label: markerLabel
           });
 
-          this.markers[input] = mark;
+          this.markers[input.address] = mark;
         }
       }.bind(this)
     );

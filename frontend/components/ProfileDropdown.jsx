@@ -30,10 +30,13 @@ class ProfileDropdown extends React.Component {
     return (
       <div>
         <Button
+          className="dropdown"
+          width="13vw"
           aria-owns={open ? "fade-menu" : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}
         >
+          <p id="nav-avatar">{user.first_name.charAt(0)}</p>
           <div className="hi-user">
             {`Hi, ${user && user.first_name}!    `}
             {"    "}
