@@ -7,7 +7,7 @@ import Footer from "../footer";
 import classNames from "classnames";
 import { connect } from "react-redux";
 import { fetchRestaurants } from "../../actions/restaurant_actions";
-import MarkerManager from "../markerManager";
+
 import {
   filterByOpenNow,
   clearAllFilters,
@@ -34,6 +34,7 @@ class BrowseByCategory extends React.Component {
   constructor(props) {
     super(props);
     this.locations = [];
+    this.restaurantNames = [];
   }
   clearAll = e => {
     e.preventDefault();
@@ -64,7 +65,9 @@ class BrowseByCategory extends React.Component {
 
   findLocations() {
     if (this.props.restaurants) {
-      this.props.restaurants.forEach(r => this.locations.push(r.address));
+      this.props.restaurants.forEach(r => {
+        this.locations.push(r.address);
+      });
     }
   }
 
@@ -207,7 +210,10 @@ class BrowseByCategory extends React.Component {
           </div>
           <div className="category-right">
             <BrowseByCuisine />
-            <GoogleMap addresses={this.locations} />
+            <GoogleMap
+              restaurants={this.props.restaurants}
+              addresses={this.locations}
+            />
             <RestaurantBrowseRowsContainer />
           </div>
         </div>

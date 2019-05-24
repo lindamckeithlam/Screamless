@@ -1,76 +1,99 @@
 import React from "react";
-import MarkerManager from "./markerManager";
+
 class GoogleMap extends React.Component {
   constructor(props) {
     super(props);
-    // this.markerManager = null;
-
     this.state = {
       lat: 40.7638,
       lng: -73.9918181
     };
+    this.markers = {};
+    this.geocoder = new google.maps.Geocoder();
   }
 
   componentDidMount() {
-    const map = new google.maps.Map(document.getElementById("map"), {
+    this.map = new google.maps.Map(document.getElementById("map"), {
       zoom: 15,
       center: this.state
     });
-
-    // this.markerManager = new MarkerManager(map);
-
-    // Add some markers to the map.
-    // Note: The code uses the JavaScript Array.prototype.map() method to
-    // create an array of markers based on a given "locations" array.
-    // The map() method here has nothing to do with the Google Maps API.
+    if (this.props.addresses) {
+      this.updateMarkers(this.props.addresses);
+    }
   }
 
   componentDidUpdate() {
-    const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 14,
-      center: this.state
-    });
+    if (!this.props.addresses) {
+      const currentAddress = this.props.address;
 
-    const geocoder = new google.maps.Geocoder();
-    const currentAddress = this.props.address;
+      const options = {
+        componentRestrictions: { country: "usa" }
+      };
 
-    const options = {
-      componentRestrictions: { country: "usa" }
+      this.geocoder.geocode(
+        { address: currentAddress },
+        function(results, status) {
+          if (status == "OK") {
+            this.map.setCenter(results[0].geometry.location);
+            this.marker = new google.maps.Marker({
+              map: this.map,
+              position: results[0].geometry.location
+            });
+          }
+        }.bind(this)
+      );
+    } else {
+      this.updateMarkers(this.props.restaurants);
+    }
+  }
+
+  updateMarkers(restaurants) {
+    restaurants.forEach(restaurant =>
+      this.createMarkersFromAddress(restaurant)
+    );
+  }
+
+  renderPrice(num) {
+    let price = "";
+
+    for (let i = 0; i < num; i++) price += "$";
+
+    return price;
+  }
+
+  createMarkersFromAddress(input) {
+    const markerIcon = {
+      path: "M22-48h-45v28h16l6 5 6-5h16z",
+      fillColor: "white",
+      fillOpacity: 1,
+      scale: 0.85,
+      labelOrigin: new google.maps.Point(-1, -33),
+      strokeColor: "gray"
     };
 
-    const autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById("location_search", options)
+    const markerLabel = {
+      text: `${this.renderPrice(input.price)}`,
+      fontWeight: "800",
+      fontSize: "12px",
+      color: "white"
+    };
+
+    this.geocoder.geocode(
+      { address: input.address },
+      function(r, s) {
+        if (s == "OK") {
+          this.map.setCenter(r[0].geometry.location);
+          let mark = new google.maps.Marker({
+            map: this.map,
+            addressId: input,
+            position: r[0].geometry.location,
+
+            label: markerLabel
+          });
+
+          this.markers[input] = mark;
+        }
+      }.bind(this)
     );
-
-    geocoder.geocode({ address: currentAddress }, function(results, status) {
-      if (status == "OK") {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      }
-    });
-
-    // if (this.props.addresses) {
-    //   var markers = [];
-    //   this.props.addresses.forEach((address, i) => {
-    //     geocoder.geocode({ address: address }, function(r, s) {
-    //       if (s == "OK") {
-    //         let marker = new google.maps.Marker({
-    //           position: r[0].geometry.location,
-    //           label: labels[i % labels.length]
-    //         });
-    //         markers.push(marker);
-    //       }
-    //     });
-    //   });
-    //   var markerCluster = new MarkerClusterer(map, markers, {
-    //     imagePath:
-    //       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-    //   });
-    // }
   }
 
   render() {

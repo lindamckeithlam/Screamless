@@ -41,7 +41,7 @@ class MenuItems extends React.Component {
     const showDesc = item.restaurant_id % 2 === 0;
 
     return (
-      <Col key={item.id} xs>
+      <Col key={Math.floor(Math.random() * 100)} xs>
         <Button
           onClick={() => this.props.onAddItem(item)}
           variant="light"

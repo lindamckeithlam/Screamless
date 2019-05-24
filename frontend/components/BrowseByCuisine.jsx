@@ -24,7 +24,7 @@ const mdp = dispatch => ({
   onFetchRestaurant: id => dispatch(fetchRestaurant(id)),
   onFetchCuisines: () => dispatch(fetchCuisines()),
   onFilterByCuisine: cuisine => dispatch(filterByCuisine(cuisine)),
-  onClearAllFilters: () => dispatch(clearAllFilters(cuisine))
+  onClearAllFilters: () => dispatch(clearAllFilters())
 });
 
 class BrowseByCuisine extends React.Component {
@@ -69,11 +69,9 @@ class BrowseByCuisine extends React.Component {
   };
 
   render() {
-    const { cuisines, onFilterByCuisine, onClearAllFilters } = this.props;
-
     return (
       <Grid className="cuisine-container">
-        <Row key={Math.floor(Math.random() * 100)}>
+        <Row>
           <div className="modal-header-order">Browse by cuisine</div>
         </Row>
         <Row>{this.getCarousel()}</Row>
