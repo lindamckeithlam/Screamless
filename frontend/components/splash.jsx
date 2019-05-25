@@ -32,7 +32,10 @@ class Splash extends React.Component {
             </div>
 
             <div className="seamlesslogo-container">
-              <img src={window.seamless20logo2} className="seamlesslogo" />
+              <img
+                src="https://s3.us-east-2.amazonaws.com/screamless-seed/screamless-logo.png"
+                className="seamlesslogo"
+              />
             </div>
           </div>
 
@@ -61,7 +64,11 @@ class Splash extends React.Component {
 
         <div className="splash-bottom">
           <div className="splash-bottom1">
-            <img src={window.seamlessNoodleBowl} />
+            <img
+              src={
+                "https://s3.us-east-2.amazonaws.com/screamless-seed/noodlebowl.svg"
+              }
+            />
             <h4>Satisfy any craving</h4>
             <p>
               Check out menus from popular local restaurants and chains. Order
@@ -70,7 +77,11 @@ class Splash extends React.Component {
           </div>
 
           <div className="splash-bottom2">
-            <img src={window.seamlessShoppingBag} />
+            <img
+              src={
+                "https://s3.us-east-2.amazonaws.com/screamless-seed/seamlessbag.svg"
+              }
+            />
             <h4>Delivery or pickup</h4>
             <p>
               Get your favorite food delivered to your door or preorder for pick
@@ -80,7 +91,11 @@ class Splash extends React.Component {
           </div>
 
           <div className="splash-bottom3">
-            <img src={window.seamlessStackCoins} />
+            <img
+              src={
+                "https://s3.us-east-2.amazonaws.com/screamless-seed/stackedcoins.svg"
+              }
+            />
             <h4>Deals on meals</h4>
             <p>
               We know you crave to save as much as we do. Enjoy exclusive
@@ -99,7 +114,7 @@ class Splash extends React.Component {
             </p>
           </div>
           <div className="splash-delivery-right">
-            <img src={window.goodFoodGreatFriends} />
+            <img src="https://res.cloudinary.com/grubhub/image/upload/w_600,h_300,f_auto,g_auto,q_auto,dpr_auto,c_fill/topics_umami_homepage/assets_free_delivery.jpg" />
           </div>
         </div>
 
@@ -109,14 +124,12 @@ class Splash extends React.Component {
           </div>
           <div className="about-right">
             <p>
-              Screamless is simply the easiest way to order food for delivery or
-              takeout. Whatever you're in the mood for, wherever you're in the
-              mood for it, you've got it. No menus, no phone calls, no repeating
-              yourself. Screamless is a part of the Grubhub Inc. portfolio of
-              brands. For more information on Screamless, please visit
-              <span> </span>
-              <a href="https://screamless.herokuapp.com/#/login">
-                about.screamless.com
+              Screamless is a cover of Seamless.com, an online food ordering and
+              delivery platform. It was built using Ruby on Rails for the back
+              end, and React/Redux for the front end. For more information on
+              Screamless, or any related inquiries, please visit <span> </span>
+              <a href="https://github.com/lindamckeithlam/Screamless">
+                github.com/lindamckeithlam
               </a>
               .
             </p>
@@ -135,19 +148,14 @@ class Splash extends React.Component {
                 className="special-offer-input"
               />
               <br />
-              <label>ZIP Code</label>
-              <br />
-              <input
-                type="text"
-                placeholder="11111"
-                className="special-offer-input"
-              />
-              <br />
-              <input
-                className="count-me-in-button"
-                type="submit"
-                value="Count me in!"
-              />
+
+              <a href="mailto:lam.lindamckeith@gmail.com">
+                <input
+                  className="count-me-in-button"
+                  type="submit"
+                  value="Count me in!"
+                />
+              </a>
             </form>
           </div>
 
