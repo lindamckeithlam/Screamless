@@ -21,6 +21,17 @@ class Api::OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find_by(id: params[:id])
+    if params[:instruction]
+      @order.delivery_instructions = params[:instruction]
+      @order.save
+      render :show
+    else
+      render json: @order.errors.full_messages, status: 400
+    end
+  end
+
   def index
     @orders = Order.all.where(user_id: params[:user_id]).order({id: :desc})
     if @orders
@@ -31,6 +42,6 @@ class Api::OrdersController < ApplicationController
   end
 
   def uparams
-    params.require(:order).permit(:id, :user_id, :subtotal, :tax, :tip, :delivery_fee, :total, :delivery_instructions, :restaurant_id, :restaurant_name, :items)
+    params.require(:order).permit(:id, :user_id, :subtotal, :tax, :tip, :delivery_fee, :total, :instruction, :restaurant_id, :restaurant_name, :items)
   end
 end

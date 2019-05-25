@@ -17,3 +17,10 @@ export const fetchUserOrders = userId => {
     url: `/api/orders/?user_id=${userId}`
   });
 };
+
+export const saveDeliveryInstructions = (id, instruction) => {
+  return $.ajax({
+    method: "patch",
+    url: `/api/orders/${id}?instruction=${instruction}`
+  });
+};

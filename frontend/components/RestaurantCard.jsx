@@ -51,7 +51,11 @@ function RestaurantCard(props) {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image={restaurant.img_url}
+              image={
+                restaurant
+                  ? restaurant.img_url
+                  : "https://i.imgur.com/5wiDGLB.png"
+              }
               title="Quantum Leap"
             />
             <CardContent>

@@ -5,7 +5,10 @@ import {
   REMOVE_ITEM
 } from "../actions/restaurant_actions";
 
-import { REORDER_ITEMS } from "../actions/order_actions";
+import {
+  REORDER_ITEMS,
+  RECEIVE_CURRENT_USER_DELIVERY_INSTRUCTIONS
+} from "../actions/order_actions";
 const initialState = {
   restaurantId: null,
   restaurantName: null,
@@ -44,6 +47,9 @@ const currentOrderReducer = (state = getInitialState(), action) => {
       localStorage.setItem("CURRENT_ORDER_STORAGE", JSON.stringify(newState));
 
       return newState;
+
+    case RECEIVE_CURRENT_USER_DELIVERY_INSTRUCTIONS:
+      return { ...state, delivery_instructions: action.instruction };
 
     case REORDER_ITEMS:
       // add logic to make sure you cant add items from multiple restaurants

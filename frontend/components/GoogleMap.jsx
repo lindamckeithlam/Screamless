@@ -34,19 +34,16 @@ class GoogleMap extends React.Component {
         componentRestrictions: { country: "usa" }
       };
 
-      this.geocoder.geocode(
-        { address: currentAddress },
-        function(results, status) {
-          if (status == "OK") {
-            this.map.setCenter(results[0].geometry.location);
-            this.marker = new google.maps.Marker({
-              map: this.map,
-              position: results[0].geometry.location,
-              label: oneMarkerLabel
-            });
-          }
-        }.bind(this)
-      );
+      this.geocoder.geocode({ address: currentAddress }, (results, status) => {
+        if (status == "OK") {
+          this.map.setCenter(results[0].geometry.location);
+          this.marker = new google.maps.Marker({
+            map: this.map,
+            position: results[0].geometry.location,
+            label: oneMarkerLabel
+          });
+        }
+      });
     } else {
       this.updateMarkers(this.props.restaurants);
     }
@@ -58,24 +55,7 @@ class GoogleMap extends React.Component {
     );
   }
 
-  renderPrice(num) {
-    let price = "";
-
-    for (let i = 0; i < num; i++) price += "$";
-
-    return price;
-  }
-
   createMarkersFromAddress(input) {
-    const markerIcon = {
-      path: "M22-48h-45v28h16l6 5 6-5h16z",
-      fillColor: "white",
-      fillOpacity: 1,
-      scale: 0.85,
-      labelOrigin: new google.maps.Point(-1, -33),
-      strokeColor: "gray"
-    };
-
     const markerLabel = {
       text: `${this.renderPrice(input.price)}`,
       fontWeight: "800",
@@ -83,25 +63,26 @@ class GoogleMap extends React.Component {
       color: "white"
     };
 
-    this.geocoder.geocode(
-      { address: input.address },
-      function(r, s) {
-        if (s == "OK") {
-          this.map.setCenter(r[0].geometry.location);
-          let mark = new google.maps.Marker({
-            map: this.map,
-            addressId: input,
-            position: r[0].geometry.location,
+    this.geocoder.geocode({ address: input.address }, (r, s) => {
+      if (s == "OK") {
+        this.map.setCenter(r[0].geometry.location);
+        let mark = new google.maps.Marker({
+          map: this.map,
+          addressId: input,
+          position: r[0].geometry.location,
+          label: markerLabel
+        });
 
-            label: markerLabel
-          });
-
-          this.markers[input.address] = mark;
-        }
-      }.bind(this)
-    );
+        this.markers[input.address] = mark;
+      }
+    });
   }
 
+  renderPrice(num) {
+    let price = "";
+    for (let i = 0; i < num; i++) price += "$";
+    return price;
+  }
   render() {
     return <div className="map" id="map" />;
   }

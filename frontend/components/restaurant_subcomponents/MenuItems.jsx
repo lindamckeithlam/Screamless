@@ -4,7 +4,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { connect } from "react-redux";
 import { addItemToBag } from "../../actions/restaurant_actions";
 import classNames from "classnames";
-
+import uuidv1 from "uuid/v1";
 const msp = (state, props) => {
   return {
     ...props
@@ -41,7 +41,7 @@ class MenuItems extends React.Component {
     const showDesc = item.restaurant_id % 2 === 0;
 
     return (
-      <Col key={Math.floor(Math.random() * 100)} xs>
+      <Col key={uuidv1()} xs>
         <Button
           onClick={() => this.props.onAddItem(item)}
           variant="light"

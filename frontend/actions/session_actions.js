@@ -2,6 +2,7 @@ import * as SessionApiUtil from "../util/session_api_util";
 import * as UserApiUtil from "../util/user_util";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_CURRENT_USER_ADDRESS = "RECEIVE_CURRENT_USER_ADDRESS";
+export const RECEIVE_ITEM = "RECEIVE_ITEM";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const ERROR = "ERROR";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";

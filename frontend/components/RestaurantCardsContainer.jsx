@@ -72,13 +72,15 @@ class RestaurantCardsContainer extends React.Component {
     }
 
     return (
-      <>
-        <Grid className="cuisine-container-2">
-          <Row>{/* <div className="modal-header-order" /> */}</Row>
+      <Grid fluid className="cuisine-container-2">
+        {/* <Row>
+          <div className="modal-header-order" />
+        </Row> */}
+        <div className="modal-header-order-2">
           <div className="modal-header-order">Explore our collections</div>
           {this.renderRestaurants()}
-        </Grid>
-      </>
+        </div>
+      </Grid>
     );
   }
 }

@@ -37,6 +37,7 @@ const currentUserReducer = (state = initialState, action) => {
       };
     case RECEIVE_CURRENT_USER_ADDRESS:
       return { ...state, address: action.address };
+
     case RECEIVE_ONE_ORDER:
       const idx = state.orders.findIndex(o => o.id === action.order.id);
 

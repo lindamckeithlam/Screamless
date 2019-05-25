@@ -25,7 +25,11 @@ import {
   removeItemFromBag,
   removeAllItemsFromBag
 } from "../actions/restaurant_actions";
-import { checkoutOrder, resetReorder } from "../actions/order_actions";
+import {
+  checkoutOrder,
+  resetReorder,
+  saveCurrentUserDeliveryInstructions
+} from "../actions/order_actions";
 
 const msp = (state, ownProps) => {
   return {
@@ -39,6 +43,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
   return {
     onRemoveItem: item => dispatch(removeItemFromBag(item)),
+    onAddDeliveryInstructions: (id, instruction) =>
+      dispatch(saveCurrentUserDeliveryInstructions(id, instruction)),
     onRemoveAll: () => dispatch(removeAllItemsFromBag()),
     onCheckout: history => dispatch(checkoutOrder(history)),
     onResetReorder: () => dispatch(resetReorder())
@@ -67,7 +73,8 @@ const styles = theme => ({
 class ShoppingBagDropdown extends React.Component {
   state = {
     expanded: false,
-    showModal: false
+    showModal: false,
+    deliveryInstructions: ""
   };
 
   closeDrawer = () => {
@@ -76,6 +83,7 @@ class ShoppingBagDropdown extends React.Component {
 
   onCheckout = () => {
     const { history, onCheckout } = this.props;
+
     onCheckout(history);
   };
 
@@ -110,11 +118,15 @@ class ShoppingBagDropdown extends React.Component {
             <p className="user-info-modal">{this.props.user.address}</p>
           </div>
           <TextField
+            onChange={e =>
+              this.setState({ deliveryInstructions: e.target.value })
+            }
             autoFocus
             margin="dense"
             id="name"
             label="Delivery Instructions"
-            type="email"
+            type="text"
+            value={this.state.deliveryInstructions}
             fullWidth
           />
         </DialogContent>

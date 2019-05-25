@@ -65,7 +65,9 @@ class OrderCard extends React.Component {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={restaurant && restaurant.img_url}
+          image={
+            restaurant ? restaurant.img_url : "https://i.imgur.com/5wiDGLB.png"
+          }
           title={
             order.restaurantName.length > 13
               ? order.restaurantName.substring(0, 10)

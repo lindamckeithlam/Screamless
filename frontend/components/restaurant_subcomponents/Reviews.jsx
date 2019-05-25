@@ -289,7 +289,7 @@ class Reviews extends React.Component {
                   <span>
                     <p className="avatar">{review.first_name.charAt(0)}</p>
                     <h6> {review.first_name} </h6>
-                    <p>{review.rating}</p>
+                    {/* <p>{review.rating}</p> */}
                   </span>
                 </div>
                 <div className="star-ratings-css">

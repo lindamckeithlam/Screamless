@@ -1,6 +1,8 @@
 import * as OrdersApi from "../util/order_util";
 import { removeAllItemsFromBag } from "./restaurant_actions";
 export const RECEIVE_ONE_ORDER = "RECEIVE_ONE_ORDER";
+export const RECEIVE_CURRENT_USER_DELIVERY_INSTRUCTIONS =
+  "RECEIVE_CURRENT_USER_DELIVERY_INSTRUCTIONS";
 export const RECEIVE_PREVIOUS_ORDERS = "RECEIVE_PREVIOUS_ORDERS";
 export const REORDER_ITEMS = "REORDER_ITEMS";
 export const RESET_REORDER = "RESET_REORDER";
@@ -26,7 +28,8 @@ export const checkoutOrder = history => (dispatch, getState) => {
         ...order,
         items: JSON.parse(order.items),
         restaurantId: order.restaurant_id,
-        restaurantName: order.restaurant_name
+        restaurantName: order.restaurant_name,
+        deliveryInstructions: order.delivery_instructions
       },
       orderId: order.id
     });
@@ -43,7 +46,8 @@ export const fetchOrder = id => dispatch =>
         ...order,
         items: JSON.parse(order.items),
         restaurantId: order.restaurant_id,
-        restaurantName: order.restaurant_name
+        restaurantName: order.restaurant_name,
+        deliveryInstructions: order.delivery_instructions
       },
       orderId: order.id
     });
@@ -62,6 +66,20 @@ export const fetchUserOrders = () => (dispatch, getState) => {
       }))
     })
   );
+};
+
+export const saveCurrentUserDeliveryInstructions = (
+  id,
+  instruction
+) => dispatch => {
+  return OrdersApi.saveDeliveryInstructions(id, instruction).then(() =>
+    dispatch(receiveCurrentUserDeliveryInstructions(instruction))
+  );
+  // .fail(err => dispatch(receiveErrors(err.responseJSON)));
+};
+
+export const receiveCurrentUserDeliveryInstructions = instruction => {
+  return { type: RECEIVE_CURRENT_USER_DELIVERY_INSTRUCTIONS, instruction };
 };
 
 export const reorderItems = order => dispatch =>

@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import { Grid, Row } from "react-flexbox-grid";
 import CuisineCard from "./CuisineCard";
 import Carousel from "react-multi-carousel";
+import uuidv1 from "uuid/v1";
 
 import {
   fetchRestaurant,
@@ -36,23 +37,26 @@ class BrowseByCuisine extends React.Component {
     const { cuisines, onFilterByCuisine, onClearAllFilters } = this.props;
     if (!cuisines.length) return;
 
-    const cuisineCards = cuisines.map((c, idx) => (
-      <CuisineCard
-        onClick={() => onFilterByCuisine(c.cuisine_name)}
-        key={idx}
-        cuisineName={c.cuisine_name}
-        url={c.img_url}
-      />
-    ));
+    const cuisineCards = cuisines.map((c, idx) => {
+      return (
+        <CuisineCard
+          onClick={() => onFilterByCuisine(c.cuisine_name)}
+          key={idx}
+          cuisineName={c.cuisine_name}
+          url={c.img_url}
+        />
+      );
+    });
 
     cuisineCards.unshift(
       <CuisineCard
-        key={Math.floor(Math.random() * 100)}
+        key={uuidv1()}
         cuisineName="See all restaurants"
         url="https://i.imgur.com/5wiDGLB.png"
         onClick={onClearAllFilters}
       />
     );
+
     return (
       <Carousel
         responsive={responsive}

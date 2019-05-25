@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchUserOrders } from "../../actions/order_actions.js";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import OrderCard from "../OrderCard";
-
+import uuidv1 from "uuid/v1";
 const msp = (state, ownProps) => {
   return {
     orders: state.currentUser.orders
@@ -14,7 +14,7 @@ const mdp = dispatch => ({
   onFetchOrders: () => dispatch(fetchUserOrders())
 });
 
-class BrowseByCuisine extends React.Component {
+class PreviousOrders extends React.Component {
   componentDidMount() {
     this.props.onFetchOrders();
   }
@@ -28,7 +28,7 @@ class BrowseByCuisine extends React.Component {
       );
     });
     do {
-      orderCards.push(<Col xs />);
+      orderCards.push(<Col xs key={uuidv1()} />);
     } while (orderCards.length < 4);
 
     return <Row start="xs">{orderCards}</Row>;
@@ -53,4 +53,4 @@ class BrowseByCuisine extends React.Component {
 export default connect(
   msp,
   mdp
-)(BrowseByCuisine);
+)(PreviousOrders);

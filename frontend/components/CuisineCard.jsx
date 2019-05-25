@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
-
+import uuidv1 from "uuid/v1";
 const styles = {
   bigAvatar: {
     margin: "4px",
@@ -18,6 +18,7 @@ function CuisineCard(props) {
   if (window.location.href.includes("browse")) {
     return (
       <div
+        key={uuidv1()}
         className="cuisine-links"
         onClick={onClick}
         style={{ cursor: "pointer" }}
@@ -28,8 +29,18 @@ function CuisineCard(props) {
     );
   } else {
     return (
-      <Link className="cuisine-links" onClick={onClick} to="/browse">
-        <Avatar alt="Remy Sharp" src={url} className={classes.bigAvatar} />
+      <Link
+        className="cuisine-links"
+        onClick={onClick}
+        to="/browse"
+        key={uuidv1()}
+      >
+        <Avatar
+          key={cuisineName + cuisineName.length.toString()}
+          alt="Remy Sharp"
+          src={url}
+          className={classes.bigAvatar}
+        />
         <p style={{ marginLeft: "-17%" }}>{cuisineName}</p>
       </Link>
     );

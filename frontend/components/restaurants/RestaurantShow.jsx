@@ -270,10 +270,17 @@ class RestaurantShow extends React.Component {
         </div>
         <Sticky innerZ={1000} top="#main-nav">
           <div className="restaurant-links">
-            <Scroll.Link smooth duration={500} offset={-125} to="menu-section">
+            <Scroll.Link
+              className="green-text"
+              smooth
+              duration={500}
+              offset={-125}
+              to="menu-section"
+            >
               <span className="green-text">Menu</span>
             </Scroll.Link>
             <Scroll.Link
+              className="green-text"
               smooth
               duration={1000}
               offset={-130}

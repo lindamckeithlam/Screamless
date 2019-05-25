@@ -502,12 +502,13 @@ input[type="last_name"] {
 }
 
 .seamless-nav-logo {
-  width: 13vw;
-  height: 100%;
+  width: 12vw;
+  height: 23vh;
+  object-fit: cover;
   position: relative;
   border-radius: 5%;
   z-index: 1;
-  left: 0vw;
+  left: 1vw;
   top: 0vw;
 }
 .nav-search-bar {
@@ -951,6 +952,7 @@ input[type="last_name"] {
 .restaurant-links a {
   color: #0e8a90;
   opacity: 1;
+  padding: 3px;
 }
 
 .restaurant-links a:hover {
@@ -964,10 +966,6 @@ input[type="last_name"] {
 .restaurant-line {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
-}
-
-.restaurant-links a {
-  padding: 3px;
 }
 
 .restaurant-info {
@@ -1810,4 +1808,8 @@ input[type="last_name"] {
   -moz-transition: all 0.3s ease-out;
   -ms-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
+}
+
+.modal-header-order-2 {
+  padding: 0% 3.5%;
 }

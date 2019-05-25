@@ -42,12 +42,6 @@ class Restaurant < ApplicationRecord
     self.reviews.length
   end
 
-  # def lng_lat
-  #   results = Geocoder.search(self.address)
-  #   console.log(results.first.coordinates)
-
-  # end
-
   def formatted_phone
     return "(" + self.phone[0..2] + ") " + self.phone[3...6] + "-" + self.phone[6..-1]
   end

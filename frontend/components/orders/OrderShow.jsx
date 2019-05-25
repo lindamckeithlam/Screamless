@@ -365,6 +365,7 @@ class OrderShow extends React.Component {
                   <div className="order-date">
                     <p>Order date {order.order_date}</p>
                     <p>Order #31620759-4737721{order.id}</p>
+                    <p>{order.delivery_instructions}</p>
                   </div>
                   <div className="line" />
                   <Typography component="p">
