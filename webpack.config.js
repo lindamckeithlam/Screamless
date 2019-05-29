@@ -23,6 +23,18 @@ module.exports = {
         test: /\.css$/,
         loader: "style-loader!css-loader",
         include: /flexboxgrid/
+      },
+      {
+        test: /\.json$/,
+        exclude: /\/manifest.json$/,
+        loader: "json"
+      },
+      {
+        test: /\/manifest.json$/,
+        loader: "file",
+        query: {
+          name: "manifest.json?[hash:8]"
+        }
       }
     ]
   },

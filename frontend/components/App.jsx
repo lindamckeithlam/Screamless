@@ -10,7 +10,6 @@ import RestaurantShow from "./restaurants/RestaurantShow";
 import OrderShow from "./orders/OrderShow";
 import OrdersIndex from "./orders/OrdersIndex";
 import PersonalProfileContainer from "./users/PersonalProfileContainer";
-
 class App extends Component {
   render() {
     return (
