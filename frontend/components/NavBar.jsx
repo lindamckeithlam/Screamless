@@ -91,7 +91,6 @@ class NavBar extends React.Component {
           style={{ boxShadow: "none" }}
         />
         {/* <ul>...</ul> */}
-
         {/* <i className="fa fa-bell" /> */}
         <ProfileDropdown user={user} logout={logout} />
         <ShoppingBagDropdown />
