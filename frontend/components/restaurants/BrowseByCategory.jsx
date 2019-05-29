@@ -199,7 +199,7 @@ class BrowseByCategory extends React.Component {
             </div>
           </div>
           <div className="category-right">
-            {/* <BrowseByCuisine />  */}
+            <BrowseByCuisine />
             <GoogleMap restaurants={this.props.restaurants} />
             <RestaurantBrowseRowsContainer />
           </div>
