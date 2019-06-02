@@ -4,10 +4,7 @@ import deburr from "lodash/deburr";
 import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
-import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
-import MaskedInput from "react-maskedinput";
-
 import ListItem from "@material-ui/core/ListItem";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";

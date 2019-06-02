@@ -10,10 +10,22 @@ function Footer() {
         </div>
         <div className="footer-right">
           <span>
-            <a href="https://lindamckeithlam.github.io/">See more projects</a>
+            <a
+              href="https://lindamckeithlam.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See more projects
+            </a>
           </span>
           <span>
-            <a href="mailto:lam.lindamckeith@gmail.com">Contact me!</a>
+            <a
+              href="mailto:lam.lindamckeith@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact me!
+            </a>
           </span>
         </div>
       </div>

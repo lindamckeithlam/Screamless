@@ -128,7 +128,11 @@ class Splash extends React.Component {
               delivery platform. It was built using Ruby on Rails for the back
               end, and React/Redux for the front end. For more information on
               Screamless, or any related inquiries, please visit <span> </span>
-              <a href="https://github.com/lindamckeithlam/Screamless">
+              <a
+                href="https://github.com/lindamckeithlam/Screamless"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 github.com/lindamckeithlam
               </a>
               .
@@ -162,13 +166,25 @@ class Splash extends React.Component {
           <div className="special-offers-right">
             <h4>Stay Connected</h4>
 
-            <a href="https://angel.co/linda-mckeith-lam">
+            <a
+              href="https://angel.co/linda-mckeith-lam"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-angellist" />
             </a>
-            <a href="https://www.linkedin.com/in/lindamckeithlam">
+            <a
+              href="https://www.linkedin.com/in/lindamckeithlam"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-linkedin-in" />
             </a>
-            <a href="https://github.com/lindamckeithlam">
+            <a
+              href="https://github.com/lindamckeithlam"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-github" />
             </a>
           </div>

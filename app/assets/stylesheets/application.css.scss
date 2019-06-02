@@ -235,7 +235,7 @@
 
 @font-face {
   font-family: "Graphik";
-  src: url("../fonts/Graphik-Regular.ttf") format("truetype");
+  src: url("../fonts/Graphik.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -1533,7 +1533,7 @@ input[type="last_name"] {
 }
 .user-payment h3 {
   font-size: 22px;
-  font-family: "Graphik", sans-serif;
+  font-family: "Graphik";
   font-weight: 500;
 }
 .user-payment {
