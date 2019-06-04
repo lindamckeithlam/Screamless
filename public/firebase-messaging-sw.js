@@ -14,11 +14,6 @@ var config = {
 firebase.initializeApp(config);
 const message = firebase.messaging();
 
-// message.usePublicVapidKey(
-//   // Project Settings => Cloud Messaging => Web Push certificates
-//   "BFurC3OBF6MHlcpvqdPF9uFW3GIeScP6NInzo0tih1CW7ZKBUb1lIJUnGbVbcvDq_kp6Xiyhwm_jjD-BdJmRYL0"
-// );
-
 message.setBackgroundMessageHandler(function(payload) {
   console.log(
     "[firebase-messaging-sw.js] Received background message ",

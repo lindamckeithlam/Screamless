@@ -19,19 +19,30 @@ class Splash extends React.Component {
     this.state = { token: "" };
   }
 
-  askForPermissioToReceiveNotifications = async () => {
-    try {
-      var messaging = firebase.messaging();
+  askForPermissioToReceiveNotifications = () => {
+    let messaging = null;
 
-      await messaging.requestPermission();
-      const token = await messaging.getToken();
-      this.setState({ token: token.toString() });
-      console.log("user token: ", token);
-      return token;
-    } catch (error) {
-      console.error(error);
+    if (firebase.messaging.isSupported()) {
+      messaging = firebase.messaging();
+      messaging.usePublicVapidKey(
+        "BFurC3OBF6MHlcpvqdPF9uFW3GIeScP6NInzo0tih1CW7ZKBUb1lIJUnGbVbcvDq_kp6Xiyhwm_jjD-BdJmRYL0"
+      );
     }
+
+    if (!messaging) return;
+    Notification.requestPermission().then(response => {
+      if (response === "granted") {
+        console.log("Notification permission granted.");
+      }
+    });
+
+    messaging.getToken().then(currentToken => {
+      this.setState({ token: currentToken.toString() });
+    });
+
+    // return token;
   };
+
   handleChange(address) {
     return e => {
       e.preventDefault();
