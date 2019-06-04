@@ -1,0 +1,22 @@
+{
+  "short_name": "Screamless",
+  "name": "Screamless App",
+  "browser_action": {
+    "default_icon": "https://s3.us-east-2.amazonaws.com/screamless-seed/screamless-logo.png",
+    "default_popup": ""
+  },
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "browser",
+  "background_color": "#FAFAFA",
+  "scope": ".",
+  "theme_color": "#3367D6",
+  "//": "Some browsers will use this to enable push notifications.",
+  "gcm_sender_id": "103953800507"
+}

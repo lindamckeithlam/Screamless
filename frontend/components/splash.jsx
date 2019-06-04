@@ -3,6 +3,10 @@ import SplashSearch from "./SplashSearch";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Footer from "./footer";
+import firebase from "firebase";
+import "babel-polyfill";
+import "firebase/messaging";
+
 const msp = state => ({
   user: {
     address: ""
@@ -12,9 +16,22 @@ const msp = state => ({
 class Splash extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
+    this.state = { token: "" };
   }
 
+  askForPermissioToReceiveNotifications = async () => {
+    try {
+      var messaging = firebase.messaging();
+
+      await messaging.requestPermission();
+      const token = await messaging.getToken();
+      this.setState({ token: token.toString() });
+      console.log("user token: ", token);
+      return token;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   handleChange(address) {
     return e => {
       e.preventDefault();
@@ -162,9 +179,10 @@ class Splash extends React.Component {
               </a>
             </form>
           </div>
-
+          <p onClick={this.askForPermissioToReceiveNotifications}>test</p>
           <div className="special-offers-right">
             <h4>Stay Connected</h4>
+            <p>{this.state.token}</p>
 
             <a
               href="https://angel.co/linda-mckeith-lam"

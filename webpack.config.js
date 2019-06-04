@@ -1,10 +1,17 @@
 const path = require("path");
+var ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = {
   context: __dirname,
   entry: "./frontend/screamless.jsx",
   output: {
-    path: path.resolve(__dirname, "app", "assets", "javascripts"),
+    path: path.resolve(
+      __dirname,
+      "app",
+      "assets",
+      "javascripts",
+      "manifest.json"
+    ),
     filename: "bundle.js"
   },
   module: {
@@ -41,5 +48,6 @@ module.exports = {
   devtool: "eval-source-map",
   resolve: {
     extensions: [".js", ".jsx", "*"]
-  }
+  },
+  plugins: [new ManifestPlugin()]
 };
