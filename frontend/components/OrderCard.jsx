@@ -15,10 +15,21 @@ const styles = {
   card: {
     maxWidth: 265,
     maxHeight: 240
-    // textOverflow: "ellipsis"
   },
   media: {
-    height: 110
+    height: 110,
+    objectFit: "cover"
+  },
+  noWrap: {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis"
+  },
+  linkNoWrap: {
+    color: "#2b8282",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis"
   }
 };
 
@@ -51,15 +62,10 @@ class OrderCard extends React.Component {
       }
     });
 
-    let item_names = [];
+    const item_names = [];
     Object.entries(prev_order).forEach(([key, value]) => {
       item_names.push(` ${value} ${key}`);
     });
-
-    item_names =
-      item_names.join(",").length > 30
-        ? item_names.join(",").substring(0, 27) + "..."
-        : item_names.join(",");
 
     return (
       <Card className={classes.card}>
@@ -75,23 +81,23 @@ class OrderCard extends React.Component {
           }
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h6">
-            <Link style={{ textDecoration: "none" }} to={`/orders/${order.id}`}>
-              <h4 className="order-card-container" style={{ color: "#2b8282" }}>
-                {order.restaurantName}
-              </h4>
-            </Link>
-          </Typography>
+          <Link style={{ textDecoration: "none" }} to={`/orders/${order.id}`}>
+            <Typography
+              style={styles.linkNoWrap}
+              gutterBottom
+              variant="h5"
+              component="h6"
+            >
+              {order.restaurantName}
+            </Typography>
+          </Link>
 
-          <Typography component="p" style={{ marginBottom: "5%" }}>
-            <span>{item_names}</span>
-            {/* {JSON.stringify(order.items.name)} */}
-            {/* {restaurant && restaurant.address} */}
+          <Typography style={styles.noWrap} component="p">
+            {item_names}
           </Typography>
           <Button
             onClick={() => {
               this.props.onReorder(order);
-
               this.props.history.push(`/menu/${order.restaurantId}`);
             }}
             className="reorder-button"

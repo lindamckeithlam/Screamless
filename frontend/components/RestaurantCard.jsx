@@ -15,7 +15,12 @@ const styles = {
     marginBottom: "5%"
   },
   media: {
-    height: 140
+    height: 145
+  },
+  noWrap: {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis"
   }
 };
 
@@ -59,14 +64,21 @@ function RestaurantCard(props) {
               title="Quantum Leap"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                style={styles.noWrap}
+                gutterBottom
+                variant="h5"
+                component="h2"
+              >
                 {restaurant.name}
               </Typography>
               <div className="cuisine-name-rating">
                 <p className="cuisine-name">{restaurant.cuisine_name}</p>{" "}
                 <span>{reviews}</span>
               </div>
-              <Typography component="p">{restaurant.address}</Typography>
+              <Typography style={styles.noWrap} component="p">
+                {restaurant.address}
+              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid, Row } from "react-flexbox-grid";
 import CuisineCard from "./CuisineCard";
 import Carousel from "react-multi-carousel";
 import uuidv1 from "uuid/v1";
@@ -33,7 +32,7 @@ class BrowseByCuisine extends React.Component {
     this.props.onFetchCuisines();
   }
 
-  getCarousel = () => {
+  getCarousel() {
     const { cuisines, onFilterByCuisine, onClearAllFilters } = this.props;
     if (!cuisines.length) return;
 
@@ -70,16 +69,14 @@ class BrowseByCuisine extends React.Component {
         {cuisineCards}
       </Carousel>
     );
-  };
+  }
 
   render() {
     return (
-      <Grid className="cuisine-container">
-        <Row>
-          <div className="modal-header-order">Browse by cuisine</div>
-        </Row>
-        <Row>{this.getCarousel()}</Row>
-      </Grid>
+      <div className="cuisine-container">
+        <div className="modal-header-order">Browse by cuisine</div>
+        {this.getCarousel()}
+      </div>
     );
   }
 }
